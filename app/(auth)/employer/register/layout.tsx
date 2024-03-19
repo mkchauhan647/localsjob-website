@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import Nav from "../../../../components/nav";
+// import Nav from "../../../../components/nav";
+import Navbar from "@/components/navbar/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RegistrationPageLayout({
@@ -9,7 +10,7 @@ export default function RegistrationPageLayout({
 }) {
     return (
         <>
-            <Nav />
+            <Navbar />
             {children}
         </>
     );
