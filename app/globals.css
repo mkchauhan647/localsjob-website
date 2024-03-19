@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+body {
+background:white;
+overflow-x: hidden;
+}
+.ant-btn {
+    background: #0958d9;
+}
+
+.login-form {
+    max-width: 80%;
+}
+ul.hidden > a > button {
+    color: white!important;
+    }
+
+.menu-button {
+    display: none;
+    /* Hide the menu button by default on all screens */
+}
+
+@media only screen and (max-width: 768px) {
+    .menu-button {
+        display: block;
+        /* Show the menu button on smaller screens */
+    }
+
+    .drawer {
+        display: block;
+        /* Show the drawer on smaller screens */
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .menu-button {
+        display: none;
+        /* Hide the menu button on larger screens */
+    }
+
+    .drawer {
+        display: none;
+        /* Hide the drawer on larger screens */
+    }
+}
