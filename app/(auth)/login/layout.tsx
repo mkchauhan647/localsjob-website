@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
-import Nav from "@/components/nav";
+// import Nav from "@/components/nav";
 const inter = Inter({ subsets: ["latin"] });
+import Navbar from "@/components/navbar/Navbar";
 
 export default function LoginPageLayout({
     children,
@@ -9,7 +10,8 @@ export default function LoginPageLayout({
 }) {
     return (
         <>
-            <Nav />
+            {/* <Nav /> */}
+            <Navbar/>
             {children}
         </>
     );
