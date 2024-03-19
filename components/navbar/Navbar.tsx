@@ -34,8 +34,9 @@ const Navbar = () => {
         {/* .........nav elements........*/}
         <ul className=" hidden md:flex items-center gap-8 text-white">
           <NavBrowse text="Browse Jobs" link="/"  />
-          <NavElements link="/blog" text="Skill Zone" />
-        <NavElements link="/faq" text="Services" />
+          <NavElements link="/skill-zone" text="Skill Zone" />
+        <NavElements link="/service" text="Services" />
+        <NavElements link="/blogs" text="Blogs" />
         </ul>
 
         {/* ......Registration and Login... */}
@@ -91,8 +92,9 @@ const Navbar = () => {
         }}
       >
         <NavBrowse text="Browse Jobs" link="/" />
-        <NavElements link="/blog" text="Skill Zone" />
-        <NavElements link="/faq" text="Services" />
+        <NavElements link="/skill-zone" text="Skill Zone" />
+        <NavElements link="/service" text="Services" />
+        <NavElements link="/blogs" text="Blogs" />
 
         {/* Registration and login  */}
         {true &&
