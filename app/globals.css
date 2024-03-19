@@ -16,6 +16,17 @@ overflow-x: hidden;
 .image-box{
     border-radius: 50%;
 }
+.font-medium{
+    color: black;
+   font-weight: 600;
+}
+
+.footer-bg{
+    background-image: url("/../footer-bg.png");
+    background-repeat: no-repeat;
+
+    background-position: bottom ;
+}
 
 .ant-btn {
     background: #0958d9;

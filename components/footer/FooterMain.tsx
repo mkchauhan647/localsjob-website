@@ -1,8 +1,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { SiGmail } from "react-icons/si";
-import { GrLinkedin } from "react-icons/gr";
+
+
 const footerData = [
 
  
@@ -59,12 +59,12 @@ const footerData = [
 
 const FooterMain = () => {
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto   footer-bg">
       <div className="grid  gap-y-8 md:flex justify-between py-12 footer">
-      <div className="title text-white">
-          <h1 className="text-white text-[16px] font-semibold">Mission</h1>
+     
+       
           <div className="w-[17.5rem] footercol">
-            <p className=" text-justify">
+            <p className=" text-justify text-white">
               Since our inception, Locals Job has been dedicated to connecting
               local talent with meaningful employment opportunities. Our
               mission is to empower individuals, support local businesses, and
@@ -74,7 +74,7 @@ const FooterMain = () => {
               Join us in shaping a brighter future for Nepal.
             </p>
           </div>
-        </div>
+      
       
        
 

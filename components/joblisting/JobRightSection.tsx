@@ -62,7 +62,7 @@ const renderByCategory = () => {
   return data.map((item, index) => (
     <div className="flex justify-between items-center mb-2 p-2 w-full rounded-md  bg-[whitesmoke]" key={index}>
       <div>
-        <span className="text-sm">{item.category}</span>
+        <span className="text-sm text-black">{item.category}</span>
       </div>
       <div className="text-[#f08c38] text-[13px] font-bold">
       <span>{item.jobs}</span>
