@@ -19,14 +19,14 @@ const Navbar = () => {
   return (
     <div className=" sticky top-0 border-b-2  z-50 bg-[#0d64cc]">
       {/* a................bigger screens.................. */}
-      <div className=" flex items-center justify-between  container mx-auto ">
+      <div className=" flex items-center justify-between  container mx-auto navbar ">
         {/*........ logo......... */}
         <Link href="/">
           <Image src={logo} alt="job logo" className="max-w-[150px] h-[55px] py-2" />
         </Link>
         {/* ...........Hamburger Menu.......... */}
         <div
-          className="text-2xl text-gray-400 block md:hidden"
+          className="text-2xl text-[white] block md:hidden"
           onClick={() => setShowMenu(!showMenu)}
         >
           <RxHamburgerMenu />
