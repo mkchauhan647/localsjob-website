@@ -13,7 +13,12 @@ const data: dataProps[] = [
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
- 
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
  
 ];
 

@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className=" flex items-center justify-between  container mx-auto ">
         {/*........ logo......... */}
         <Link href="/">
-          <Image src={logo} alt="job logo" className="max-w-[150px] py-2" />
+          <Image src={logo} alt="job logo" className="max-w-[150px] h-[55px] py-2" />
         </Link>
         {/* ...........Hamburger Menu.......... */}
         <div
