@@ -37,6 +37,23 @@ ul.hidden > a > button {
         display: block;
         /* Show the drawer on smaller screens */
     }
+    .navbar{
+        padding-left: 10px;
+  padding-right: 10px;
+
+    }
+    .jobcontainer{
+        width: 100%!important;
+    }
+    .footer{
+        padding-left: 42px;
+        
+    }
+    .footercol{
+        width: 355px!important;
+       
+    }
+
 }
 
 @media only screen and (min-width: 769px) {
@@ -49,4 +66,21 @@ ul.hidden > a > button {
         display: none;
         /* Hide the drawer on larger screens */
     }
+    .navbar{
+        padding-left: 10px;
+  padding-right: 10px;
+
+    }
+    .jobcontainer{
+        width: 100%!important;
+    }
+    .footer{
+        padding-left: 42px;
+
+    }
+    .footercol{
+        width: 355px!important;
+       
+    }
+  
 }

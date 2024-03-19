@@ -3,7 +3,7 @@ import FooterSub from "./FooterSub";
 import FooterMain from "./FooterMain";
 const Footer = () => {
   return (
-    <div className=" bg-[#0d64cc]">
+    <div className=" bg-[#0d64cc] ">
       <FooterMain/>
       <FooterSub/>
     </div>

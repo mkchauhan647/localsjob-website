@@ -21,13 +21,13 @@ const page = () => {
         <div className='flex items-center justify-center w-full min-h-[90vh]'>
             <div className='flex flex-col min-h-[95%] w-[85%] m-5 items-start lg:flex-row md:flex-row'>
                 <div className='md:w-1/3 lg:w-1/3 xl:w-1/3 w-full'>
-                    <div className='flex flex-col items-start justify-center gap-2 p-8 shadow-md '>
-                        <div>
-                            <Switch defaultChecked onChange={onChange} />
-                            <span className='ml-4'>Actively seeking for a job ?</span>
-                        </div>
-                        <p className='text-xs'>Expires on: Feb. 28, 2024</p>
-                    </div>
+                    <div className='pb-3'>
+                <h1 className='pt-4 pl-12'>Need Help To Get Job ?</h1>
+              
+<Button type="primary" className='mt-4 w-[50%] ml-12'>
+ Find Job For Me
+</Button>
+</div>
                     <div className='flex flex-col items-start  p-8 shadow-md'>
                         <div className='flex items-start gap-4'>
                             <Image src='/avatar.png' width={100} height={100} className='border-black rounded-full border-2' alt='profilepic' />
@@ -62,7 +62,23 @@ const page = () => {
                     <Button type="primary" className='mt-4 w-[100%]'>
                         Convert into resume in pdf format
                     </Button>
+
+                    <div className=' border-black  border  mt-4'>
+                    </div>
+<h1 className='pt-4 pl-12'>Register your skill on Skill Zone</h1>
+
+                    <Button type="primary" className='mt-4 w-[50%] ml-12'>
+                       SKill Registration
+                    </Button>
+                    <div className='flex flex-col items-start justify-center gap-2 p-8 shadow-md  mt-2'>
+                        <div>
+                            <Switch defaultChecked onChange={onChange} />
+                            <span className='ml-4'>Actively seeking for a job ?</span>
+                        </div>
+                        <p className='text-xs'>Expires on: Feb. 28, 2024</p>
+                    </div>
                 </div>
+                
                 <div className='w-full md:2/3 lg:2/3 xl:2/3 mt-5'>
                     <h3 className='font-semibold ml-5 text-xl'>Biography</h3>
                     <div className='flex flex-col  items-center justify-between  gap-4 p-8 shadow-md '>
