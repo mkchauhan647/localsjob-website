@@ -2,7 +2,7 @@
 import React from "react";
 import Title from "./Title";
 import Image from "next/image";
-import mobile from "@/public/rightbanner.jpg";
+
 import rightbanner from "@/public/rightbanner2.gif";
 import rightbanner3 from "@/public/rightbanner3.gif";
 const data = [
@@ -86,7 +86,7 @@ const JobRightSection = () => {
       </div>
 
       <div className=" container mx-auto  py-6">
-<Image src={mobile} alt="mobile" className="w-full h-[auto]  " />
+      <Image src={rightbanner3} alt="mobile" className="w-full h-[auto]  " />
 <Image src={rightbanner} alt="mobile" className="w-full h-[auto]  " />
 <Image src={rightbanner} alt="mobile" className="w-full h-[auto]  " />
 <Image src={rightbanner3} alt="mobile" className="w-full h-[auto]  " />
