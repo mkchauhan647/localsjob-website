@@ -30,11 +30,11 @@ const featuredCompanies = [
 const JobMain = () => {
   return (
     <div>
-      <div className=" container  mx-auto md:flex gap-4 items-start px-4  my-6 ">
+      <div className=" container  mx-auto md:flex gap-4 items-start px-4   ">
       <JobLeftSection />
         <JobRightSection />
       </div>
-      <div className=" container  mx-auto md:flex gap-4 items-start px-4  my-6 ">
+      <div className=" container  mx-auto md:flex gap-4 items-start px-4   ">
       <div className="w-[75%]  ">
         <Title title="Recent Jobs" />
         <FeaturedCompaniesGrid featuredCompanies={featuredCompanies} />
