@@ -1,0 +1,42 @@
+import React from 'react';
+import type { MenuProps } from 'antd';
+import { Button, Dropdown } from 'antd';
+import { HomeOutlined, UserOutlined } from '@ant-design/icons';
+
+
+const items: MenuProps['items'] = [
+  {
+    key: '1',
+    label: (
+      <a className='font-semibold block px-[8px] py-[10px] !text-[rgba(0,0,0,.7)]' href="/job-seeker/register">
+        Jobseeker Registration
+      </a>
+    ),
+    icon: <UserOutlined style={{ fontSize: '24px', color: 'rgba(0,0,0,.5)' }} />
+  },
+  {
+    key: '2',
+    label: (
+      <a className='font-semibold block px-[8px] py-[10px] !text-[rgba(0,0,0,.7)]' href="/employer/register">
+        Employer Registration
+      </a>
+    ),
+    icon: <HomeOutlined style={{ fontSize: '24px', color: 'rgba(0,0,0,.5)' }} />
+  },
+];
+
+const RegisterDropDown: React.FC = () => (
+  <>
+    <Dropdown
+      menu={{ items }}
+      placement="bottomLeft" arrow
+      overlayStyle={{ width: '260px' }}
+    >
+      <Button className='!bg-[#f08c38] !text-white !border-none flex items-center' >
+        Register <UserOutlined />
+      </Button>
+    </Dropdown>
+  </>
+);
+
+export default RegisterDropDown;
