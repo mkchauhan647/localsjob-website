@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
 import Title from "./Title";
-
+import Image from "next/image";
+import mobile from "@/public/rightbanner.jpg";
+import rightbanner from "@/public/rightbanner2.gif";
+import rightbanner3 from "@/public/rightbanner3.gif";
 const data = [
   {
     category: 'Education',
@@ -81,8 +84,27 @@ const JobRightSection = () => {
           </div>
         </div>
       </div>
+
+      <div className=" container mx-auto  py-6">
+<Image src={mobile} alt="mobile" className="w-full h-[auto]  " />
+<Image src={rightbanner} alt="mobile" className="w-full h-[auto]  " />
+<Image src={rightbanner} alt="mobile" className="w-full h-[auto]  " />
+<Image src={rightbanner3} alt="mobile" className="w-full h-[auto]  " />
+<Image src={rightbanner} alt="mobile" className="w-full h-[auto]  " />
+<Image src={rightbanner3} alt="mobile" className="w-full h-[auto]  " />
+
+
+</div>
     </div>
+
+
+
+
   );
+ 
+ 
 };
+
+
 
 export default JobRightSection;

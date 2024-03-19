@@ -18,6 +18,12 @@ const data: Job[] = [
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
   { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
+  { company: "Siddhartha Bussiness Group..", title: "Receptionist", img: "/company1.jpg" },
 ];
 
 const HotJobs: React.FC = () => {
