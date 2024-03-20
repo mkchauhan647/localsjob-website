@@ -59,9 +59,9 @@ const SkillReg = () => {
               <h2 className="text-xl font-semibold mb-2">{item.title}</h2>
               <Button className=' bg-black text-white'>Request Call</Button>
               </div>
-              <p className='font-bold'>{item.skill}</p>
-              <p className='font-bold'>{item.location}</p>
-              <p className='font-bold'>{item.content}</p>
+              <p className='font-[600]'>{item.skill}</p>
+              <p className='font-[600]'>{item.location}</p>
+              <p className='font-[600]'>{item.content}</p>
             </div>
           ))}
         </div>
