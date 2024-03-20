@@ -1,55 +1,37 @@
 import React from 'react';
-import { Button } from 'antd';
 import Image from "next/image";
-import profile from "@/public/profileimg.jpeg";
+import imageData from './imagedata';
+import HomeBanner from './homebanner';
+import MobileAppBanner from '@/components/MobileAppBanner';
+import { Button } from 'antd';
+import Skillreg from './skillreg';
 
 const Page = () => {
   return (
     <>
-      <div className='container mx-auto py-auto pt-2 pb-2'>
-        <div className='title pl-3'>
-          <h1 className='font-bold text-[25px]'>Skill Profile</h1>
-        </div>
-      </div>
-      <div className='container mx-auto py-auto '>
-        <div className='profile-box flex flex-col sm:flex-row w-full bg-[whitesmoke] justify-between pt-2 pb-2'>
-          <div className='left-box flex gap-3 py-4 px-4 sm:px-9'>
-            <Image src={profile} alt="profile-logo" className="w-[100px] h-[100px] py-2 image-box" />
-            <div className='profile-details  pt-[25px]'>
-              <h1>Name</h1>
-              <h1>Location</h1>
-            </div>
-          </div>
-          <div className='right-box'>
-            <div className='button flex gap-4 pt-2 sm:pt-[46px] px-4 sm:px-9'>
-              <Button className='bg-black text-white'>Request Call</Button>
-              <Button className='bg-black text-white'>Share</Button>
-            </div>
+      <HomeBanner />
+      <MobileAppBanner />
+      <div className="container mx-auto px-4 py-6"> 
+        <div className="pt-4 pb-4">
+          <h1 className="text-lg sm:text-xl text-left my-2 font-semibold text-gray-700">Top Skill (Profession categories)</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4"> 
+            {imageData.map((image) => (
+              <div key={image.id}>
+                <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
+                  <Image src={image.src} alt={image.alt} width={500} height={500} className="w-full" /> 
+                </div>
+                <div className="px-6 py-4">
+                  <div className="font-semibold text-sm text-gray-900">{image.text}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-
-      <div className='container mx-auto py-auto pt-8 pb-2'>
-        <div className='details flex flex-col sm:flex-row gap-[25px] mx-auto'>
-          <div className='left-side py-4 px-4 sm:px-9'>
-            <Button className='bg-black text-white'>View Profile</Button>
-          </div>
-          <div className='right-side px-4 sm:px-9'>
-            <h1><strong>Skill Categories</strong> (Sr Graphic & UX/UI Product Designer)</h1>
-            <h1><strong>Level: Experience | Professional | Beginner</strong></h1>
-            <br />
-            <p className='text-justify'>With the heart of an 🎨 artist and the mind of an 🛠️ engineer, I craft intuitive user experiences considering every detail. The most important thing for me is to 👂 listen carefully. This helps me identify different ways to solve complex problems and produce individual design solutions that meet clients’ expectations and help people achieve their goals through engaging experiences and a delicate user interface. I am passionate about converting my clients' ideas into visual realities through my strong creative knowledge and innovative concepts, as this helps me excel with my 🛠️.</p>
-       
-            <ul className='list-decimal px-4 py-4 '>
-              <li>WordPress UI</li>
-              <li>Graphics</li>
-              <li>Front-End</li>
-              <li>Development UI/UX Prototyping</li>
-              <li>Design Concept UIKit Design Analysis</li>
-            </ul>
-          </div>
-        </div>
+      <div className="container mx-auto pb-10 flex justify-center"> 
+        <Button className='bg-black text-white'>View More</Button>
       </div>
+      <Skillreg />
     </>
   );
 };

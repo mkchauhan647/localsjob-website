@@ -10,6 +10,7 @@ export default function MainNavLayout({
   return (
     <>
       <Navbar />
+      
       {children}
     </>
   );

@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 1200px) {
-    .container {
-      max-width: 1140px;
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
 body {
 background:white;
 overflow-x: hidden;
@@ -29,7 +22,7 @@ overflow-x: hidden;
 }
 
 .ant-btn {
-    background: #0958d9;
+    background: black;
 }
 
 .login-form {
