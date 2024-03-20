@@ -6,7 +6,8 @@ const imageData = [
       
         src: "/dummyimage.jpeg",
         alt: "Image 1",
-      text: "Text for Image 1"
+      name: "Narayan Acharya",
+      position:"Developer"
     },
     {
       id: 2,
@@ -15,49 +16,56 @@ const imageData = [
         src: "/dummyimage.jpeg",
         
       alt: "Image 2",
-      text: "Text for Image 2"
+      name: "Narayan Acharya",
+      position:"Developer"
     },
     {
         id: 2,
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        text: "Text for Image 2"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
         id: 2,
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        text: "Text for Image 2"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
         id: 2,
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        text: "Text for Image 2"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
         id: 2,
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        text: "Text for Image 2"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
         id: 1,
         
           src: "/dummyimage.jpeg",
           alt: "Image 1",
-        text: "Text for Image 1"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
         id: 2,
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        text: "Text for Image 2"
+        name: "Narayan Acharya",
+        position:"Developer"
       },
       {
           id: 2,
@@ -65,7 +73,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          text: "Text for Image 2"
+          name: "Narayan Acharya",
+          position:"Developer"
         },
         {
           id: 2,
@@ -73,7 +82,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          text: "Text for Image 2"
+          name: "Narayan Acharya",
+          position:"Developer"
         },
         {
           id: 2,
@@ -81,7 +91,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          text: "Text for Image 2"
+          name: "Narayan Acharya",
+          position:"Developer"
         },
         {
           id: 2,
@@ -89,7 +100,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          text: "Text for Image 2"
+          name: "Narayan Acharya",
+          position:"Developer"
         },
         {
             id: 1,
@@ -97,7 +109,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
               alt: "Image 1",
-            text: "Text for Image 1"
+            name: "Narayan Acharya",
+            position:"Developer"
           },
           {
             id: 2,
@@ -105,7 +118,8 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
               alt: "Image 2",
-            text: "Text for Image 2"
+            name: "Narayan Acharya",
+            position:"Developer"
           },
           {
               id: 2,
@@ -113,7 +127,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              text: "Text for Image 2"
+              name: "Narayan Acharya",
+              position:"Developer"
             },
             {
               id: 2,
@@ -121,7 +136,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              text: "Text for Image 2"
+              name: "Narayan Acharya",
+              position:"Developer"
             },
             {
               id: 2,
@@ -129,7 +145,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              text: "Text for Image 2"
+              name: "Narayan Acharya",
+              position:"Developer"
             },
             {
               id: 2,
@@ -137,7 +154,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              text: "Text for Image 2"
+              name: "Narayan Acharya",
+              position:"Developer"
             },
             {
                 id: 1,
@@ -145,7 +163,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                   alt: "Image 1",
-                text: "Text for Image 1"
+                name: "Narayan Acharya",
+                position:"Developer"
               },
               {
                 id: 2,
@@ -153,7 +172,8 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                   alt: "Image 2",
-                text: "Text for Image 2"
+                name: "Narayan Acharya",
+                position:"Developer"
               },
               {
                   id: 2,
@@ -161,7 +181,8 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  text: "Text for Image 2"
+                  name: "Narayan Acharya",
+                  position:"Developer"
                 },
                 {
                   id: 2,
@@ -169,7 +190,8 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  text: "Text for Image 2"
+                  name: "Narayan Acharya",
+                  position:"Developer"
                 },
                 {
                   id: 2,
@@ -177,7 +199,8 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  text: "Text for Image 2"
+                  name: "Narayan Acharya",
+                  position:"Developer"
                 },
                 {
                   id: 2,
@@ -185,7 +208,8 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  text: "Text for Image 2"
+                  name: "Narayan Acharya",
+                  position:"Developer"
                 },
 
   ];
