@@ -26,10 +26,10 @@ const Page = () => {
              <div className="flex gap-x-2 items-center">
                <Image alt="Job Image" src={image.src} width={40} height={40} className='jobimage' />
                <div className="grid text-[rgb(0,0,0,.7)]"> 
-               <div className="flex justify-between">
+              
              <p className="font-medium"> {image.name}</p>
             
-             </div>
+           
              <p className="text-xs "> {image.position}</p>
           
              </div>
@@ -65,7 +65,10 @@ const Page = () => {
         </div>
       </div>
       <div className="container mx-auto pb-10 flex justify-center"> 
-        <Button className='bg-black text-white'>View More</Button>
+      <p className="text-xs  profilebtn  flex items-center   justify-start  mt-2 ">
+                               <Button className=' text-white'>View More</Button>
+                                       </p>
+      
       </div>
       <Skillreg />
     </>

@@ -6,7 +6,7 @@ const imageData = [
       
         src: "/dummyimage.jpeg",
         alt: "Image 1",
-      name: "Narayan Acharya",
+      name: "John Doe",
       position:"Developer"
     },
     {
@@ -16,7 +16,7 @@ const imageData = [
         src: "/dummyimage.jpeg",
         
       alt: "Image 2",
-      name: "Narayan Acharya",
+      name: "John Doe",
       position:"Developer"
     },
     {
@@ -24,7 +24,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -32,7 +32,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -40,7 +40,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -48,7 +48,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -56,7 +56,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 1",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -64,7 +64,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
           alt: "Image 2",
-        name: "Narayan Acharya",
+        name: "John Doe",
         position:"Developer"
       },
       {
@@ -73,7 +73,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          name: "Narayan Acharya",
+          name: "John Doe",
           position:"Developer"
         },
         {
@@ -82,7 +82,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          name: "Narayan Acharya",
+          name: "John Doe",
           position:"Developer"
         },
         {
@@ -91,7 +91,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          name: "Narayan Acharya",
+          name: "John Doe",
           position:"Developer"
         },
         {
@@ -100,7 +100,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
             alt: "Image 2",
-          name: "Narayan Acharya",
+          name: "John Doe",
           position:"Developer"
         },
         {
@@ -109,7 +109,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
               alt: "Image 1",
-            name: "Narayan Acharya",
+            name: "John Doe",
             position:"Developer"
           },
           {
@@ -118,7 +118,7 @@ const imageData = [
 
   src: "/dummyimage.jpeg",
               alt: "Image 2",
-            name: "Narayan Acharya",
+            name: "John Doe",
             position:"Developer"
           },
           {
@@ -127,7 +127,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              name: "Narayan Acharya",
+              name: "John Doe",
               position:"Developer"
             },
             {
@@ -136,7 +136,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              name: "Narayan Acharya",
+              name: "John Doe",
               position:"Developer"
             },
             {
@@ -145,7 +145,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              name: "Narayan Acharya",
+              name: "John Doe",
               position:"Developer"
             },
             {
@@ -154,7 +154,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                 alt: "Image 2",
-              name: "Narayan Acharya",
+              name: "John Doe",
               position:"Developer"
             },
             {
@@ -163,7 +163,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                   alt: "Image 1",
-                name: "Narayan Acharya",
+                name: "John Doe",
                 position:"Developer"
               },
               {
@@ -172,7 +172,7 @@ const imageData = [
     
       src: "/dummyimage.jpeg",
                   alt: "Image 2",
-                name: "Narayan Acharya",
+                name: "John Doe",
                 position:"Developer"
               },
               {
@@ -181,7 +181,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  name: "Narayan Acharya",
+                  name: "John Doe",
                   position:"Developer"
                 },
                 {
@@ -190,7 +190,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  name: "Narayan Acharya",
+                  name: "John Doe",
                   position:"Developer"
                 },
                 {
@@ -199,7 +199,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  name: "Narayan Acharya",
+                  name: "John Doe",
                   position:"Developer"
                 },
                 {
@@ -208,7 +208,7 @@ const imageData = [
         
           src: "/dummyimage.jpeg",
                     alt: "Image 2",
-                  name: "Narayan Acharya",
+                  name: "John Doe",
                   position:"Developer"
                 },
 
