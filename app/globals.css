@@ -68,6 +68,7 @@ ul.hidden > a > button {
         width: 355px!important;
        
     }
+ 
 
 }
 
@@ -83,4 +84,17 @@ ul.hidden > a > button {
     }
    
   
+}
+@media only screen and (max-width: 650px) {
+    .imagebox{
+        padding-left: 300px!important;
+        padding-bottom: 162px!important;
+      
+    }
+    .bannerimage {
+        height: 184px;
+    }
+    .detailstitle{
+        padding-left: 14px;
+    }
 }
