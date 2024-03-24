@@ -71,6 +71,65 @@ ul.hidden > a > button {
  
 
 }
+.about-title h2 {
+    font-weight: 600;
+  font-size: 36px;
+  line-height: 122%;
+  letter-spacing: -0.02em;
+}
+
+.text-card{
+    background-image: url("/../intro-bg.jpg");
+    background-size: cover;
+  background-position: center center;
+  border-radius: 16px;
+  padding: 64px 56px;
+  font-size: 20px;
+
+
+
+}
+
+.titlecard h2 {
+    font-weight: 600;
+  font-size: 36px;
+  line-height: 122%;
+  letter-spacing: -0.02em;
+}
+.text-card .text-card-inner h2 {
+
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 122%;
+    letter-spacing: -0.02em; 
+}
+
+.text-card .text-card-inner p {
+    font-size: 20px;
+    line-height: 1.5em;
+  }
+.text-card .text-card-inner {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #D3D3D3;
+    min-height: 100%;
+  }
+.media.rounded-corners {
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .icon-list li {
+
+        list-style: disclosure-closed;
+      
+    padding: 8px;
+  }
+  .about-sectioncontain{
+    padding: 64px 56px;
+
+  }
 
 @media only screen and (min-width: 769px) {
     .menu-button {
