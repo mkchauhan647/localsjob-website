@@ -6,6 +6,7 @@ import {
     Input,
     Select,
 } from 'antd';
+import axios from 'axios';
 
 const { Option } = Select;
 
@@ -46,10 +47,13 @@ const tailFormItemLayout = {
     },
 };
 
+
+
 const RegistrationForm: React.FC = () => {
     const [form] = Form.useForm();
 
-    const onFinish = (values: any) => {
+    const onFinish = async(values: any) => {
+     
         console.log('Received values of form: ', values);
     };
 
