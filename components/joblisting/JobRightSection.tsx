@@ -12,59 +12,23 @@ interface categoryData {
   name: string;
   active_jobs_count: number;
 }
-const data = [
-  {
-    category: "Education",
-    jobs: "12 Jobs",
-  },
-  {
-    category: "NGO/INGO",
-    jobs: "30 Jobs",
-  },
-  {
-    category: "Accounting/Finance",
-    jobs: "70 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "120 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "65 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "32 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "42 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "92 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "102 Jobs",
-  },
-  {
-    category: "Front Desk",
-    jobs: "400 Jobs",
-  },
-];
 
 const renderByCategory = () => {
   const [categoryData, setCategoryData] = useState<categoryData[]>([]);
+
   const jobByCategory = async () => {
-    const { data } = await axios.get("/home");
-    setCategoryData(data.data.featured_categories);
+    try {
+      const { data } = await axios.get("/home");
+      setCategoryData(data.data.featured_categories);
+    } catch (error) {
+      console.log("Error:-", error);
+    }
   };
 
   useEffect(() => {
     jobByCategory();
-  }, []);
+  }, [categoryData]);
+
   return categoryData?.map((item) => (
     <div
       className="flex justify-between items-center mb-2 p-2 w-full rounded-md  bg-[whitesmoke]"

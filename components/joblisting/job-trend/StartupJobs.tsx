@@ -1,95 +1,33 @@
 import JobCard from "./JobCard";
 import Title from "../Title";
-import { useEffect } from "react";
-import axios from "axios";
-export interface dataProps {
-  company: string;
-  title: string;
-  img: string;
-}
-
-const data: dataProps[] = [
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-  {
-    company: "Siddhartha Bussiness Group..",
-    title: "Receptionist",
-    img: "/company1.jpg",
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "../../../config/AxiosConfig";
+import { dataProps } from "@/config/dataProps";
 
 const StartupJobs = () => {
+  const [popularJobs, setPopularJobs] = useState<dataProps[]>([]);
   const getHomeData = async () => {
-    const url = "https://localsjob.heartlandcomputer.net/api/v1/home";
-    const { data } = await axios.get(url);
-    console.log(data);
+    const { data } = await axios.get("/home");
+    setPopularJobs(data.data.recent_jobs);
   };
 
   useEffect(() => {
-    // getHomeData();
+    getHomeData();
   }, []);
   return (
     <div>
       <Title title="Startup Jobs" />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-3 gap-x-3  bg-[whitesmoke]  px-5 py-5">
-        {data.map((job, index) => (
-          <section key={index} className="shadow bg-white">
+        {popularJobs?.map((job) => (
+          <section key={job.id} className="shadow bg-white">
             <JobCard job={job} />
           </section>
         ))}
+        {/* {popularJobs?.map((job) => {
+          <section key={job.id} className="shadow bg-white">
+            <JobCard job={job} />
+          </section>;
+        })} */}
       </div>
     </div>
   );

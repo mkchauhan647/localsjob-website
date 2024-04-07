@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import TopJobs from "./job-trend/TopJobs";
 import Image from "next/image";
-import axios from "axios";
+import axios from "@/config/AxiosConfig";
 
 export interface dataProps {
   company: string;
@@ -103,10 +103,8 @@ const data: dataProps[] = [
 const JobLeftSection = () => {
   const [data, setData] = useState<dataProps>();
   const fetchJobDetails = async () => {
-    const url = "https://localsjob.heartlandcomputer.net/api/v1/jobs";
     try {
-      const { data } = await axios.get(url);
-      // setData(data.data)
+      const { data } = await axios.get("/jobs");
       console.log(data.data);
     } catch (error) {
       console.log(error);

@@ -1,6 +1,5 @@
+import { TitleProps } from "@/config/dataProps";
 import React from "react";
-import { TitleProps } from "./job-trend/HotJobs";
-
 
 const Title: React.FC<TitleProps> = ({ title }) => {
   return (
