@@ -14,7 +14,14 @@ interface JobCardProps {
 }
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
   return (
-    <Link href={`/category-job-list/${job.slugable.key}`}>
+    <Link
+      href={{
+        pathname: "/category-job-details",
+        query: {
+          slug: job.slugable.key,
+        },
+      }}
+    >
       <div className=" card  py-4 cursor-pointer  gap-6 hover:bg-[rgb(0,0,0,.1)] duration-500">
         <div className="lg:flex detailstitle  md:grid gap-x-2 items-center  lg:pl-14 md:p-6 sm:p-6">
           {/* <Image alt="Job Image" src={job.img} width={80} height={80} /> */}

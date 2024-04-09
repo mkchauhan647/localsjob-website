@@ -6,11 +6,15 @@ import Image from "next/image";
 import rightbanner from "@/public/rightbanner2.gif";
 import rightbanner3 from "@/public/rightbanner3.gif";
 import axios from "../../config/AxiosConfig";
+import Link from "next/link";
 
 interface categoryData {
   id: number;
   name: string;
   active_jobs_count: number;
+  slugable: {
+    key: string;
+  };
 }
 
 const renderByCategory = () => {
@@ -30,17 +34,25 @@ const renderByCategory = () => {
   }, [categoryData]);
 
   return categoryData?.map((item) => (
-    <div
-      className="flex justify-between items-center mb-2 p-2 w-full rounded-md  bg-[whitesmoke]"
+    <Link
+      className="w-full"
+      href={{
+        pathname: "category-all-job-details",
+        query: {
+          slug: item.slugable.key,
+        },
+      }}
       key={item.id}
     >
-      <div>
-        <span className="text-sm text-black">{item.name}</span>
+      <div className="flex justify-between items-center mb-2 p-2 w-full rounded-md  bg-[whitesmoke]">
+        <div>
+          <span className="text-sm text-black">{item.name}</span>
+        </div>
+        <div className="text-[#f08c38] text-[13px] font-bold">
+          <span>{item.active_jobs_count}</span>
+        </div>
       </div>
-      <div className="text-[#f08c38] text-[13px] font-bold">
-        <span>{item.active_jobs_count}</span>
-      </div>
-    </div>
+    </Link>
   ));
 };
 
