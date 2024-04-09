@@ -2,32 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Button } from "antd";
 import { useSearchParams } from "next/navigation";
 import axios from "@/config/AxiosConfig";
+import Loader from "@/components/loader/Loader";
+import { UserJobDetails } from "@/config/dataProps";
 
-export interface UserJobDetails {
-  name: string;
-  number_of_positions: number;
-  company: {
-    name: string;
-    description: string;
-  };
-  city: {
-    name: string;
-  };
-  salary_from: string;
-  salary_to: string;
-  expire_date: Date;
-}
 const contain = () => {
   const searchParams = useSearchParams();
   const [userDetail, setUserDetail] = useState<UserJobDetails>();
   const [isLoading, setIsLoading] = useState(false);
   const slug = searchParams.get("slug");
+
   const fetchCategorySingleDetails = async () => {
     setIsLoading(true);
     try {
       const { data } = await axios.get(`/jobs/${slug}`);
       setUserDetail(data?.data);
-      console.log(data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -37,7 +25,9 @@ const contain = () => {
   useEffect(() => {
     fetchCategorySingleDetails();
   }, []);
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div>
       <div className="custom-card border p-2">
         <p className="font-[800] ">About Company</p>

@@ -39,7 +39,6 @@ const contain = () => {
       const { data } = await axios.get(`/job-categories/${slug}`);
       setCategoryDetails(data?.data);
       setIsLoading(false);
-      console.log(data.data);
     } catch (error) {
       console.log(error);
       setIsLoading(false);

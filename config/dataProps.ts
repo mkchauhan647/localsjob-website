@@ -88,3 +88,18 @@ export interface CategoryDetails {
     }[];
   };
 }
+
+export interface UserJobDetails {
+  name: string;
+  number_of_positions: number;
+  company: {
+    name: string;
+    description: string;
+  };
+  city: {
+    name: string;
+  };
+  salary_from: string;
+  salary_to: string;
+  expire_date: Date;
+}
