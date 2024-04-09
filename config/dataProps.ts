@@ -40,3 +40,51 @@ export interface JobDataProps {
   };
   views: number;
 }
+
+export interface JobCategories {
+  id: number;
+  name: string;
+  active_jobs_count: number;
+  slugable: {
+    key: string;
+  };
+}
+
+export interface CategoryDetails {
+  category: {
+    id: number;
+    name: string;
+    description: string;
+    status: {
+      label: string;
+      value: string;
+    };
+  };
+
+  jobs: {
+    data: {
+      id: number;
+      name: string;
+      company: {
+        name: string;
+        description: string;
+      };
+      job_experience: {
+        name: string;
+      };
+      job_experience_id: number;
+      job_types: {
+        name: string;
+      }[];
+      salary_from: number;
+      salary_to: number;
+      slugable: {
+        key: string;
+      };
+      tags: {
+        name: string;
+      }[];
+      views: number;
+    }[];
+  };
+}

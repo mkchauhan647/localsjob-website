@@ -4,16 +4,19 @@ import banner from "@/public/banner.jpg";
 import { FiSearch } from "react-icons/fi";
 const HomeBanner = () => {
   return (
-
     <div className="relative w-full ">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
 
-
-  
-      <Image src={banner} alt="person and urban landscape" className="z-0 h-[150px] sm:h-full xl:h-[300px] " />
+      <Image
+        src={banner}
+        alt="person and urban landscape"
+        className="z-0 h-[150px] sm:h-full xl:h-[300px] "
+      />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgb(0,0,0,.2)] sm:bg-transparent p-3 rounded-md">
         <div className="flex flex-col justify-center items-center ">
-          <h1 className="text-xl md:text-3xl xl:text-5xl font-bold text-white">Find Your Dream Job Now</h1>
+          <h1 className="text-xl md:text-3xl xl:text-5xl font-bold text-white">
+            Find Your Dream Job Now
+          </h1>
           <h2 className=" text-base md:text-xl  font-semibold text-white">
             1 lakhs+ jobs for you to explore
           </h2>
