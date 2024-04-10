@@ -5,7 +5,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import toast from "react-hot-toast";
 import axios from "@/config/AxiosConfig";
 import { useRouter } from "next/navigation";
-
+import Cookies from "js-cookie";
 const LoginForm: React.FC = () => {
   const router = useRouter();
   const onFinish = async (values: any) => {
@@ -13,7 +13,7 @@ const LoginForm: React.FC = () => {
     try {
       const { data } = await axios.post("/login", values);
       if (data?.data?.token) {
-        localStorage.setItem("token", data?.data?.token);
+        Cookies.set("token", data.data.token, { expires: 7 }); // Set expiry for 7 days
         router.push("/job-seeker/candidate-dashboard");
         toast.success("You have been logged in", {
           duration: 3000,

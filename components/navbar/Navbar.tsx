@@ -12,13 +12,12 @@ import NavMenuUser from "@/app/(auth)/job-seeker/candidate-dashboard/components/
 import NavMenuEmployer from "@/app/(auth)/employer/components/navMenu";
 import axios from "@/config/AxiosConfig";
 import toast from "react-hot-toast";
-
+import Cookies from "js-cookie";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
   const handleLogout = async () => {
-    const token: string | null = localStorage.getItem("token");
+    const token = Cookies.get("token") || null;
     const headers = {
       Authorization: `Bearer ${token}`,
       "Api-Version": "v1",
@@ -26,7 +25,7 @@ const Navbar = () => {
     };
     try {
       const { data } = await axios.get("/logout", { headers });
-      localStorage.removeItem("token");
+      Cookies.remove("token");
       setIsLoggedIn(false);
       toast.success(data?.message, {
         duration: 5000,
