@@ -12,7 +12,7 @@ const HotJobs: React.FC = () => {
   };
   useEffect(() => {
     hotJobs();
-  }, [hotJobsData]);
+  }, []);
   return (
     <div>
       <Title title="Hot Jobs" />
