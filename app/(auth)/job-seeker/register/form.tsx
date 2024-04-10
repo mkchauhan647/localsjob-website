@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Checkbox, Form, Input, Select } from "antd";
 import axios from "@/config/AxiosConfig";
-
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 const { Option } = Select;
 
 const formItemLayout = {
@@ -41,11 +42,25 @@ const tailFormItemLayout = {
 
 const RegistrationForm: React.FC = () => {
   const [form] = Form.useForm();
+  const router = useRouter();
 
   const onFinish = async (values: any) => {
     console.log("Received values of form: ", values);
-    const { data } = await axios.post("/register", values);
-    console.log(data);
+
+    try {
+      const { data } = await axios.post("/register", values);
+      toast.success(data?.message, {
+        duration: 3000,
+        position: "top-left",
+      });
+      router.push("/login");
+    } catch (error) {
+      toast("User registration failed", {
+        duration: 3000,
+        position: "top-right",
+        className: "text-red-900",
+      });
+    }
   };
 
   return (
@@ -59,13 +74,27 @@ const RegistrationForm: React.FC = () => {
       scrollToFirstError
     >
       <Form.Item
-        name="name"
-        label="Full Name"
+        name="first_name"
+        label="First Name"
         labelAlign="left"
         rules={[
           {
             required: true,
-            message: "Please provide your name!",
+            message: "Please provide your first name!",
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
+
+      <Form.Item
+        name="last_name"
+        label="Last Name"
+        labelAlign="left"
+        rules={[
+          {
+            required: true,
+            message: "Please provide your last name!",
           },
         ]}
       >
@@ -105,7 +134,7 @@ const RegistrationForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        name="confirmPassword"
+        name="password_confirmation"
         label="Confirm Password"
         labelAlign="left"
         dependencies={["password"]}
@@ -139,7 +168,7 @@ const RegistrationForm: React.FC = () => {
         <Input style={{ width: "100%" }} />
       </Form.Item>
 
-      <Form.Item
+      {/* <Form.Item
         name="gender"
         label="Gender"
         labelAlign="left"
@@ -150,7 +179,7 @@ const RegistrationForm: React.FC = () => {
           <Option value="female">Female</Option>
           <Option value="other">Other</Option>
         </Select>
-      </Form.Item>
+      </Form.Item> */}
 
       <Form.Item
         name="agreement"
