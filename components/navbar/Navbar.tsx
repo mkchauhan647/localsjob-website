@@ -10,19 +10,46 @@ import { useState } from "react";
 import RegisterDropDown from "../register-modal/RegisterDropDown";
 import NavMenuUser from "@/app/(auth)/job-seeker/candidate-dashboard/components/navMenu";
 import NavMenuEmployer from "@/app/(auth)/employer/components/navMenu";
-
-
+import axios from "@/config/AxiosConfig";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
+  const handleLogout = async () => {
+    const token: string | null = localStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Api-Version": "v1",
+      Accept: "application/json",
+    };
+    try {
+      const { data } = await axios.get("/logout", { headers });
+      localStorage.removeItem("token");
+      setIsLoggedIn(false);
+      toast.success(data?.message, {
+        duration: 5000,
+        position: "top-left",
+      });
+    } catch (error) {
+      toast.error("something went wrong", {
+        position: "top-left",
+        duration: 5000,
+      });
+    }
+  };
   return (
     <div className=" sticky top-0 border-b-2  z-50 bg-[#0d64cc]">
       {/* a................bigger screens.................. */}
       <div className=" flex items-center justify-between  container mx-auto navbar ">
         {/*........ logo......... */}
         <Link href="/">
-          <Image src={logo} alt="job logo" className="max-w-[150px] h-[55px] py-2" />
+          <Image
+            src={logo}
+            alt="job logo"
+            className="max-w-[150px] h-[55px] py-2"
+          />
         </Link>
         {/* ...........Hamburger Menu.......... */}
         <div
@@ -33,23 +60,33 @@ const Navbar = () => {
         </div>
         {/* .........nav elements........*/}
         <ul className=" hidden md:flex items-center gap-8 text-white">
-          <NavBrowse text="Browse Jobs" link="/"  />
+          <NavBrowse text="Browse Jobs" link="/" />
           <NavElements link="/skill-zone" text="Skill Zone" />
-        <NavElements link="/service" text="Services" />
-        <NavElements link="/blogs" text="Blogs" />
+          <NavElements link="/service" text="Services" />
+          <NavElements link="/blogs" text="Blogs" />
         </ul>
 
         {/* ......Registration and Login... */}
-        {true ?
+        {true ? (
           <div className="hidden md:flex gap-x-3 ">
-            
-            <Link href={"/login"}>
-              <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] ">
-                Login
-              </button>
-            </Link>
-
-            <RegisterDropDown />
+            {isLoggedIn ? (
+              <Link
+                href="/"
+                className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 text-[white]"
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            ) : (
+              <div className="flex items-center justify-between gap-2">
+                <Link href={"/login"}>
+                  <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] ">
+                    Login
+                  </button>
+                </Link>
+                <RegisterDropDown />
+              </div>
+            )}
 
             <div className="border-l border-[rgba(0,0,0,.2)]"></div>
 
@@ -60,25 +97,23 @@ const Navbar = () => {
               </button>
             </Link> */}
           </div>
-
-          : false ?
-            <>
-              <div className=" hidden md:flex gap-x-3">
-                <div>
-                  <NavMenuUser />
-                </div>
-              </div>
-            </>
-            :
-            <>
-              <div className=" hidden md:flex gap-x-3">
-                <div>
-                  <NavMenuEmployer />
+        ) : false ? (
+          <>
+            <div className=" hidden md:flex gap-x-3">
+              <div>
+                <NavMenuUser />
               </div>
             </div>
           </>
-        }
-
+        ) : (
+          <>
+            <div className=" hidden md:flex gap-x-3">
+              <div>
+                <NavMenuEmployer />
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* b............smaller screens............... */}
@@ -97,21 +132,20 @@ const Navbar = () => {
         <NavElements link="/blogs" text="Blogs" />
 
         {/* Registration and login  */}
-        {true &&
+        {true && (
           <>
-          <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[#3596dd] ">
-            Login
-          </button>
-          <button className="bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs">
-            Register
-          </button>
-          {/* <button className=" text-[rgba(0,0,0,.5)] rounded-md min-w-[100px] py-2 text-xs font-semibold">
+            <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[#3596dd] ">
+              Login
+            </button>
+            <button className="bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs">
+              Register
+            </button>
+
+            {/* <button className=" text-[rgba(0,0,0,.5)] rounded-md min-w-[100px] py-2 text-xs font-semibold">
             Employer Zone
           </button> */}
           </>
-
-        }
-
+        )}
       </div>
     </div>
   );
