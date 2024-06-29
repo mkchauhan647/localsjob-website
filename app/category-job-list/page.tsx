@@ -1,17 +1,13 @@
-import React from 'react';
+import React from "react";
 
-
-import HomeBanner from './homebanner';
-import JobCategory from './job-category'
-
+import HomeBanner from "./homebanner";
+import JobCategory from "./job-category";
 
 const Page = () => {
   return (
     <>
       <HomeBanner />
-<JobCategory/>
-     
-  
+      <JobCategory />
     </>
   );
 };
