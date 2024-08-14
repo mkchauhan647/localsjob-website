@@ -4,6 +4,9 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Toaster } from "react-hot-toast";
+import { Header } from "antd/es/layout/layout";
+import Head from "next/head";
+import NewFooter from "@/components/NewFooter";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,9 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      
+      <body className=" font-roboto">
         {children}
-        <Footer />
+        {/* <Footer /> */}
+        <NewFooter/>
         <Toaster />
       </body>
     </html>

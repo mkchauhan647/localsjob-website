@@ -32,8 +32,10 @@ const RegisterDropDown: React.FC = () => (
       placement="bottomLeft" arrow
       overlayStyle={{ width: '260px' }}
     >
-      <Button className='!bg-[#f08c38] !text-white !border-none flex items-center' >
-        Register <UserOutlined />
+      {/* <Button className='!bg-[#f08c38] !text-white !border-none flex items-center' > */}
+      <Button className='!bg-white  !border-none h-[48px] rounded-full pb-2 px-3  w-[143px] text-[16px] font-bold ' >
+        {/* Get Started  <UserOutlined /> */}
+        Get Started
       </Button>
     </Dropdown>
   </>

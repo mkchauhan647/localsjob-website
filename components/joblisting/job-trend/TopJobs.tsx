@@ -12,6 +12,7 @@ const TopJobs = () => {
       setTopJobs(data.data.popular_jobs);
     } catch (error) {
       throw error;
+      // return;
     }
   };
   useEffect(() => {
