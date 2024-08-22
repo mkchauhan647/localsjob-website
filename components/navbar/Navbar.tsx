@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import logo from "@/public/localsjob-logo.png";
+import logo from "@/public/localjobimg.png";
 import Link from "next/link";
 import NavElements from "./NavElements";
 import NavBrowse from "./NavBrowse";
@@ -39,32 +39,36 @@ const Navbar = () => {
     }
   };
   return (
-    <div className=" sticky top-0 border-b-2  z-50 bg-[#0d64cc]">
+    <div className=" absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]">
       {/* a................bigger screens.................. */}
       <div className=" flex items-center justify-between  container mx-auto navbar ">
-        {/*........ logo......... */}
-        <Link href="/">
+        <div className="flex gap-6 lg:gap-10  text-3xl items-center justify-center">
+          {/*........ logo......... */}
+        <Link href="/" className="">
           <Image
             src={logo}
             alt="job logo"
-            className="max-w-[150px] h-[55px] py-2"
+            className="max-w-[150px] h-[85px] md:h-[55px] py-4 md:py-2"
           />
         </Link>
+         {/* .........nav elements........*/}
+         <ul className=" hidden md:flex items-center gap-10 lg:gap-12 text-white  ">
+          {/* <NavBrowse text="Browse Jobs" link="/" /> */}
+          <NavElements text="Jobs" link="/jobs"/>
+          <NavElements link="/skill-zone" text="Skill Zone" />
+          <NavElements link="/service" text="Services" />
+          {/* <NavElements link="/blogs" text="Blogs" /> */}
+        </ul>
+        </div>
+
         {/* ...........Hamburger Menu.......... */}
         <div
           className="text-2xl text-[white] block md:hidden"
           onClick={() => setShowMenu(!showMenu)}
         >
-          <RxHamburgerMenu />
+          <RxHamburgerMenu className="text-4xl"/>
         </div>
-        {/* .........nav elements........*/}
-        <ul className=" hidden md:flex items-center gap-8 text-white">
-          <NavBrowse text="Browse Jobs" link="/" />
-          <NavElements link="/skill-zone" text="Skill Zone" />
-          <NavElements link="/service" text="Services" />
-          <NavElements link="/blogs" text="Blogs" />
-        </ul>
-
+       
         {/* ......Registration and Login... */}
         {true ? (
           <div className="hidden md:flex gap-x-3 ">
@@ -77,15 +81,17 @@ const Navbar = () => {
                 Logout
               </Link>
             ) : (
-              <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
-                  <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] ">
-                    Login
+                  {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
+                  <button className="bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] text-[white] h-[48px] rounded-full ">
+                    Log In
                   </button>
                 </Link>
-                <RegisterDropDown />
+                <RegisterDropDown/>
               </div>
             )}
+            
 
             <div className="border-l border-[rgba(0,0,0,.2)]"></div>
 
@@ -125,10 +131,11 @@ const Navbar = () => {
           transformOrigin: "top",
         }}
       >
-        <NavBrowse text="Browse Jobs" link="/" />
+        {/* <NavBrowse text="Browse Jobs" link="/" /> */}
+        <NavElements link="/jobs" text="Jobs" />
         <NavElements link="/skill-zone" text="Skill Zone" />
         <NavElements link="/service" text="Services" />
-        <NavElements link="/blogs" text="Blogs" />
+        {/* <NavElements link="/blogs" text="Blogs" /> */}
 
         {/* Registration and login  */}
         {true && (
@@ -137,7 +144,7 @@ const Navbar = () => {
               Login
             </button>
             <button className="bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs">
-              Register
+              Get Started
             </button>
 
             {/* <button className=" text-[rgba(0,0,0,.5)] rounded-md min-w-[100px] py-2 text-xs font-semibold">

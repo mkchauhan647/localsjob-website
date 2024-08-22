@@ -4,9 +4,10 @@ import MobileAppBanner from "@/components/MobileAppBanner";
 export default function Home() {
   return (
     <>
+      
       <HomeBanner />
       {/* <MobileAppBanner /> */}
-      <JobMain />
+      {/* <JobMain /> */}
     </>
   );
 }
