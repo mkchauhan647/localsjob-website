@@ -23,6 +23,7 @@ const JobsTable: React.FC = () => {
     const [jobs, setJobs] = useState<Job[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    
 
     useEffect(() => {
         fetchJobs();

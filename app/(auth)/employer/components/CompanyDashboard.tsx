@@ -21,6 +21,39 @@ interface CountsType {
 
 }
 
+export interface Activity {
+    id: number;
+    action: string;
+    user_agent: string;
+    reference_url: string;
+    reference_name: string;
+    ip_address: string;
+    account_id: number;
+    created_at: string;
+    updated_at: string;
+  }
+  
+  export interface ActivitiesResponse {
+    data: {
+      current_page: number;
+      data: Activity[];
+      first_page_url: string;
+      from: number;
+      last_page: number;
+      last_page_url: string;
+      links: Array<{ url: string | null; label: string; active: boolean }>;
+      next_page_url: string | null;
+      path: string;
+      per_page: number;
+      prev_page_url: string | null;
+      to: number;
+      total: number;
+    };
+    message: string;
+    status: number;
+  }
+  
+
 
 const CompanyDashboard: React.FC = () => {
     // Placeholder data for statistics
@@ -35,42 +68,50 @@ const CompanyDashboard: React.FC = () => {
     const applicationsProgress = 60; // Percentage
     const revenueProgress = 75; // Percentage
 
-    const [counts, setCounts] = useState<any>({
-        jobCount: "0",
-        companiesCount: "0",
-        applicantCount: "0",
-    });
+    const [counts, setCounts] = useState<any>([]);
     const [applicants, setApplicants] = useState<any>([]);
+    const [recentActivities, setRecentActivities] = useState<any>([]);
 
 
     useEffect(() => {
 
+        const token = Cookies.get("token") || null;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            "Api-Version": "v1",
+            Accept: "application/json",
+        };
 
         async function getCounts() {
 
-            const countsEndpoint = ['jobs/count','companies/count','applicants/count']
+            const countsEndpoint = ['jobs/count', 'companies/count', 'applicants/count']
 
             try {
-                const token = Cookies.get("token") || null;
-                const headers = {
-                  Authorization: `Bearer ${token}`,
-                  "Api-Version": "v1",
-                  Accept: "application/json",
-                };
+                
 
                 
 
-                const responses = countsEndpoint.map(async(value) => {
+                const responses = countsEndpoint.map(async (value) => {
                     const response = await axios.get(`/${value}`, {
-                       headers
+                        headers
                     });
 
-                    return response.data;
+                    // console.log("ressponse", response.data);
+
+                    const data = response.data.data;
+
+                    return data;
                 })
 
                 
+                console.log("responses", responses);
 
-                setCounts(responses);
+                const results = await Promise.all(responses);
+                console.log("results", results);
+
+                setCounts(results);
+
+
 
                 const response = await axios.get('/applicants', {
                     headers
@@ -82,9 +123,30 @@ const CompanyDashboard: React.FC = () => {
             } catch (error) {
                 console.log("Error occured", error);
             }
+
+
             
         }
 
+        async function getRecentActivities() {
+
+            try {
+                const response = await axios.get('/recent-activities', {
+                    headers
+                })
+
+                console.log("responseact", response.data);
+
+                setRecentActivities(response.data.data.data);
+
+            } catch (error) {
+                console.log("Error occured", error);
+            
+            }
+            
+        }
+
+        getRecentActivities();
         getCounts();
         
 
@@ -93,28 +155,25 @@ const CompanyDashboard: React.FC = () => {
     return (
         <div>
             <h2>Company Dashboard</h2>
+
             <Row gutter={16} className='flex flex-col gap-2 lg:gap-0 xl:gap-0 md:flex-row lg:flex-row xl:flex-row'>
-                <Col className='w-full lg:w-1/4 xl:w-1/4'>
-                    <Card className='bg-blue-200'>
-                        <Statistic title="Jobs" value={counts.jobCount} />
-                    </Card>
-                </Col>
-                <Col className='w-full lg:w-1/4 xl:w-1/4'>
-                    <Card className='bg-green-200'>
-                        <Statistic title="Companies" value={counts.companiesCount} />
-                    </Card>
-                </Col>
-                <Col className='w-full lg:w-1/4 xl:w-1/4'>
-                    <Card className='bg-red-200'>
-                        <Statistic title="Applicants" value={counts.applicantCount} />
-                    </Card>
-                </Col>
-                {/* <Col className='w-full lg:w-1/4 xl:w-1/4'>
-                    <Card className='bg-yellow-200'>
-                        <Statistic title="Revenue" value={revenue} prefix="$" />
-                    </Card>
-                </Col> */}
-            </Row>
+  {counts && counts.length > 0 && counts.map((count:any, index:any) => {
+    // Define colors and titles for the statistics
+    const colors = ['bg-blue-200', 'bg-green-200', 'bg-red-200', 'bg-yellow-200'];
+    const titles = ['Jobs', 'Companies', 'Applicants', 'Revenue'];
+    const values = [count?.totalJobs ?? count?.data, count.totalCompanies, count.totalApplicants]; // `revenue` should be defined somewhere in your component
+
+    return (
+      <Col key={index} className='w-full lg:w-1/4 xl:w-1/4'>
+        <Card className={colors[index]}>
+          <Statistic title={titles[index]} value={values[index]} prefix={index === 3 ? '$' : undefined} />
+        </Card>
+      </Col>
+    );
+  })}
+</Row>
+
+          
             <Row gutter={16} style={{ marginTop: '16px' }}>
                 <Col span={12}>
                     <Card title="New Applicants">
@@ -137,7 +196,9 @@ const CompanyDashboard: React.FC = () => {
                 <Col span={12}>
                     <Card title="Recent Activities">
                         {/* <Progress percent={revenueProgress} /> */}
-                        <p className=''>Recent Activities is created at {new Date().toLocaleDateString()} { new Date().toLocaleTimeString()}</p>
+                        <RecentActivities />
+
+                        {/* <p className=''>Recent Activities is created at {new Date().toLocaleDateString()} { new Date().toLocaleTimeString()}</p> */}
                     </Card>
                 </Col>
             </Row>
@@ -243,3 +304,74 @@ const CompanyDashboard: React.FC = () => {
 };
 
 export default CompanyDashboard;
+
+
+export const RecentActivities = () => {
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+      const fetchActivities = async () => {
+        const token = Cookies.get("token") || null;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            "Api-Version": "v1",
+            Accept: "application/json",
+        };
+      try {
+          const response = await axios.get<ActivitiesResponse>('https://localsjob.com/api/v1/recent-activities', {
+            headers
+        });
+        setActivities(response.data.data.data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchActivities();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div className="p-4 bg-white shadow rounded">
+      <h2 className="text-xl font-semibold mb-4">Recent Activities</h2>
+      {activities.length === 0 ? (
+        <p>No recent activities found.</p>
+      ) : (
+        <ul className="space-y-4">
+          {activities.map((activity) => (
+            <li key={activity.id} className="border-b pb-2">
+              <p className="text-sm text-gray-500">
+                <strong>Action:</strong> {activity.action}
+              </p>
+              <p className="text-sm text-gray-500">
+                <strong>User Agent:</strong> {activity.user_agent}
+              </p>
+              <p className="text-sm text-gray-500">
+                <strong>Reference Name:</strong> {activity.reference_name}
+              </p>
+              <p className="text-sm text-gray-500">
+                <strong>IP Address:</strong> {activity.ip_address}
+              </p>
+              <p className="text-sm text-gray-500">
+                <strong>Created At:</strong> {new Date(activity.created_at).toLocaleString()}
+              </p>
+              <a
+                href={`https://localsjob.com${activity.reference_url}`}
+                className="text-blue-600 hover:underline"
+              >
+                View Details
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+

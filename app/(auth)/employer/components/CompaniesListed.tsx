@@ -4,6 +4,11 @@ import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 import Cookies from 'js-cookie';
 import axios from '@/config/AxiosConfig';
+import { FaRegEdit } from 'react-icons/fa';
+import { RiDeleteBinLine } from 'react-icons/ri';
+import { RxFilePlus } from 'react-icons/rx';
+import Link from 'next/link';
+import CompaniesCreate from './create/CompaniesCreate';
 
 interface Company {
     id: number;
@@ -20,6 +25,7 @@ const CompaniesTable: React.FC = () => {
     const [companies, setCompanies] = useState<Company[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
+    const [createCompany, setCreateCompany] = useState<boolean>(false);
 
     useEffect(() => {
         fetchCompanies();
@@ -55,6 +61,37 @@ const CompaniesTable: React.FC = () => {
         setSearchTerm('');
         fetchCompanies();
     };
+
+
+    function handleEdit(): void {
+        // throw new Error('Function not implemented.');
+    }
+    
+    function handleDelete(): void {
+        // throw new Error('Function not implemented.');
+    }
+    
+  async function handleCreate() {
+      // throw new Error('Function not implemented.');
+      
+        const token = Cookies.get("token") || null;
+            const headers = {
+              Authorization: `Bearer ${token}`,
+              "Api-Version": "v1",
+              Accept: "application/json",
+            };
+        try {
+            const response = await axios.post('/companies/save', {}, {
+                headers
+            });
+
+            console.log(response.data);
+        } catch (error) {
+            console.error('There was an error creating the company!', error);
+        }
+    }
+
+
 
     // Columns configuration for antd Table
     const columns: ColumnsType<Company> = [
@@ -96,11 +133,13 @@ const CompaniesTable: React.FC = () => {
                         <Button
                             type="primary"
                             onClick={() => confirm()}
-                            icon={<SearchOutlined />}
+                            icon={<FaRegEdit />}
                             size="small"
                             style={{ width: 90 }}
                         >
-                            Search
+
+                            search
+                            
                         </Button>
                         <Button
                             onClick={() => clearFilters && clearFilters()}
@@ -109,6 +148,9 @@ const CompaniesTable: React.FC = () => {
                         >
                             Reset
                         </Button>
+
+                       
+
                     </Space>
                 </div>
             ),
@@ -139,10 +181,29 @@ const CompaniesTable: React.FC = () => {
             key: 'operations',
             align: 'center',
             render: () => (
-                <Space size="middle">
-                    <Button type="primary" icon={<SearchOutlined />} />
-                    <Button type="default" icon={<ReloadOutlined />} />
-                </Space>
+                <>
+                 <Button
+                            type="primary"
+                            onClick={() => handleEdit()}
+                            icon={<FaRegEdit />}
+                            size="middle"
+                            style={{ width: 50 , padding:"3px", margin:"2px" }}
+                        >
+                            
+                        </Button>
+
+                        <Button
+                            onClick={() => handleDelete()}
+                            size="middle"
+                            style={{ width: 50, padding:"3px", margin:"2px", }}
+                        icon={<RiDeleteBinLine />}
+                        className=' text-white'
+                        
+                        >
+
+                        </Button>
+                </>
+
             ),
         },
     ];
@@ -153,34 +214,63 @@ const CompaniesTable: React.FC = () => {
     );
 
     return (
-        <div>
-            <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between' }}>
-                <Input
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={handleSearch}
-                    style={{ width: 200 }}
-                    prefix={<SearchOutlined />}
-                />
-                <Button
-                    onClick={handleReload}
-                    icon={<ReloadOutlined />}
-                    type="default"
-                    className='bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs'
+        <>
+        {
+                createCompany && createCompany ?
+                    <div className='bg-white p-5 '>
+                        <div className='flex justify-between '>
+                        <h1 className='mb-3'>Create Company</h1>
+                        <button onClick={() => setCreateCompany(false)} className='mb-3'>Back</button>
+                        </div>
+                        <CompaniesCreate/>
 
-                >
-                    Reload
-                </Button>
-            </div>
-            <Table
-                columns={columns}
-                dataSource={filteredData}
-                rowKey="id"
-                pagination={{ pageSize: 10 }}
-                bordered
-                loading={loading}
-            />
+                        
+            </div> :
+           <div>
+          <div style={{ marginBottom: 16, display: 'flex', justifyContent: 'space-between' }}>
+              <Input
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={handleSearch}
+                  style={{ width: 200 }}
+                  prefix={<SearchOutlined />}
+              />
+              <div className='flex gap-4'>
+             
+                  <Button
+                  onClick={() => setCreateCompany(true)}
+                  icon={<RxFilePlus />}
+                  // size='middle'
+                  type="default"
+                  className='bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs'
+
+              >
+                  Create New
+                      </Button>
+                  <Button
+                  onClick={handleReload}
+                  icon={<ReloadOutlined />}
+                  type="default"
+                  className='bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs'
+
+              >
+                  Reload
+              </Button>
+             </div>
+          </div>
+          <Table
+              columns={columns}
+              dataSource={filteredData}
+              rowKey="id"
+              pagination={{ pageSize: 10 }}
+              bordered
+              loading={loading}
+          />
         </div>
+         
+            }
+        </>
+            
     );
 };
 

@@ -26,6 +26,7 @@ import {
 import { FaFileInvoice, FaFileInvoiceDollar } from 'react-icons/fa';
 import { LiaFileInvoiceSolid } from 'react-icons/lia';
 import { HiOutlineUserGroup } from 'react-icons/hi';
+import {TbPackages} from 'react-icons/tb';
 const PostJobForm = dynamic(() => import('../components/Postjob'));
 const ManageJobListings = dynamic(() => import('../components/ManageJobListing'));
 const SearchCandidates = dynamic(() => import('../components/SearchCandidates'));
@@ -48,7 +49,7 @@ const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 
-const page: React.FC = () => {
+const Dashboard: React.FC = () => {
 
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('1');
     const [drawerVisible, setDrawerVisible] = useState<boolean>(false);
@@ -95,7 +96,7 @@ const page: React.FC = () => {
 
     return (
 
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout style={{ minHeight: '100vh', }}>
             {isSmallScreen && (
                 <Button type="primary" onClick={showDrawer} className="menu-button">
                     Menu
@@ -113,7 +114,7 @@ const page: React.FC = () => {
                         <Menu.Item key="15" icon={<ClusterOutlined />}>
                        Companies
                         </Menu.Item>
-                        <Menu.Item key="5" icon={<SettingOutlined  />}>
+                        <Menu.Item key="5" icon={ <TbPackages  />}>
                         Packages
                     </Menu.Item>
                     <Menu.Item key="3" icon={<HiOutlineUserGroup />}>
@@ -174,6 +175,9 @@ const page: React.FC = () => {
                             </Menu.Item>
                             <Menu.Item key="15" icon={<ClusterOutlined />}>
                        Companies
+                            </Menu.Item>
+                            <Menu.Item key="5" icon={ <TbPackages  />}>
+                        Packages
                     </Menu.Item>
                         <Menu.Item key="3" icon={<SearchOutlined />}>
                            Applicants
@@ -181,7 +185,7 @@ const page: React.FC = () => {
                         <Menu.Item key="4" icon={<FileSearchOutlined />}>
                             Invoices
                             </Menu.Item>
-                            <Menu.Item key="5" icon={<SettingFilled />}>
+                            <Menu.Item key="16" icon={<SettingOutlined />}>
                         Settings
                     </Menu.Item>
                         {/* <SubMenu key="sub1" icon={<BankOutlined />} title="Employer Branding">
@@ -213,8 +217,8 @@ const page: React.FC = () => {
                 </Drawer>
             }
 
-            <Layout>
-                <Content style={{ margin: '16px' }}>
+            <Layout style={{ padding: '16px', backgroundColor:"white"}}>
+                <Content >
                     {selectedMenuItem === '1' ?
                         <>
                             <CompanyDashboard />
@@ -289,4 +293,4 @@ const page: React.FC = () => {
     );
 };
 
-export default page;
+export default Dashboard;
