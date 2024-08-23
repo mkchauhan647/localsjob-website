@@ -179,7 +179,7 @@ const CompanyDashboard: React.FC = () => {
                     <Card title="New Applicants">
                         {/* <Progress percent={applicationsProgress} /> */}
                         {
-                            applicants.map(value => {
+                            applicants.map((value:any) => {
                                  
                                 return (
                                     <div className='flex justify-between items-center'>
