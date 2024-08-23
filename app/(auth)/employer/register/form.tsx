@@ -6,6 +6,9 @@ import {
     Input,
     Select,
 } from 'antd';
+// import axios from 'axios';
+import axios from '@/config/AxiosConfig';
+import toast, { Toaster } from 'react-hot-toast';
 
 const { Option } = Select;
 
@@ -49,11 +52,55 @@ const tailFormItemLayout = {
 const RegistrationForm: React.FC = () => {
     const [form] = Form.useForm();
 
-    const onFinish = (values: any) => {
-        console.log('Received values of form: ', values);
+    const onFinish = async (values: any) => {
+        // console.log('Received values of form: ', values);
+
+        // api endpoint is https://main.localsjob.com/api/v1/employers/register
+
+        const formData = new FormData();
+        // formData.append('organizationName', values.organizationName);
+        // formData.append('organizationIndustryType', values.organizationIndustryType);
+        formData.append('first_name', values.first_name);
+        formData.append('last_name', values.last_name);
+        formData.append('email', values.email);
+        formData.append('phone', values.phone);
+        formData.append('password', values.password);
+        formData.append('confirm_password', values.confirm_password);
+        // formData.append
+
+        try {
+            const response = await axios.post('/register', {
+                first_name: values.first_name,
+                last_name: values.last_name,
+                email: values.email,
+                phone: values.phone,
+                password: values.password,
+                password_confirmation: values.password_confirmation,
+            },{    headers: { 'Accept':'Application/json'}, });
+
+        if (response.status === 200) {
+            console.log('Employer account created successfully!');
+
+            // if (response.data?.data?.token) {
+
+            //     Cookies.set('token', response.data.data.token, { expires: 7 }); // Set expiry for 7 days
+            console.log("res", response.data);
+               
+
+
+            toast.success('Employer account created successfully!');
+        } 
+        }
+       catch (error) {
+        console.error('There was an error creating the employer account!', error);
+           toast.error('There was an error creating the employer account!');
+        }
+
+
     };
 
     return (
+        <>
         <Form
             {...formItemLayout}
             className='mt-10 ml-8 md:ml-0 lg:ml-8'
@@ -63,7 +110,7 @@ const RegistrationForm: React.FC = () => {
             style={{ maxWidth: 600 }}
             scrollToFirstError
         >
-            <Form.Item
+            {/* <Form.Item
                 name="organizationName"
                 label="Organization Name"
                 labelAlign='left'
@@ -90,10 +137,42 @@ const RegistrationForm: React.FC = () => {
                     <Option value="Hospital">Hospital / Clinic / Diagnostic Centre</Option>
                     <Option value="Information">Information / Computer / Technology</Option>
                 </Select>
+                </Form.Item>
+                 */}
+                <Form.Item
+                name="first_name"
+                label="First Name"
+                    labelAlign='left'
+                
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input first name !',
+                    },
+                ]}
+            >
+                <Input />
+                </Form.Item>
+                
+                <Form.Item
+                name="last_name"
+                label="Last Name"
+                labelAlign='left'
+                rules={[
+                    {
+                        required: true,
+                        message: 'Please input last name!',
+                    },
+                ]}
+            >
+                <Input />
             </Form.Item>
+
+
+
             <Form.Item
-                name="officialEmail"
-                label="Official Email"
+                name="email"
+                label="email"
                 labelAlign='left'
                 rules={[
                     {
@@ -134,7 +213,7 @@ const RegistrationForm: React.FC = () => {
             </Form.Item>
 
             <Form.Item
-                name="confirmPassword"
+                name="password_confirmation"
                 label="Confirm Password"
                 labelAlign='left'
                 dependencies={['password']}
@@ -194,6 +273,8 @@ const RegistrationForm: React.FC = () => {
                 </Button>
             </Form.Item>
         </Form>
+         <Toaster/>                
+        </>
     );
 };
 

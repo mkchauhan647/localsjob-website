@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, Statistic, Progress } from 'antd';
 import avatar from '../../../../public/avatar.png'
 import Link from 'next/link';
@@ -10,6 +10,16 @@ import { FaBirthdayCake } from "react-icons/fa";
 import { Button } from 'antd';
 import jobmarket from '../../../../public/jobmarket.jpg'
 import JobseekerGraph from './Charts';
+import Cookies from 'js-cookie';
+import axios from '@/config/AxiosConfig'
+
+
+interface CountsType {
+    jobCount: string,
+    companyCount: string,
+    applicantCount: string,
+
+}
 
 
 const CompanyDashboard: React.FC = () => {
@@ -19,9 +29,66 @@ const CompanyDashboard: React.FC = () => {
     const expiredJobs = 0;
     const revenue = 50000;
 
+
+
     // Placeholder data for progress bars
     const applicationsProgress = 60; // Percentage
     const revenueProgress = 75; // Percentage
+
+    const [counts, setCounts] = useState<any>({
+        jobCount: "0",
+        companiesCount: "0",
+        applicantCount: "0",
+    });
+    const [applicants, setApplicants] = useState<any>([]);
+
+
+    useEffect(() => {
+
+
+        async function getCounts() {
+
+            const countsEndpoint = ['jobs/count','companies/count','applicants/count']
+
+            try {
+                const token = Cookies.get("token") || null;
+                const headers = {
+                  Authorization: `Bearer ${token}`,
+                  "Api-Version": "v1",
+                  Accept: "application/json",
+                };
+
+                
+
+                const responses = countsEndpoint.map(async(value) => {
+                    const response = await axios.get(`/${value}`, {
+                       headers
+                    });
+
+                    return response.data;
+                })
+
+                
+
+                setCounts(responses);
+
+                const response = await axios.get('/applicants', {
+                    headers
+                })
+
+                setApplicants(response.data.data.data);
+
+                
+            } catch (error) {
+                console.log("Error occured", error);
+            }
+            
+        }
+
+        getCounts();
+        
+
+    },[])
 
     return (
         <div>
@@ -29,40 +96,54 @@ const CompanyDashboard: React.FC = () => {
             <Row gutter={16} className='flex flex-col gap-2 lg:gap-0 xl:gap-0 md:flex-row lg:flex-row xl:flex-row'>
                 <Col className='w-full lg:w-1/4 xl:w-1/4'>
                     <Card className='bg-blue-200'>
-                        <Statistic title="Total Jobs" value={totalJobs} />
+                        <Statistic title="Jobs" value={counts.jobCount} />
                     </Card>
                 </Col>
                 <Col className='w-full lg:w-1/4 xl:w-1/4'>
                     <Card className='bg-green-200'>
-                        <Statistic title="Filled Jobs" value={filledJobs} />
+                        <Statistic title="Companies" value={counts.companiesCount} />
                     </Card>
                 </Col>
                 <Col className='w-full lg:w-1/4 xl:w-1/4'>
                     <Card className='bg-red-200'>
-                        <Statistic title="Expired Jobs" value={expiredJobs} />
+                        <Statistic title="Applicants" value={counts.applicantCount} />
                     </Card>
                 </Col>
-                <Col className='w-full lg:w-1/4 xl:w-1/4'>
+                {/* <Col className='w-full lg:w-1/4 xl:w-1/4'>
                     <Card className='bg-yellow-200'>
                         <Statistic title="Revenue" value={revenue} prefix="$" />
                     </Card>
-                </Col>
+                </Col> */}
             </Row>
             <Row gutter={16} style={{ marginTop: '16px' }}>
                 <Col span={12}>
-                    <Card title="Applications Progress">
-                        <Progress percent={applicationsProgress} />
+                    <Card title="New Applicants">
+                        {/* <Progress percent={applicationsProgress} /> */}
+                        {
+                            applicants.map(value => {
+                                 
+                                return (
+                                    <div className='flex justify-between items-center'>
+                                          <Link href="#">Applicant name </Link>  
+                                          <Link href="#">Edit</Link>  
+                                    </div>
+                                )
+                             })
+                        }
+
+
                     </Card>
                 </Col>
                 <Col span={12}>
-                    <Card title="Revenue Progress">
-                        <Progress percent={revenueProgress} />
+                    <Card title="Recent Activities">
+                        {/* <Progress percent={revenueProgress} /> */}
+                        <p className=''>Recent Activities is created at {new Date().toLocaleDateString()} { new Date().toLocaleTimeString()}</p>
                     </Card>
                 </Col>
             </Row>
             {/* Add more cards and components as needed for the dashboard */}
 
-            <div className='flex items-center justify-center w-full min-h-[90vh]'>
+            {/* <div className='flex items-center justify-center w-full min-h-[90vh]'>
                 <div className='flex min-h-[95%] w-full m-5 items-start justify-between flex-col lg:flex-row xl:flex-row'>
                     <div className='w-full lg:w-1/3  xl:w-1/3 '>
                         <div className='flex flex-col items-start  p-8 shadow-md'>
@@ -156,7 +237,7 @@ const CompanyDashboard: React.FC = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

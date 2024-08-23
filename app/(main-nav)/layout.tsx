@@ -9,7 +9,7 @@ export default function MainNavLayout({
   return (
     <>
       
-      <Navbar />
+      <Navbar home={true} />
       
       {children}
     </>

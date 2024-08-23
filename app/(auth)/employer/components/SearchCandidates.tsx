@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Button, Table } from 'antd';
+import ApplicantsTable from './ApplicantsTable';
 
 interface Candidate {
     key: string;
@@ -44,7 +45,7 @@ const SearchCandidates: React.FC = () => {
     return (
         <div>
             <h2>Search for Candidates</h2>
-            <Input
+            {/* <Input
                 placeholder="Enter search criteria"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -53,7 +54,8 @@ const SearchCandidates: React.FC = () => {
             <Button type="primary" onClick={handleSearch} style={{ marginBottom: '16px' }}>
                 Search
             </Button>
-            <Table dataSource={searchResults} columns={columns} />
+            <Table dataSource={searchResults} columns={columns} /> */}
+            <ApplicantsTable />
         </div>
     );
 };

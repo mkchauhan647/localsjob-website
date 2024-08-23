@@ -49,6 +49,7 @@ const RegistrationForm: React.FC = () => {
 
     try {
       const { data } = await axios.post("/register", values);
+      console.log("data",data);
       toast.success(data?.message, {
         duration: 3000,
         position: "top-left",
