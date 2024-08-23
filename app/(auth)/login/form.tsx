@@ -12,9 +12,10 @@ const LoginForm: React.FC = () => {
     console.log("Received values of form: ", values);
     try {
       const { data } = await axios.post("/login", values);
-      if (data?.data?.token) {
-        Cookies.set("token", data.data.token, { expires: 7 }); // Set expiry for 7 days
-        router.push("/job-seeker/candidate-dashboard");
+      console.log("data", data);
+      if (data?.data?.access_token) {
+        Cookies.set("token", data.data.access_token, { expires: 7 }); // Set expiry for 7 days
+        router.push("/employer/employer-dashboard");
         toast.success("You have been logged in", {
           duration: 3000,
           position: "top-left",

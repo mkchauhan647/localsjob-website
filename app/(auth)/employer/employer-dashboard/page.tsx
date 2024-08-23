@@ -20,7 +20,13 @@ import {
     AppstoreAddOutlined,
     ApiOutlined,
     ClusterOutlined,
+    SettingFilled,
+    SettingOutlined,
 } from '@ant-design/icons';
+import { FaFileInvoice, FaFileInvoiceDollar } from 'react-icons/fa';
+import { LiaFileInvoiceSolid } from 'react-icons/lia';
+import { HiOutlineUserGroup } from 'react-icons/hi';
+import {TbPackages} from 'react-icons/tb';
 const PostJobForm = dynamic(() => import('../components/Postjob'));
 const ManageJobListings = dynamic(() => import('../components/ManageJobListing'));
 const SearchCandidates = dynamic(() => import('../components/SearchCandidates'));
@@ -35,13 +41,15 @@ const SupportAndTraining = dynamic(() => import('../components/SupportAndTrainin
 const PartnershipOpportunities = dynamic(() => import('../components/Partnership'));
 const CustomizedSolutions = dynamic(() => import('../components/CustomizedSolution'));
 const EnterpriseSolutions = dynamic(() => import('../components/EnterpriseSolution'));
+const CompaniesListed = dynamic(() => import('../components/CompaniesListed'));
+
 
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
 
-const page: React.FC = () => {
+const Dashboard: React.FC = () => {
 
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('1');
     const [drawerVisible, setDrawerVisible] = useState<boolean>(false);
@@ -87,7 +95,8 @@ const page: React.FC = () => {
     }, []);
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
+
+        <Layout style={{ minHeight: '100vh', }}>
             {isSmallScreen && (
                 <Button type="primary" onClick={showDrawer} className="menu-button">
                     Menu
@@ -97,18 +106,29 @@ const page: React.FC = () => {
                 <Sider width={250} theme="dark">
                     <Menu onSelect={handleMenuSelect} mode="vertical" defaultSelectedKeys={['1']} style={{ height: '100%' }}>
                     <Menu.Item key="1" icon={<ProfileOutlined />}>
-                        Company Dashboard
+                         Dashboard
                     </Menu.Item>
                     <Menu.Item key="2" icon={<AppstoreOutlined />}>
                         Manage Job Listings
+                        </Menu.Item>
+                        <Menu.Item key="15" icon={<ClusterOutlined />}>
+                       Companies
+                        </Menu.Item>
+                        <Menu.Item key="5" icon={ <TbPackages  />}>
+                        Packages
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<SearchOutlined />}>
-                        Search for Candidates
+                    <Menu.Item key="3" icon={<HiOutlineUserGroup />}>
+                        Applicants
                     </Menu.Item>
-                    <Menu.Item key="4" icon={<FileSearchOutlined />}>
-                        Resume Database
+                    <Menu.Item key="4" icon={<LiaFileInvoiceSolid />}>
+                        Invoices
+                        </Menu.Item>
+                        
+                        <Menu.Item key="16" icon={<SettingOutlined  />}>
+                        Settings
                     </Menu.Item>
-                    <SubMenu key="sub1" icon={<BankOutlined />} title="Employer Branding">
+                    
+                    {/* <SubMenu key="sub1" icon={<BankOutlined />} title="Employer Branding">
                         <Menu.Item key="5">Recruitment Packages</Menu.Item>
                         <Menu.Item key="6">Analytics and Reports</Menu.Item>
                     </SubMenu>
@@ -132,6 +152,7 @@ const page: React.FC = () => {
                     <Menu.Item key="14" icon={<ClusterOutlined />}>
                         Enterprise Solutions
                     </Menu.Item>
+                     */}
                 </Menu>
                 </Sider>
             )}
@@ -147,18 +168,27 @@ const page: React.FC = () => {
                 >
                     <Menu onSelect={handleMenuSelect} mode="vertical" defaultSelectedKeys={['1']} style={{ height: '100%' }}>
                         <Menu.Item key="1" icon={<ProfileOutlined />}>
-                            Company Dashboard
+                            Dashboard
                         </Menu.Item>
                         <Menu.Item key="2" icon={<AppstoreOutlined />}>
-                            Manage Job Listings
-                        </Menu.Item>
+                            Jobs
+                            </Menu.Item>
+                            <Menu.Item key="15" icon={<ClusterOutlined />}>
+                       Companies
+                            </Menu.Item>
+                            <Menu.Item key="5" icon={ <TbPackages  />}>
+                        Packages
+                    </Menu.Item>
                         <Menu.Item key="3" icon={<SearchOutlined />}>
-                            Search for Candidates
+                           Applicants
                         </Menu.Item>
                         <Menu.Item key="4" icon={<FileSearchOutlined />}>
-                            Resume Database
-                        </Menu.Item>
-                        <SubMenu key="sub1" icon={<BankOutlined />} title="Employer Branding">
+                            Invoices
+                            </Menu.Item>
+                            <Menu.Item key="16" icon={<SettingOutlined />}>
+                        Settings
+                    </Menu.Item>
+                        {/* <SubMenu key="sub1" icon={<BankOutlined />} title="Employer Branding">
                             <Menu.Item key="5">Recruitment Packages</Menu.Item>
                             <Menu.Item key="6">Analytics and Reports</Menu.Item>
                         </SubMenu>
@@ -181,13 +211,14 @@ const page: React.FC = () => {
                         </Menu.Item>
                         <Menu.Item key="14" icon={<ClusterOutlined />}>
                             Enterprise Solutions
-                        </Menu.Item>
+                            </Menu.Item> */}
+                           
                     </Menu>
                 </Drawer>
             }
 
-            <Layout>
-                <Content style={{ margin: '16px' }}>
+            <Layout style={{ padding: '16px', backgroundColor:"white"}}>
+                <Content >
                     {selectedMenuItem === '1' ?
                         <>
                             <CompanyDashboard />
@@ -240,16 +271,26 @@ const page: React.FC = () => {
                                                                         <>
                                                                             <CustomizedSolutions />
                                                                         </>
-                                                                        :
+                                                                        : selectedMenuItem === '14' ?
                                                                         <>
-                                                                            <EnterpriseSolutions />
-                                                                        </>
+                                                                        <EnterpriseSolutions />
+                                                                    </>
+                                                                            : selectedMenuItem === '15' ?
+                                                                            <>
+                                                                            <CompaniesListed/>
+                                                                                </> :
+                                                                                <h1 className="flex justify-center items-center text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-orange-400 to-blue-500 mt-10 animate-bounce shadow-lg">
+  This is settings, man. What do you expect?
+</h1>
+
+                                                                       
 
                     }
                 </Content>
             </Layout>
-        </Layout>
+            </Layout>
+            
     );
 };
 
-export default page;
+export default Dashboard;

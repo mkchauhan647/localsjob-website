@@ -7,9 +7,17 @@ interface Card {
   description: string;
 }
 
-const BoxCards = ({ bgColor, highlightColor, strokeColor }:{bgColor:string,highlightColor:string,strokeColor:string}) => {
+interface BoxCardData {
+  totalLiveJobs: string;
+  totalCompanies: string;
+  totalApplicants: string;
+}
+
+
+const BoxCards = ({ bgColor, highlightColor, strokeColor,boxCardData }:{bgColor:string,highlightColor:string,strokeColor:string,boxCardData:BoxCardData}) => {
   
-  const cards: Card[] = getCards(bgColor,highlightColor,strokeColor);
+  const cards: Card[] = getCards(bgColor, highlightColor, strokeColor, boxCardData);
+  
 
   return (
     <div className=" lg:absolute lg:top-[550px] xl:top-[644px] lg:px-[300px] sm:px-[100px]  lg:-left-[204px] xl:w-[1920px] w-full p-4 ">
@@ -30,7 +38,11 @@ const BoxCards = ({ bgColor, highlightColor, strokeColor }:{bgColor:string,highl
 export default BoxCards;
 
 
-function getCards(bgColor:string,highlightColor:string,strokeColor:string) {
+function getCards(bgColor: string, highlightColor: string, strokeColor: string,boxCardData:BoxCardData): Card[] {
+  
+
+
+
   const cards: Card[] = [
     {
       icon: (
@@ -43,7 +55,7 @@ function getCards(bgColor:string,highlightColor:string,strokeColor:string) {
           <path d="M34.125 34.75H37.875" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: '1,75,324',
+      number: boxCardData.totalLiveJobs ?? '0',
       description: 'Live Job',
     },
     {
@@ -61,7 +73,7 @@ function getCards(bgColor:string,highlightColor:string,strokeColor:string) {
           <path d="M43.499 37.247H46" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: '97,354',
+      number: boxCardData.totalCompanies ?? '0',
       description: 'Companies',
     },
     {
@@ -87,7 +99,7 @@ function getCards(bgColor:string,highlightColor:string,strokeColor:string) {
           <path d="M23.625 25.25H20.25C19.42 25.25 18.625 25.5 17.952 25.96C17.279 26.42 16.754 27.072 16.445 27.827C16.136 28.582 16.058 29.406 16.221 30.2C16.384 30.994 16.78 31.718 17.36 32.288C17.94 32.858 18.68 33.248 19.485 33.407C20.291 33.566 21.123 33.484 21.875 33.171C22.627 32.858 23.257 32.33 23.689 31.662C24.121 30.993 24.33 30.214 24.293 29.429" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: '27,864',
+      number: boxCardData.totalApplicants ?? '0',
       description: 'Resumes',
     },
   ];

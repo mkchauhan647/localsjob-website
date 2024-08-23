@@ -1,12 +1,26 @@
 
+import parse from 'html-react-parser'
+interface JobDescriptionProps {
 
-const JobDescription = () => {
+    description: string;
+    content: string;
+    // requirements: string[];
+    // desirable: string[];
+    // benefits: string[];
+
+}
+
+
+
+
+const JobDescription = ({ desc }: { desc: JobDescriptionProps }) => {
+    // console.log("desc", desc);
     return (
         <div className="xl:w-[761px]">
             {/* description */}
             <div className="mb-4 flex flex-col gap-4 text-left text-gray-500">
                 <h2 className="text-[18px] font-medium ">Job Description</h2>
-                <p className="text-gray-500">
+                {/* <p className="text-gray-500">
                     Velstar is a Shopify Plus agency, and we partner with brands
                     to help them grow, we also do the same with our people!
                 </p>
@@ -29,12 +43,14 @@ const JobDescription = () => {
                     requirements. You will have the opportunity to create new,
                     innovative, secure and scalable features for our clients on
                     the Shopify platform
-                </p>
+                </p> */}
+                <p>{desc.description}</p>
+                
                 <p>Want to work with us? You're in good company!</p>
             </div>
 
             {/* Requirements */}
-            <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
+            {/* <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
                 <h2 className="text-[18px] font-medium ">Requirements</h2>
                 <ul className="flex gap-2 flex-col list-disc list-outside pl-6">
                     <li>
@@ -72,10 +88,10 @@ const JobDescription = () => {
                         agency
                     </li>
                 </ul>
-            </div>
+            </div> */}
 
             {/* Desirable */}
-            <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
+            {/* <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
                 <h2 className="text-[18px] font-medium ">Desirable</h2>
                 <ul className="flex gap-2 flex-col list-disc list-outside pl-6">
                     <li>
@@ -86,10 +102,10 @@ const JobDescription = () => {
                     <li>Working knowledge of payment gateways</li>
                     <li>API platform experience / Building restful APIs</li>
                 </ul>
-            </div>
+            </div> */}
 
             {/* Benefits */}
-            <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
+            {/* <div className="mb-4 mt-2 flex flex-col gap-4 text-left text-gray-500">
                 <h2 className="text-[18px] font-medium ">Benefits</h2>
                 <ul className="flex gap-2 flex-col list-disc list-outside pl-6">
                     <li>
@@ -124,7 +140,12 @@ const JobDescription = () => {
                         being part of this exciting story.
                     </li>
                 </ul>
-            </div>
+            </div> */}
+
+
+            <div className="text-left text-gray-500">
+                {parse(desc.content || '')}
+        </div>
         </div>
     )
 };

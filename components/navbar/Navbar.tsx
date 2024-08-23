@@ -13,9 +13,10 @@ import NavMenuEmployer from "@/app/(auth)/employer/components/navMenu";
 import axios from "@/config/AxiosConfig";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-const Navbar = () => {
+const Navbar = ({ home=false }:{home?:boolean}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const handleLogout = async () => {
     const token = Cookies.get("token") || null;
     const headers = {
@@ -23,8 +24,11 @@ const Navbar = () => {
       "Api-Version": "v1",
       Accept: "application/json",
     };
+    console.log("headers", headers);
     try {
-      const { data } = await axios.get("/logout", { headers });
+      const { data } = await axios.post("/logout", {}, {
+        headers: headers,
+      });
       Cookies.remove("token");
       setIsLoggedIn(false);
       toast.success(data?.message, {
@@ -39,7 +43,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className=" absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]">
+    <div className={home ? " absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]":" relative sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]"}>
       {/* a................bigger screens.................. */}
       <div className=" flex items-center justify-between  container mx-auto navbar ">
         <div className="flex gap-6 lg:gap-10  text-3xl items-center justify-center">
@@ -75,7 +79,7 @@ const Navbar = () => {
             {isLoggedIn ? (
               <Link
                 href="/"
-                className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 text-[white]"
+                className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 ${home ? "text-[white]" : "text-black"}`}
                 onClick={handleLogout}
               >
                 Logout
@@ -84,7 +88,7 @@ const Navbar = () => {
               <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
                   {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
-                  <button className="bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] text-[white] h-[48px] rounded-full ">
+                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black"} h-[48px] rounded-full `}>
                     Log In
                   </button>
                 </Link>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Table, Button, Space } from 'antd';
+import JobsTable from './JobsTable';
 
 interface JobListing {
     key: string;
@@ -7,6 +8,23 @@ interface JobListing {
     jobDescription: string;
     // Add more fields as needed
 }
+
+interface JobType {
+    id: number;
+    name: string;
+    created_at: string;
+    status: {
+        value: string;
+        label: string;
+    };
+    moderation_status: {
+        value: string;
+        label: string;
+    };
+    expire_date: string;
+
+}
+
 
 const ManageJobListings: React.FC = () => {
     const dataSource: JobListing[] = [
@@ -46,7 +64,8 @@ const ManageJobListings: React.FC = () => {
     return (
         <div>
             <h2>Manage Job Listings</h2>
-            <Table dataSource={dataSource} columns={columns} />
+            {/* <Table dataSource={dataSource} columns={columns} /> */}
+            <JobsTable/>
         </div>
     );
 };
