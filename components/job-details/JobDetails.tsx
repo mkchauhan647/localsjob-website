@@ -12,16 +12,16 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
     
 
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await fetch(`https://localsjob.com/v1/jobs/search-job?title=${search}`);
-                const data = await res.json();
-            } catch (error) {
-                console.log(error);
-            }
-        }
-    })
+    // useEffect(() => {
+    //     async function fetchData() {
+    //         try {
+    //             const res = await fetch(`https://localsjob.com/v1/jobs/search-job?title=${search}`);
+    //             const data = await res.json();
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    // })
 
     return (
         <>

@@ -159,7 +159,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Select, Upload, InputNumber, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { saveCompany, fetchCountries, fetchStates, fetchCities } from './api';
-import { CompanyData } from './types';
+import { City, CompanyData, Country, State } from './types';
 import toast from 'react-hot-toast';
 
 const { TextArea } = Input;
@@ -167,9 +167,9 @@ const { Option } = Select;
 
 const CompanyForm: React.FC = () => {
   const [form] = Form.useForm();
-  const [countries, setCountries] = useState([]);
-  const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [countries, setCountries] = useState<Country[]>([]);
+  const [states, setStates] = useState<State[]>([]);
+  const [cities, setCities] = useState<City[]>([]);
   const [companyData, setCompanyData] = useState<Partial<CompanyData>>({ country_id: 0 });
 
   useEffect(() => {

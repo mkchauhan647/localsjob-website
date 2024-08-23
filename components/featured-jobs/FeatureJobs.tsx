@@ -2,7 +2,7 @@ import Link from 'next/link';
 import FeatureJobCard from './FeatureJobCard'; 
 import axios from '@/config/AxiosConfig';
 import { SearchJobCard } from '../search-jobs/JobSearch';
-
+import { Job } from '@/util/types';
 // interface Category {
 //     title: string;
 //     type: string;
@@ -12,26 +12,26 @@ import { SearchJobCard } from '../search-jobs/JobSearch';
 //     location: string;
 // }
 
-interface Category {
-    id:string
-    name: string;
-    job_types: [
-        {
-            id: string,
-            name: string
-        }
-    ];
-    salary_from: string;
-    salary_to: string;
-    icon: string;
-    company_id: string;
-    address: string;
-}
+// interface Category {
+//     id:string
+//     name: string;
+//     job_types: [
+//         {
+//             id: string,
+//             name: string
+//         }
+//     ];
+//     salary_from: string;
+//     salary_to: string;
+//     icon: string;
+//     company_id: string;
+//     address: string;
+// }
 
 
 const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
 
-    const categories: Category[] = await getCategories();
+    const categories: Job[] = await getCategories();
 
     // console.log("categories", categories);
 
@@ -50,7 +50,7 @@ const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
                             </div>
                     <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2 gap-6 w-full mb- 5">
         
-                  {categories.map((category, index) => (
+                  {categories.map((category:Job, index) => (
                       <Link href={`/jobs/${category.name.split(" ").map(value => value.toLocaleLowerCase()).join('-')}/${category.id}`} key={index}>
                           {/* <FeatureJobCard  job={category} /> */}
                             <SearchJobCard job={category} />  
