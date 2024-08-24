@@ -28,7 +28,7 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
         
         {
           JobData && 
-        < div className = " py-10 max-h-[1723px] px-4 md:px-[50px] lg:px-[130px]" >
+        < div className = " py-10 max-h- [1723px] max-h-max px-4 md:px-[50px] lg:px-[130px]" >
             <div className="flex flex-col gap-8 ">
                 {/* Header */}
                

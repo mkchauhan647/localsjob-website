@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 
 const JobSearch = ({ searchData }: { searchData: Job[] }) => {
 
+    console.log("searchData", searchData);
+
     return (
 
         <div className='container mx-auto pt-[60px] grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
@@ -29,7 +31,7 @@ export default JobSearch;
 
 export const SearchJobCard = ({ job }: { job: Job }) => {
     
-    console.log("job",job);
+    console.log("job",job.job_types);
     const salary = job.salary_from || job.salary_to ?( `Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}`:''}` ) : null;
     return (
         <div className="relative bg-white text-black p-5 h-[17 0px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
