@@ -60,12 +60,14 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                     
 
                     {/* <Image src={`/${job.icon}`} alt="company logo" width={48} height={48} className='rounded-[4px] object-cover ' /> */}
+                    <div className='w-[70px] h-[60px] overflow-hidden rounded '>
                     <img
                         // src="/f1soft.png"
                         src={`https://localsjob.com/storage/${job.company?.logo}`}
                             alt="company logo"
-                            className=" w-[48px] h-[48px] rounded object-cover"
+                            className=" w-full h-full object-center object-scale-down"
                         />
+                  </div>
 
                     <div className="flex flex-col ">
                         <span className="mt-1 text-[16px] font-medium text-[#767F8C]">{job.company?.name}</span>

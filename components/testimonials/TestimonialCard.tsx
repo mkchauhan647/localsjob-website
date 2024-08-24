@@ -52,7 +52,7 @@ const TestimonialCard = ({ testimonial }:{testimonial:Testimonial}) => {
             <div className="flex items-center gap-4 ">
                 {/* <img src={`/${testimonial.avatar}`} alt="avatar" className="w-16 h-16 border rounded-full object-cover object-top" /> */}
                 <div className="w-16 h-16 border rounded-full overflow-hidden">
-  <img src={`/${testimonial.image || 'tavatar1.png'}`} alt="avatar" className="w-full h-full  mt-7 scale-[2] mx-auto" />
+  <img src={`https://localsjob.com/storage/${testimonial.image || 'tavatar1.png'}`} alt="avatar" className="w-full h-full  mt -5 scale- [1.3] mx-auto  object-top object-cover" />
 </div>
 
                 <div>
