@@ -2,17 +2,41 @@
 import JobCategoryCard from './JobCategoryCard';
 import { PiCode, PiMusicNotes,PiMonitorPlay,PiChartBarHorizontalDuotone,PiDatabase } from 'react-icons/pi';
 import { LiaBriefcaseMedicalSolid } from "react-icons/lia";
+import axios from '@/config/AxiosConfig'
+
+
+interface JobCategoryType {
+  name: string;
+  total_positions: number;
+}
 
 interface Category {
   bgColor: string;
   icon: React.ReactElement;
   title: string;
   positions: number;
+
 }
 
-const JobCategories = () => {
+
+
+const JobCategories = async () => {
+
+  let JobCategoryData;
+
+  try {
+  JobCategoryData = await axios.get('/popular-job-categories');
+
+  } catch (error) {
+    console.log("error",error);
+  }
+
+  const CategoryData = JobCategoryData?.data.data.popularJobCategories;
+
+
+
     
-  const categories: Category[] = getCategories();
+  const categories: Category[] = getCategories(CategoryData);
   
     return (
       <div className="bg-mprimary min-h-[529px] flex flex-col gap-[105px] sm:gap-[50px] pt-[50px] lg:pt-[110px] px-4 sm:px-[100px] top-[700px]">
@@ -26,8 +50,8 @@ const JobCategories = () => {
               key={index}
               bgColor={category.bgColor}
               icon={category.icon}
-              title={category.title}
-              positions={category.positions}
+              title={CategoryData[index].name}
+              positions={CategoryData[index].total_positions}
             />
           ))}
         </div>
@@ -38,7 +62,11 @@ const JobCategories = () => {
   export default JobCategories;
   
 
-function getCategories() {
+function getCategories(JobCategoryData: JobCategoryType[]) {
+
+
+
+
 
   const categories:Category[] = [
     {

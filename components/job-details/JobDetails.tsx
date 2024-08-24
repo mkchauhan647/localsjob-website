@@ -58,10 +58,25 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
                     {/* sidebar for jobs description */}
                     <div className="flex flex-col gap-8  grow">
                         {/* Salary & Location */}
-                       <JobSidebar/>
+                                    <JobSidebar
+                                    
+                                        salary_from={JobData.salary_from || 0}
+                                        salary_to={JobData.salary_to || 0}
+                                        location={JobData.address}
+                                        salaryType="Monthly"
+                                        
+                                    />
 
                         {/* Job Information */}
-                    <JobOverview/>
+                                    <JobOverview
+                                    
+                                        jobPosted={JobData.company.created_at}
+                                        jobExpire={JobData.expired_date}
+                                        jobLevel={JobData.job_level}
+                                        experience={JobData.job_experience.name}
+                                        education = {JobData.degree_level.name}
+                                    
+                                    />
                     </div>
                 </div>
 
