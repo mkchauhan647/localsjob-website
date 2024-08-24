@@ -60,6 +60,35 @@ interface Status {
     company: Company;
       job_types: JobType[];
       description: string;
-        content: string;
+    content: string;
+    expired_date: string;
+    job_level: string;
+    created_at: string;
+    job_experience: {
+      id: string;
+      name: string;
+    }
+    degree_level: {
+      id: string;
+      name: string;
+    }
   }
   
+
+// Testimonials types
+  
+interface TestimonialStatus {
+  value: string;
+  label: string;
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  content: string;
+  image: string | null;
+  company: string;
+  status: TestimonialStatus;
+  created_at: string;
+  updated_at: string;
+}

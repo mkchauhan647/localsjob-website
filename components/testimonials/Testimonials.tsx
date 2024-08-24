@@ -1,22 +1,23 @@
 
 import TestimonialCard from './TestimonialCard';
+import axios from '@/config/AxiosConfig'
+// interface Testimonial {
+//     star: number;
+//     title: string;
+//     description: string;
+//     avatar: string;
+//     name: string;
+//     avatar_text: string;
+// }
+import { Testimonial } from '@/util/types';
 
-interface Testimonial {
-    star: number;
-    title: string;
-    description: string;
-    avatar: string;
-    name: string;
-    avatar_text: string;
-}
+const Testimonials = async () => {
 
-const Testimonials = () => {
-
-    const testimonials:Testimonial[] = getTestimonials();
+    const testimonials:Testimonial[] = await getTestimonials();
 
     return (
         
-        <div className="relative min-h-[788px] bg-mprimary p-4">
+        <div className="relative min-h-[788px] bg-mprimary p-4 sm:px-[96px]">
             {/* Testimonials */}
 
             <div className="pr-4">
@@ -27,7 +28,8 @@ const Testimonials = () => {
             </div>
 
 
-            <div className="flex gap-6 justify-center flex-col lg:flex-row mb-3 items-center">
+            {/* <div className="flex gap-6 justify-center flex-col lg:flex-row mb-3 items-center"> */}
+            <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-5'>
 
                 {
                     testimonials.map((testimonial, index) => (
@@ -45,33 +47,45 @@ export default Testimonials;
 
 
 
-function getTestimonials() {
-    const testimonials:Testimonial[] = [
-        {
-            star: 5,
-            title: "Amazing Services",
-            description: "Metus faucibus sed turpis lectus feugiat tincidunt. Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis",
-            avatar: 'tavatar1.png',
-            name: 'Marko Kihn',
-            avatar_text:'Happy Client'
-    },
-        {
-            star: 5,
-            title: "Everything Simple",
-            description: "Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus",
-            avatar: 'tavatar2.png',
-            name: 'Kristin Hester',
-            avatar_text:'Happy Client'
-    },
-        {
-            star: 5,
-            title: "Awesome, thank you! ",
-            description: "Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus. Nulla et tempor montes",
-            avatar: 'tavatar3.png',
-            name: 'Zis Cisneros',
-            avatar_text:'Happy Client'
-    },
-    ]
+async function getTestimonials() {
 
-    return testimonials;
+
+
+    try {
+        const res = await axios.get('/testimonials');
+        return res.data.data.testimonials;
+    } catch (error) {
+        console.log("error",error);
+    }
+
+
+
+    // const testimonials:Testimonial[] = [
+    //     {
+    //         star: 5,
+    //         title: "Amazing Services",
+    //         description: "Metus faucibus sed turpis lectus feugiat tincidunt. Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis",
+    //         avatar: 'tavatar1.png',
+    //         name: 'Marko Kihn',
+    //         avatar_text:'Happy Client'
+    // },
+    //     {
+    //         star: 5,
+    //         title: "Everything Simple",
+    //         description: "Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus",
+    //         avatar: 'tavatar2.png',
+    //         name: 'Kristin Hester',
+    //         avatar_text:'Happy Client'
+    // },
+    //     {
+    //         star: 5,
+    //         title: "Awesome, thank you! ",
+    //         description: "Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus. Nulla et tempor montes",
+    //         avatar: 'tavatar3.png',
+    //         name: 'Zis Cisneros',
+    //         avatar_text:'Happy Client'
+    // },
+    // ]
+
+    // return testimonials;
 }

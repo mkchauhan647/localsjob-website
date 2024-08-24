@@ -21,7 +21,7 @@ const Jobs = () => {
      <BreadCrumbComponent/>
 
       {/* Job Details */}
-      <JobDetails search={search} />
+      {/* <JobDetails search={search} /> */}
       <FeatureJobs relatedJob={true} />
     </>
   );

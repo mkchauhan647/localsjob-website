@@ -1,6 +1,22 @@
-
+'use client'
 import { FiSearch } from "react-icons/fi";
+import { useRef } from "react";
+import { FormEvent } from "react";
+import { useRouter } from "next/navigation";
 const JobSearchBar = () => {
+
+    const searchInputRef = useRef<HTMLInputElement>(null);
+    const router = useRouter();
+
+    const handleJobSearch = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const searchValue = searchInputRef.current!.value;
+        // if (searchValue.length > 0) {
+        //     setJobs([...jobs, searchValue]);
+        // }
+
+        router.push(`/jobs/search-jobs?search=${searchValue}`);
+    }
 
     return (
         
@@ -21,11 +37,11 @@ const JobSearchBar = () => {
 
                 </div>
                 {/* <div className="bg-white">|</div> */}
-                <div className="flex gap-2 bg-white grow justify-center items-center">
+                <form onSubmit={handleJobSearch} className="flex gap-2 bg-white grow justify-center items-center">
                     <FiSearch size={25} className=" text-blue-500 bg-white font-thin" />
-                    <input type="text" placeholder="Job title, keyword, company" className="bg-white w-full h-[40px] p-6" />
+                    <input ref={searchInputRef} type="text" placeholder="Job title, keyword, company" className="bg-white w-full h-[40px] p-6" />
 
-                </div>
+                </form>
 
             </div>
         </div>

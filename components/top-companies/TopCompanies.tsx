@@ -1,5 +1,5 @@
 import CompanyCard from '@/components/top-companies/CompanyCard';
-
+import axios from '@/config/AxiosConfig'
 interface Company {
     name: string;
     location: string;
@@ -7,9 +7,9 @@ interface Company {
     icon: JSX.Element;
 }
 
-const TopCompanies = () => {
+const TopCompanies = async () => {
 
-    const companies:Company[] = getCompanies();
+    const companies:Company[] = await getCompanies();
 
 
     return (
@@ -37,7 +37,27 @@ export default TopCompanies;
 
 
 
-function getCompanies() {
+async function getCompanies() {
+
+
+    try {
+        const res = await axios.get('/top-companies');
+
+        if (res.data.data.topCompanies && res.data.data.topCompanies.length > 0) {
+            return res.data.data.topCompanies;
+        } else {
+
+           console.log("No data found");
+        }
+
+    }
+    catch (error) {
+        console.log("Error occured", error);
+    }
+
+
+
+
     const companies:Company[] = [
         {
             name: 'F1soft International Pvt Ltd',

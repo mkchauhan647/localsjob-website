@@ -13,6 +13,7 @@ interface BoxCardData {
     totalLiveJobs: string;
     totalCompanies: string;
     totalApplicants: string;
+    totalResume: string;
 }
 
 const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,strokeColor }:{banner:string,text:React.ReactElement,buttons:boolean,button_bg_color:string,bgColor:string,highlightColor:string,strokeColor:string}) => {
@@ -24,7 +25,8 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
     const [boxCardData, setBoxCardData] = useState<BoxCardData>({
         totalLiveJobs: '',
         totalCompanies: '',
-        totalApplicants: ''
+        totalApplicants: '',
+        totalResume: ''
     });
 
 
@@ -45,7 +47,7 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
 
     useEffect(() => {
         async function fetchBoxData() {
-            const boxCards = ['total-live-jobs', 'total-companies', 'total-applicants'];
+            const boxCards = ['total-live-jobs', 'total-companies', 'total-applicants','total-resume'];
             try {
                 boxCards.map(async (boxCard,index) => {
                     const res = await axios(`https://localsjob.com/api/v1/${boxCard}`);

@@ -11,6 +11,7 @@ interface BoxCardData {
   totalLiveJobs: string;
   totalCompanies: string;
   totalApplicants: string;
+  totalResume: string;
 }
 
 
@@ -87,7 +88,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
           <path d="M38.533 37.297L38.2 38.84C38.064 39.445 37.737 39.987 37.262 40.381C36.787 40.774 36.19 41 35.571 41H24.929C24.31 41 23.713 40.774 23.238 40.381C22.763 39.987 22.436 39.445 22.3 38.84L21.967 37.297" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: '81,254',
+      number: boxCardData.totalApplicants ?? '0',
       description: 'Members',
     },
     {
@@ -99,7 +100,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
           <path d="M23.625 25.25H20.25C19.42 25.25 18.625 25.5 17.952 25.96C17.279 26.42 16.754 27.072 16.445 27.827C16.136 28.582 16.058 29.406 16.221 30.2C16.384 30.994 16.78 31.718 17.36 32.288C17.94 32.858 18.68 33.248 19.485 33.407C20.291 33.566 21.123 33.484 21.875 33.171C22.627 32.858 23.257 32.33 23.689 31.662C24.121 30.993 24.33 30.214 24.293 29.429" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: boxCardData.totalApplicants ?? '0',
+      number: boxCardData.totalResume ?? '0',
       description: 'Resumes',
     },
   ];
