@@ -6,9 +6,12 @@ import React, { useEffect, useState } from 'react';
 
 const JobSearch = ({ searchData }: { searchData: Job[] }) => {
 
+    console.log("searchData", searchData);
+
     return (
 
-        <div className='container mx-auto pt-[60px] grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+      <div className='container mx-auto pt-[60px] grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
+        {/* // <div className='container mx-auto flex pt-[60px]  gap-4 flex-col lg:flex-row justify -center items -center'> */}
             {searchData?.map((job: Job) => (
                 <Link href={`/jobs/${job.name.split(" ").map(value=> value.toLocaleLowerCase()).join('-')}/${job.id}`} key={job.id}>
                         <SearchJobCard job={job} />
@@ -29,10 +32,10 @@ export default JobSearch;
 
 export const SearchJobCard = ({ job }: { job: Job }) => {
     
-    console.log("job",job);
+    console.log("job",job.job_types);
     const salary = job.salary_from || job.salary_to ?( `Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}`:''}` ) : null;
     return (
-        <div className="relative bg-white text-black p-5 h-[17 0px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+        <div className="relative bg-white text-black p-5 h- [17 0px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
             {/* <div className=" p-[18px]"> */}
             {/* box-shadow: 0px 2px 18px 0px #18191C08; */}
 
@@ -43,7 +46,7 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                 <div id='heading' className=" flex gap-[4px] flex-col">
                     <span className="text-[18px] font-medium  text-[#18191C] leading-7 font-roboto  ">{job.name}</span>
                     <div className="flex items-center justify-cente">
-                        <div className="mt-1 text-[12px] rounded font-semibold text-[#0BA02C] bg-[#E7F6EA] py-1 px-2  uppercase">{job.job_types ? job.job_types[0].name.split(" ").join('-'): 'Not provided'}</div>
+                        <div className="mt-1 text-[12px] rounded font-semibold text-[#0BA02C] bg-[#E7F6EA] py-1 px-2  uppercase">{job.job_types && job.job_types.length > 0 ? job.job_types[0].name.split(" ").join('-'): 'Not provided'}</div>
                         {/* <div className="mt-1 ml-2 text-[14px] font-normal text-[#767f8c]">Salary:{' '  + "Rs." +  parseInt(job?.salary_from).toFixed() ?? '' + " - " + "Rs." + parseInt(job?.salary_to).toFixed() ?? ''}</div> */}
                         {
                         salary &&    <div className="mt-1 ml-2 text-[14px] font-normal text-[#767f8c]">Salary: {salary}</div>
@@ -58,12 +61,14 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                     
 
                     {/* <Image src={`/${job.icon}`} alt="company logo" width={48} height={48} className='rounded-[4px] object-cover ' /> */}
+                    <div className='w-[70px] h-[60px] overflow-hidden rounded '>
                     <img
                         // src="/f1soft.png"
                         src={`https://localsjob.com/storage/${job.company?.logo}`}
                             alt="company logo"
-                            className=" w-[48px] h-[48px] rounded object-cover"
+                            className=" w-full h-full object-center object-scale-down"
                         />
+                  </div>
 
                     <div className="flex flex-col ">
                         <span className="mt-1 text-[16px] font-medium text-[#767F8C]">{job.company?.name}</span>

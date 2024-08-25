@@ -83,12 +83,18 @@ interface TestimonialStatus {
 }
 
 export interface Testimonial {
-  id: number;
-  name: string;
-  content: string;
-  image: string | null;
-  company: string;
-  status: TestimonialStatus;
-  created_at: string;
-  updated_at: string;
+  id?: number;
+  name?: string;
+  content?: string;
+  image?: string | null;
+  company?: string;
+  status?: TestimonialStatus;
+  created_at?: string;
+  updated_at?: string;
+
+  star: number;
+      title: string;
+      description: string;
+      avatar: string;
+      avatar_text: string;
 }

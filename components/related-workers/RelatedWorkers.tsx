@@ -17,7 +17,7 @@ const RelatedWorkers = () => {
 
 
     return (
-        <div className="min-h-[1146px] pt-[20px] md:pt-[50px] bg-white w-full px-4 ">
+        <div className="min-h- [1146px] pt-[20px] md:pt-[50px] bg-white w-full px-4 ">
             <div className="mt-[10px] md:mt-[40px] flex flex-col  justify-center gap-[60px] px-4 md:px-[100px] ">
 
                 {/* <p> lorem ipusm dlkfjkdfdlfkjdl </p> */}

@@ -4,16 +4,30 @@ interface Company {
   location: string;
   position: number;
   icon: JSX.Element;
+  logo?: JSX.Element;
+  jobs_count?: number;
+  address?: string;
 }
 
 const CompanyCard = ({ company }: { company: Company }) => {
   return (
     <>
-      <div className="relative bg-white text-black p-6 min-h-[702x] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
-        <div className="flex flex-col gap-[20px]">
-          <div id="company" className="flex  gap-2">
+      <div className="relative bg-white text-black p-6 min-h- [120px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+        <div className="flex flex-col gap-[32px]">
+          <div id="company" className="flex  gap-3">
             {company.icon}
-            <div className="flex flex-col ">
+            {/* <div className="w-[48px] h-[48px] overflow-hidden">
+              <img src={`https://localsjob.com/storage/${company.logo}`} alt="company logo" className="w-full h-full object-cover "/>
+            </div> */}
+             <div className='w-[70px] h-[50px] overflow-hidden rounded '>
+                    <img
+                        // src="/f1soft.png"
+                        src={`https://localsjob.com/storage/${company.logo}`}
+                            alt="company logo"
+                            className=" w-full h-full object-center object-scale-down"
+                        />
+                  </div>
+            <div className="flex flex-col gap-2 ">
               <span className="mt-1 text-[16px] font-medium text-[#767F8C]">
                 {company.name}
               </span>
@@ -42,14 +56,14 @@ const CompanyCard = ({ company }: { company: Company }) => {
                 </svg>
 
                 <span className="mt-1 text-[14px] font-normal text-[#767F8C]">
-                  {company.location}
+                  {company.location || company.address}
                 </span>
               </div>
             </div>
           </div>
 
           <button className=" py-3 px-6 bg-mprimary font-semibold text-figma_red rounded-[4px]">
-            Open positions ({company.position})
+            Open positions ({company.position || company.jobs_count})
           </button>
         </div>
       </div>

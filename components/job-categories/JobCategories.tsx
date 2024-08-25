@@ -3,6 +3,7 @@ import JobCategoryCard from './JobCategoryCard';
 import { PiCode, PiMusicNotes,PiMonitorPlay,PiChartBarHorizontalDuotone,PiDatabase } from 'react-icons/pi';
 import { LiaBriefcaseMedicalSolid } from "react-icons/lia";
 import axios from '@/config/AxiosConfig'
+import Link from 'next/link';
 
 
 interface JobCategoryType {
@@ -31,7 +32,7 @@ const JobCategories = async () => {
     console.log("error",error);
   }
 
-  const CategoryData = JobCategoryData?.data.data.popularJobCategories;
+  const CategoryData:JobCategoryType[] = JobCategoryData?.data.data.popularJobCategories;
 
 
 
@@ -46,13 +47,14 @@ const JobCategories = async () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-4 lg:grid-rows-2 gap-6 mb-4">
           {categories.map((category, index) => (
-            <JobCategoryCard
-              key={index}
+           <Link href={`/jobs/job-categories/${ CategoryData ? CategoryData[index].name.split(/[\/ ]+/).map((value:string) => value.toLocaleLowerCase().trim()).join('-'):'/'}`} key={index}>
+              <JobCategoryCard
               bgColor={category.bgColor}
               icon={category.icon}
-              title={CategoryData[index].name}
-              positions={CategoryData[index].total_positions}
+              title={CategoryData && CategoryData[index].name}
+              positions={CategoryData && CategoryData[index].total_positions}
             />
+            </Link>
           ))}
         </div>
       </div>

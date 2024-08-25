@@ -60,32 +60,32 @@ async function getTestimonials() {
 
 
 
-    // const testimonials:Testimonial[] = [
-    //     {
-    //         star: 5,
-    //         title: "Amazing Services",
-    //         description: "Metus faucibus sed turpis lectus feugiat tincidunt. Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis",
-    //         avatar: 'tavatar1.png',
-    //         name: 'Marko Kihn',
-    //         avatar_text:'Happy Client'
-    // },
-    //     {
-    //         star: 5,
-    //         title: "Everything Simple",
-    //         description: "Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus",
-    //         avatar: 'tavatar2.png',
-    //         name: 'Kristin Hester',
-    //         avatar_text:'Happy Client'
-    // },
-    //     {
-    //         star: 5,
-    //         title: "Awesome, thank you! ",
-    //         description: "Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus. Nulla et tempor montes",
-    //         avatar: 'tavatar3.png',
-    //         name: 'Zis Cisneros',
-    //         avatar_text:'Happy Client'
-    // },
-    // ]
+    const testimonials:Testimonial[] = [
+        {
+            star: 5,
+            title: "Amazing Services",
+            description: "Metus faucibus sed turpis lectus feugiat tincidunt. Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis",
+            avatar: 'tavatar1.png',
+            name: 'Marko Kihn',
+            avatar_text:'Happy Client'
+    },
+        {
+            star: 5,
+            title: "Everything Simple",
+            description: "Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus",
+            avatar: 'tavatar2.png',
+            name: 'Kristin Hester',
+            avatar_text:'Happy Client'
+    },
+        {
+            star: 5,
+            title: "Awesome, thank you! ",
+            description: "Rhoncus sed tristique in dolor. Mus etiam et vestibulum venenatis viverra ut. Elit morbi bibendum ullamcorper augue faucibus. Nulla et tempor montes",
+            avatar: 'tavatar3.png',
+            name: 'Zis Cisneros',
+            avatar_text:'Happy Client'
+    },
+    ]
 
-    // return testimonials;
+    return testimonials;
 }
