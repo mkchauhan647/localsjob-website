@@ -38,6 +38,12 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
     const handleJobSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const searchValue = searchInputRef.current!.value;
+
+        if (searchValue.length == 0) {
+            searchInputRef.current!.focus();
+            searchInputRef.current!.placeholder = "Please enter a job title";
+            return;
+        }
         // if (searchValue.length > 0) {
         //     setJobs([...jobs, searchValue]);
         // }
@@ -126,11 +132,27 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
 
                             {/* Buttons */}
                             <div className="relative flex flex-wrap  md:flex-nowrap justify-center gap-2 mt-8 w-full ">
+
+                                    <a href="/jobs/search-jobs?search=designer">
                                 <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider rounded">Designer</button>
-                                <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">Accounting</button>
-                                <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">SEO Analyst</button>
+                                    
+                                    </a>
+                                    
+                                    <a href="/jobs/search-jobs?search=accountant">
+                                    <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">Accounting</button>
+                                    </a>
+                                    <a href="/jobs/search-jobs?search=seo-analyst">
+                                        
+                                    <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">SEO Analyst</button>
+                                    </a>
+                                    <a href="/jobs/search-jobs?search=frontend-developer">
+
                                 <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">Front end developer</button>
+                                    </a>
+                                    <a href="/jobs/search-jobs?search=digital-marketing">
+
                                 <button className="border-2 border-gray-300 text-xs text-white px-2 py-1 tracking-wider whitespace-nowrap rounded">Digital Marketing</button>
+                                    </a>
                             </div>
                         </div>
                     </div>

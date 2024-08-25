@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { Header } from "antd/es/layout/layout";
 import Head from "next/head";
 import NewFooter from "@/components/NewFooter";
+import BreadCrumbComponent from "@/components/breadcrumb/BreadCrumbComponent";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

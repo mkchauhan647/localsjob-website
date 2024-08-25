@@ -41,14 +41,14 @@ const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
         
             {
                 categories && 
-                <div className="bg-white min-h-[648px] flex flex-col border-b border-[#E4E5E8] shadow-custom gap-[105px] sm:gap-[50px] p-4 pt-[60px] sm:px-[100px] top-[1229px]">
+                <div className="bg-white  flex flex-col border-b border-[#E4E5E8] shadow-custom gap-[105px] sm:gap-[50px] p-4 py-[60px] sm:px-[100px] top-[1229px]">
                 <div className="flex justify-between h-[48px] flex-col sm:flex-row gap-10">
                         <h2 className="text-4xl font-semibold text-black">{relatedJob ? "Related Jobs" : "Featured Jobs"}</h2>
                         {
                             <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg">{relatedJob ? "View more" : "View All"} <span className="ml-2">&rarr;</span></button>
                         }
                             </div>
-                    <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-2 gap-6 w-full mb- 5">
+                    <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5">
         
                   {categories.map((category:Job, index) => (
                       <Link href={`/jobs/${category.name.split(" ").map(value => value.toLocaleLowerCase()).join('-')}/${category.id}`} key={index}>

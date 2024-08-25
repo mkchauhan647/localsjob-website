@@ -13,6 +13,7 @@ import NavMenuEmployer from "@/app/(auth)/employer/components/navMenu";
 import axios from "@/config/AxiosConfig";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
+import BreadCrumbComponent from "../breadcrumb/BreadCrumbComponent";
 const Navbar = ({ home=false }:{home?:boolean}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
@@ -43,7 +44,8 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
     }
   };
   return (
-    <div className={home ? " absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]":" relative sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]"}>
+    <>
+    <div className={home ? " absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]":" relative sm:py-[24px] sm:px[80px]  w-full  z-50 bg-white sm:h-[96px]"}>
       {/* a................bigger screens.................. */}
       <div className=" flex items-center justify-between  container mx-auto navbar ">
         <div className="flex gap-6 lg:gap-10  text-3xl items-center justify-center">
@@ -88,11 +90,11 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
               <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
                   {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
-                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black"} h-[48px] rounded-full `}>
+                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black !border border-black "} h-[48px] rounded-full `}>
                     Log In
                   </button>
                 </Link>
-                <RegisterDropDown/>
+                    <RegisterDropDown home={home} />
               </div>
             )}
             
@@ -157,7 +159,15 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
           </>
         )}
       </div>
+      
     </div>
+ 
+      <div className="bg-white">
+      { 
+      !home && <BreadCrumbComponent/>
+  }
+      </div>
+  </>
   );
 };
 

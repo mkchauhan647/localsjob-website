@@ -1,16 +1,34 @@
-'use client'
 import FeatureJobs from "@/components/featured-jobs/FeatureJobs";
 import { FiSearch } from "react-icons/fi";
 import JobSearchBar from "@/components/job-search-bar/JobSearchBar";
 import JobDetails from "@/components/job-details/JobDetails";
 import BreadCrumbComponent from "@/components/breadcrumb/BreadCrumbComponent";
 import { useSearchParams } from "next/navigation";
-import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb } from "antd";
-const Jobs = () => {
+import JobSearch from "@/components/search-jobs/JobSearch";
+import axios from "axios";
+const Jobs = async ({ params }:{params:{slug:string}}) => {
   
-  const search = useSearchParams();
-  // console.log("search", search.get("search"));
+  const search = params.slug.trim();
+  console.log("search", search);
+  async function fetchData() {
+    try {
+        const res = await axios.get(`https://localsjob.com/api/v1/job-categories/${search}`);
+        // const data = await res.data
+        return res.data.data.data;
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+  const data = await fetchData();
+  console.log("data",data);
+
+
+
+  
+
+
+
   return (
     <>
       <div className="relative bg-black pt-[96px]">
@@ -20,10 +38,11 @@ const Jobs = () => {
 
       {/* BreadCrumb */}
      
-      <BreadCrumbComponent/>
-     
+     <BreadCrumbComponent/>
+
       {/* Job Details */}
       {/* <JobDetails search={search} /> */}
+      <JobSearch searchData={data} />
       <FeatureJobs relatedJob={true} />
     </>
   );

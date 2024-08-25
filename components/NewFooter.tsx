@@ -24,7 +24,7 @@ const NewFooter = () => {
             <h4 className="text-white mb-4 text-[20px]">Quick Link</h4>
             <ul className='space-y-4'>
               <li><a href="#" className="hover:underline text-gray-400 py-[6px]">About</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Contact</ a></li>
+              <li><a href="/contact-us" className="hover:underline text-gray-400">Contact</ a></li>
               <li><a href="#" className="hover:underline text-gray-400 ">Pricing</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Blog</a></li>
             </ul>
@@ -51,8 +51,8 @@ const NewFooter = () => {
             <h4 className="text-white mb-4 text-[20px]">Support</h4>
             <ul className='space-y-4'>
               <li><a href="#" className="hover:underline text-gray-400">Faqs</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Privacy Policy</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Terms & Conditions</a></li>
+              <li><a href="/privacy-policy" className="hover:underline text-gray-400">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:underline text-gray-400">Terms & Conditions</a></li>
             </ul>
           </div>
         </div>
