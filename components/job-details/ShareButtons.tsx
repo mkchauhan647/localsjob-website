@@ -1,16 +1,36 @@
+'use client'
 import { usePathname } from 'next/navigation';
 import { AiOutlineLink } from 'react-icons/ai';
 import { FaLinkedin, FaFacebook, FaTwitter, FaInbox } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
+const useFullUrl = () => {
+    const [fullUrl, setFullUrl] = useState('');
+  
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setFullUrl(window.location.href);
+      }
+    }, []);
+  
+    return fullUrl;
+  };
+  
+
 
 const ShareJob = ({ description }:{description:string}) => {
-  const path = usePathname();
-  const currentUrl = `https://localsjob.com${path}`;
+
+    const currentUrl = useFullUrl();
+    
+
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedDescription = encodeURIComponent(description);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(currentUrl);
-    alert('Link copied to clipboard!');
+      // alert('Link copied to clipboard!');
+      toast.success('Link copied to clipboard!');
   };
 
   return (

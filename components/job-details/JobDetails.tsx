@@ -1,9 +1,8 @@
-'use client'
+// 'use client'
 import JobOverview from "./JobOverview";
 import JobSidebar from "./JobSidebar";
 import JobDescription from "./JobDescription";
 import JobHeader from "./JobHeader";
-import { useEffect } from "react";
 import { Job } from "@/util/types"
 
 const JobDetails = ({ JobData }: { JobData: Job }) => {
