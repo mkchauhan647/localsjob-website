@@ -14,11 +14,16 @@ interface JobSidebarProps {
 
 
 const JobSidebar = (jobSidebarData: JobSidebarProps) => {
-    const salary = jobSidebarData.salary_from || jobSidebarData.salary_to ?( `Rs.${jobSidebarData.salary_from} ${jobSidebarData.salary_to ? ` - Rs.${jobSidebarData.salary_to}`:''}` ) : null;
-    
+    let salary = jobSidebarData.salary_from || jobSidebarData.salary_to ?( `Rs.${jobSidebarData.salary_from} ${jobSidebarData.salary_to ? ` - Rs.${jobSidebarData.salary_to}`:''}` ) : "Negotiable";
+   
+    console
+   
+    if (jobSidebarData.salary_from == 0) {
+        salary = "Negotiable";
+    }
     return (
         // {/* Salary & Location */}
-        <div className="flex p-6 xl:p-8 gap-3 xl:gap-8  border-2 border-[#E7F0FA] min-h-[160px] rounded-lg">
+        <div className="flex p-6 xl:p-8 gap-3 xl:gap-8  border-2 border-[#E7F0FA] min-h- [160px] rounded-lg">
 
         <div className="flex flex-col gap-2">
                 <h2 className="font-medium">Salary (NPR)</h2>

@@ -7,7 +7,8 @@ interface JobHeaderType{
     company: string,
     featured: Number,
     type?: string,
-    apply_url:string,
+    apply_url: string,
+    logo: string
     
     
 }
@@ -18,15 +19,19 @@ const JobHeader = ({ jobHeader }: { jobHeader: JobHeaderType }) => {
     return (
         <div className="flex justify-between items-center xl:h-[96px] gap-8 flex-wrap ">
             <div className="flex justify-between items-center gap-4">
+                {/* <div className="w-[85px] md:w-[96px] h-[85px] md:h-[96px] rounded-full overflow-hidden"> */}
                 <img
-                    src="/f1soft.png"
+                    // src="/f1soft.png"
+                    src={`${jobHeader.logo ? `https://localsjob.com/storage/${jobHeader.logo}` : "/f1soft.png"}`}
+
                     alt="company logo"
-                    className=" w-[85px] md:w-[96px] h-[85px] md:h-[96px] rounded-full object-cover"
+                    className="w-[85px] md:w-[96px] h-[85px] md:h-[96px] rounded-full object-scale-down"
                 />
+               {/* </div> */}
 
                 <div className="flex flex-col gap-3 mb-3">
                     {/* <h2 className="text-2xl font-medium whitespace-nowrap">Senior UX Designer</h2> */}
-                    <h2 className="text-2xl font-medium whitespace-nowrap">{jobHeader.name}</h2>
+                    <h2 className=" text-[20px] lg:text-2xl font-medium whitespace-nowrap">{jobHeader.name}</h2>
                     <div className="flex gap-2 h-[28px] justify-center items-center fl ex-wrap">
                         <p className="text-gray-500 text-[14px] md:text-[18px]">at {jobHeader.company}</p>
                         <p className="text-white uppercase text-[14px] md:text[16px] bg-green-600 py- 1 px-2  md:px-3 rounded whitespace-nowrap">

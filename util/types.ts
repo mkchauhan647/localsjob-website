@@ -68,9 +68,14 @@ interface Status {
       id: string;
       name: string;
     }
+    
     degree_level: {
       id: string;
       name: string;
+    }
+    salary_range: {
+      value: string;
+      label: string;
     }
   }
   

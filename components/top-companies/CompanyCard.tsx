@@ -12,7 +12,7 @@ interface Company {
 const CompanyCard = ({ company }: { company: Company }) => {
   return (
     <>
-      <div className="relative bg-white text-black p-6 min-h- [120px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+      <div className="relative bg-white text-black p-6 min-h- [120px] w-auto xl:w-[410px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
         <div className="flex flex-col gap-[32px]">
           <div id="company" className="flex  gap-3">
             {company.icon}

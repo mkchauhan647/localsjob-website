@@ -9,9 +9,12 @@ export const metadata: Metadata = {
 const page = () => {
   return (
     <>
-      <div className='flex items-center  justify-center w-full h-[90vh]'>
-        <div className='flex  justify-center  h-[95%] w-[85%] '>
-          <div className=' w-1/2 py-5 '>
+      <div className='flex items-center  justify-center w-full h-full container mx-auto px-4'>
+        <div className='flex flex-col justify-between lg:flex-row-reverse grow gap-4  '>
+        <div className="mb-4 self-center">
+            <Image src='/register.jpg' alt='register image' width={500} height={500} />
+          </div>
+          <div className=' grow'>
             <h3 className=' text-lg font-semibold mb-2'>Login to explore startUpjobs</h3>
             <span className="className=' text-2xl font-semibold mb-1">
               Welcome back to StartUpsjob!
@@ -21,9 +24,7 @@ const page = () => {
             </p>
             <LoginForm />
           </div>
-          <div>
-            <Image src='/register.jpg' alt='register image' width={500} height={500} />
-          </div>
+         
         </div>
 
       </div>

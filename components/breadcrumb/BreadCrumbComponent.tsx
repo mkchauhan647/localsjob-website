@@ -42,14 +42,17 @@ const BreadCrumbComponent = () => {
         // const path = router.asPath.split("/").filter((p) => p);
        if(typeof window !== 'undefined'){
            const path = window.location.href.split("//").at(1)?.split('/').map(value => {
+               
                if (value.includes("?")) {
                
-                   return value.split("?")[1].split("=").join("-");
+                   return value.split("?")[1].split("=").join(" ");
                }
+
                else {
                    return value;
             }
-        }).map((p) => p.split('-').length > 1 ? p.split("-").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join(" / "): p.charAt(0).toUpperCase() + p.slice(1)) as string[];
+           }).filter((v)=> parseInt(v) ? false : true)
+               .map((p) => p.split('-').length > 1 ? p.split("-").map(value => value.charAt(0).toUpperCase() + value.slice(1)).join("  ") : p.charAt(0).toUpperCase() + p.slice(1)) as string[];
         
            console.log("path", path);
            
@@ -90,7 +93,7 @@ const BreadCrumbComponent = () => {
         //         </span>
         //     </div>
         // </div>
-        <div className="container mx-auto flex justify-between py-8 px-4">
+        <div className="container mx-auto flex justify-between gap-2 py-8 px-4">
 
 
             <div className="">

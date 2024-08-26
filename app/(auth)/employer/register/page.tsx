@@ -6,18 +6,19 @@ import RegistrationForm from './form'
 const page = () => {
   return (
     <>
-      <div className='flex items-center justify-center w-full h-[120vh]k pt-[96px]'>
-        <div className='flex h-[95%] w-[85%] '>
-          <div className=' w-1/2 py-5 ml-12 md:ml-7'>
+      <div className='flex  items-center justify-center w-full h-full pt-[96px] container mx-auto px-4' >
+        <div className='flex  flex-col lg:flex-row-reverse justify-between grow '>
+        <div className='mb-4 self-center'>
+            <Image src='/register.jpg' alt='register image' width={500} height={500} />
+          </div>    
+          <div className='grow '>
             <h3 className=' text-lg font-semibold'>Create your free Employer Account</h3>
             <p className='text-sm'>
               Fill the basic information and start recruiting now!
             </p>
             <RegistrationForm />
           </div>
-          <div >
-            <Image src='/register.jpg' alt='register image' width={500} height={500} />
-          </div>         
+               
         </div>
 
       </div>

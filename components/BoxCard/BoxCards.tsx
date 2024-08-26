@@ -22,7 +22,8 @@ const BoxCards = ({ bgColor, highlightColor, strokeColor,boxCardData }:{bgColor:
 
   return (
     <div className=" lg:absolute lg:top-[550px] xl:top-[644px] lg:px-[300px] sm:px-[100px]  lg:-left-[204px] xl:w-[1920px] w-full p-4 ">
-      <div className="flex lg:justify-between justify-center items-start md:items-center flex-col lg:flex-row gap-4">
+      {/* <div className="flex lg:justify-between justify-center items-start md:items-center flex-col lg:flex-row gap-4"> */}
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
         {cards.map((card, index) => (
           <BoxCard
             key={index}
