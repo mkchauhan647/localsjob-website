@@ -10,10 +10,10 @@ const JobSearch = ({ searchData }: { searchData: Job[] }) => {
 
     return (
 
-      <div className='container mx-auto pt-[60px] grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
-        {/* // <div className='container mx-auto flex pt-[60px]  gap-4 flex-col lg:flex-row justify -center items -center'> */}
+      // <div className='container mx-auto pt-[60px] grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 gap-4'>
+          <div className='container mx-auto flex pt-[60px] flex-wrap  gap-4 flex-col lg:flex-row justify -center items -center px-4'> 
             {searchData?.map((job: Job) => (
-                <Link href={`/jobs/${job.name.split(" ").map(value=> value.toLocaleLowerCase()).join('-')}/${job.id}`} key={job.id}>
+                <Link href={`/jobs/${job.name.split(" ").map(value=> value.toLocaleLowerCase()).join('-')}/${job.id}`} key={job.id} className=''>
                         <SearchJobCard job={job} />
                 </Link>
             ))}
@@ -33,9 +33,12 @@ export default JobSearch;
 export const SearchJobCard = ({ job }: { job: Job }) => {
     
     console.log("job",job.job_types);
-    const salary = job.salary_from || job.salary_to ?( `Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}`:''}` ) : null;
+  let salary = job.salary_from || job.salary_to ? (`Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}` : ''}`) : null;
+  if (job.salary_from == 0) {
+    salary = "Negotiable";
+}
     return (
-        <div className="relative bg-white text-black p-5 h- [17 0px] w-auto xl:w-[424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+        <div className="relative bg-white text-black p-5 h- [17 0px] w-auto xl:w-[410px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
             {/* <div className=" p-[18px]"> */}
             {/* box-shadow: 0px 2px 18px 0px #18191C08; */}
 

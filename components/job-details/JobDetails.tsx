@@ -37,7 +37,9 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
                         name: JobData.name,
                         company: JobData.company.name,
                         apply_url: JobData.company.website,
-                        featured:JobData.company.is_featured
+                                    featured: JobData.company.is_featured,
+                                    logo: JobData.company.logo
+                        
                         
                         }
                 } />
@@ -63,7 +65,7 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
                                         salary_from={JobData.salary_from || 0}
                                         salary_to={JobData.salary_to || 0}
                                         location={JobData.address}
-                                        salaryType="Monthly"
+                                        salaryType={JobData?.salary_range?.value || "Monthly"}
                                         
                                     />
 
@@ -74,7 +76,8 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
                                         jobExpire={JobData.expired_date}
                                         jobLevel={JobData.job_level}
                                         experience={JobData.job_experience.name}
-                                        education = {JobData.degree_level.name}
+                                        education={JobData.degree_level.name}
+                                        description={JobData.description}
                                     
                                     />
                     </div>

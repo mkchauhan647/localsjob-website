@@ -10,7 +10,7 @@ export default function RegistrationPageLayout({
 }) {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             {children}
         </>
     );
