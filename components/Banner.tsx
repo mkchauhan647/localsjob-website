@@ -56,7 +56,7 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
             const boxCards = ['total-live-jobs', 'total-companies', 'total-applicants','total-resume'];
             try {
                 boxCards.map(async (boxCard,index) => {
-                    const res = await axios(`https://localsjob.com/api/v1/${boxCard}`);
+                    const res = await axios(`https://main.localsjob.com/api/v1/${boxCard}`);
                     // const data = await res.json();
                     const attr = boxCards[index].split('-').map((value, index) => {
                         

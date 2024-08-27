@@ -11,9 +11,11 @@ const JobSearch = ({ searchData }: { searchData: Job[] }) => {
     return (
 
       // <div className='container mx-auto pt-[60px] grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 gap-4'>
-          <div className='container mx-auto flex pt-[60px] flex-wrap  gap-4 flex-col lg:flex-row justify -center items -center px-4'> 
+      // <div className='container mx-auto flex pt-[60px] flex-wrap  gap-4 flex-col lg:flex-row justify -center items -center px-4'> 
+      <div className=" container mx-auto grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5 px-4">
+          
             {searchData?.map((job: Job) => (
-                <Link href={`/jobs/${job.name.split(" ").map(value=> value.toLocaleLowerCase()).join('-')}/${job.id}`} key={job.id} className=''>
+                <Link href={`/jobs/${job.name.split(" ").map(value=> value.toLocaleLowerCase()).join('-')}/${job.slugable.key}`} key={job.id} className=''>
                         <SearchJobCard job={job} />
                 </Link>
             ))}
@@ -32,13 +34,15 @@ export default JobSearch;
 
 export const SearchJobCard = ({ job }: { job: Job }) => {
     
-    console.log("job",job.job_types);
+  console.log("job", job.job_types);
+  console.log("tags",job)
+  
   let salary = job.salary_from || job.salary_to ? (`Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}` : ''}`) : null;
   if (job.salary_from == 0) {
     salary = "Negotiable";
 }
     return (
-        <div className="relative bg-white text-black p-5 h- [17 0px] w-auto xl:w-[410px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+        <div className="relative bg-white text-black p-5 min-h-[270px] w-auto xl:w- [424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] transition-all duration-300 hover:scale-105 hover:shadow-2xl">
             {/* <div className=" p-[18px]"> */}
             {/* box-shadow: 0px 2px 18px 0px #18191C08; */}
 
@@ -67,7 +71,7 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                     <div className='w-[70px] h-[60px] overflow-hidden rounded '>
                     <img
                         // src="/f1soft.png"
-                        src={`https://localsjob.com/storage/${job.company?.logo}`}
+                        src={`https://main.localsjob.com/storage/${job.company?.logo}`}
                             alt="company logo"
                             className=" w-full h-full object-center object-scale-down"
                         />
@@ -85,7 +89,15 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                        </div>
                     </div>
                     
-                </div>
+          </div>
+          
+          <div id='tags' className='flex flex-wrap gap-2 mt-2'>
+            {
+                 job?.tags &&  job.tags.map((tag, index) => (
+                      <div key={index} className="text-[12px] font-normal text-[#767F8C] bg-[#E7F6EA] py-1 px-2 rounded">{tag.name}</div>
+                  ))
+            }
+            </div>
                 
         </div>
       </div>
@@ -152,6 +164,14 @@ interface Status {
     company_id: number;
     is_featured: number;
     company: Company;
-      job_types: JobType[];
+    job_types: JobType[];
+    slugable: {
+      key: string;
+    }
+    tags: [
+      {
+        name: string;
+      }
+    ]
 }
   

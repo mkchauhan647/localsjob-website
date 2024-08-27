@@ -1,15 +1,11 @@
-'use client'
 import FeatureJobs from "@/components/featured-jobs/FeatureJobs";
 import { FiSearch } from "react-icons/fi";
 import JobSearchBar from "@/components/job-search-bar/JobSearchBar";
 import JobDetails from "@/components/job-details/JobDetails";
 import BreadCrumbComponent from "@/components/breadcrumb/BreadCrumbComponent";
-import { useSearchParams } from "next/navigation";
-import { HomeOutlined } from "@ant-design/icons";
-import { Breadcrumb } from "antd";
+import Link from "next/link";
 const Jobs = () => {
   
-  const search = useSearchParams();
   // console.log("search", search.get("search"));
   return (
     <>
@@ -20,7 +16,10 @@ const Jobs = () => {
 
       {/* BreadCrumb */}
      
-      <BreadCrumbComponent/>
+      <BreadCrumbComponent />
+      
+      <Link href='/companies'>Intercepting routers</Link>
+
      
       {/* Job Details */}
       {/* <JobDetails search={search} /> */}

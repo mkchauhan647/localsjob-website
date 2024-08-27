@@ -4,7 +4,7 @@ const WebBanner = () => {
 
     return (
         <>
-           <div className="relative bg-white    sm:overflow-hidden min-h-[556px] sm:min-h-[430px] mx-[1px] sm:mx-9 my-1 sm:my-14 rounded-[20px]">
+           <div className="relative bg-white    sm:overflow-hidden min-h-[556px] sm:min-h-[430px] mx-[1px] sm:mx-9 my-1 sm:my-14 rounded-[20px] transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl cursor-pointer">
       <img
         src="/webbanner.png" 
         alt="Promo Banner"

@@ -13,11 +13,14 @@ const JobDetailsPage = async ({ params }: { params: { jobname: string, id: strin
 
   console.log("token", token);
 
+  console.log("params", params);
+
   async function fetchJobById() {
     try {
-      const res = await axios.get(`/job/${params.id}`);
+      const res = await axios.get(`/jobs/${params.id}`);
 
-      return res.data.data.job;
+      // return res.data.data.job;
+      return res.data.data;
     }
     catch (error) {
       console.log(error);
@@ -28,7 +31,7 @@ const JobDetailsPage = async ({ params }: { params: { jobname: string, id: strin
 
   const JobData:Job = await fetchJobById();
 
-  // console.log("JobData", JobData);
+  console.log("JobData", JobData);
 
 
 

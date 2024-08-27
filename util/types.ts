@@ -77,6 +77,14 @@ interface Status {
       value: string;
       label: string;
     }
+    slugable: {
+      key: string;
+    }
+    tags: [
+      {
+        name: string;
+      }
+    ]
   }
   
 

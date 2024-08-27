@@ -5,14 +5,14 @@ import JobDetails from "@/components/job-details/JobDetails";
 import BreadCrumbComponent from "@/components/breadcrumb/BreadCrumbComponent";
 import { useSearchParams } from "next/navigation";
 import JobSearch from "@/components/search-jobs/JobSearch";
-import axios from "axios";
-const Jobs = async ({ params }:{params:{slug:string}}) => {
+import axios from "@/config/AxiosConfig";
+const Jobs = async ({ params }: { params: { slug: string } }) => {
   
   const search = params.slug.trim();
   console.log("search", search);
   async function fetchData() {
     try {
-        const res = await axios.get(`https://localsjob.com/api/v1/job-categories/${search}`);
+        const res = await axios.get(`/job-categories/${search}`);
         // const data = await res.data
         return res.data.data.data;
     } catch (error) {

@@ -22,7 +22,7 @@ const JobHeader = ({ jobHeader }: { jobHeader: JobHeaderType }) => {
                 {/* <div className="w-[85px] md:w-[96px] h-[85px] md:h-[96px] rounded-full overflow-hidden"> */}
                 <img
                     // src="/f1soft.png"
-                    src={`${jobHeader.logo ? `https://localsjob.com/storage/${jobHeader.logo}` : "/f1soft.png"}`}
+                    src={`${jobHeader.logo ? `https://main.localsjob.com/storage/${jobHeader.logo}` : "/f1soft.png"}`}
 
                     alt="company logo"
                     className="w-[85px] md:w-[96px] h-[85px] md:h-[96px] rounded-full object-scale-down"
@@ -53,7 +53,9 @@ const JobHeader = ({ jobHeader }: { jobHeader: JobHeaderType }) => {
                 </div>
                 <Link href={`${jobHeader.apply_url}`}>
                 
-                <button className="bg-figma_red text-white px-8 py-2  rounded  md:w-[248px] text-center ">
+                    <button className="bg-figma_red text-white px-8 py-2  rounded  md:w-[248px] text-center ">
+                {/* <button className="bg-figma_red text-white px-8 py-2  rounded  md:w-[248px] text-center hover:bg-green-600 hover:border hover:border- figma_red  transition-all duration-300"> */}
+                        
                     Apply Now{" "}
                     <span className="ml-2 text-[24px] text-center"> &rarr;</span>
                 </button>

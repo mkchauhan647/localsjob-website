@@ -2,7 +2,7 @@ import React from "react";
 
 const JobCategoryCard = ({ bgColor, icon, title, positions }:{bgColor:string,icon:React.ReactElement,title:string,positions:number}) => {
     return (
-      <div className="bg-white text-black gap-6 p-6 min-h-[150px] w-auto xl:w-[316px] rounded-lg flex items-center justify-start">
+      <div className="bg-white text-black gap-6 p-6 min-h-[150px] w-auto xl:w- [316px] rounded-lg flex items-center justify-start transition-all duration-300 hover:scale-105 hover:shadow-2xl">
         {/* <div className=" p-[18px]"> */}
           {icon}
         {/* </div> */}

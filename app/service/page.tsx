@@ -1,4 +1,5 @@
 'use client'
+import Navbar from '@/components/navbar/Navbar';
 import React from 'react';
 
 // Predefined fallback images related to content
@@ -45,7 +46,9 @@ const services = [
 ];
 
 const OurServices = () => {
-  return (
+    return (
+      <>
+      <Navbar/>
     <div className="container mx-auto p-4 bg-white shadow-lg">
           <h2 className="text-2xl font-bold mb-8">Our Services
               <div className="h-1 w-20 bg-green-500 mt-1"></div>
@@ -74,6 +77,7 @@ const OurServices = () => {
         </div>
       ))}
     </div>
+      </>
   );
 };
 

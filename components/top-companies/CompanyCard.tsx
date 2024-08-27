@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 interface Company {
   name: string;
@@ -12,7 +13,7 @@ interface Company {
 const CompanyCard = ({ company }: { company: Company }) => {
   return (
     <>
-      <div className="relative bg-white text-black p-6 min-h- [120px] w-auto xl:w-[410px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] ">
+      <div className="relative bg-white text-black p-6 min-h- [120px] w-auto xl:w- [410px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] transition-all duration-300  hover:shadow-2xl ">
         <div className="flex flex-col gap-[32px]">
           <div id="company" className="flex  gap-3">
             {company.icon}
@@ -22,7 +23,7 @@ const CompanyCard = ({ company }: { company: Company }) => {
              <div className='w-[70px] h-[50px] overflow-hidden rounded '>
                     <img
                         // src="/f1soft.png"
-                        src={`https://localsjob.com/storage/${company.logo}`}
+                        src={`https://main.localsjob.com/storage/${company.logo}`}
                             alt="company logo"
                             className=" w-full h-full object-center object-scale-down"
                         />
@@ -62,9 +63,11 @@ const CompanyCard = ({ company }: { company: Company }) => {
             </div>
           </div>
 
+            
           <button className=" py-3 px-6 bg-mprimary font-semibold text-figma_red rounded-[4px]">
             Open positions ({company.position || company.jobs_count})
           </button>
+        
         </div>
       </div>
     </>
