@@ -21,14 +21,15 @@ const JobSearchBar = () => {
     useEffect(() => {
         async function fetchCountryData() {
             try {
-                const res = await fetch(`https://localsjob.com/api/v1/countries`);
+                const res = await fetch(`https://main.localsjob.com/api/v1/countries`);
                 const data = await res.json();
-                console.log("data", data);
+                console.log("dataContry", data);
             }
             catch (error) {
                 console.log(error);
             }
         }
+        fetchCountryData();
     },[])
 
 
