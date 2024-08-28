@@ -1,5 +1,6 @@
 import CompanyCard from '@/components/top-companies/CompanyCard';
 import axios from '@/config/AxiosConfig'
+import Link from 'next/link';
 interface Company {
     name: string;
     location: string;
@@ -8,6 +9,7 @@ interface Company {
     logo?: JSX.Element;
     jobs_count?: number;
     address?: string;
+    website?: string;
 }
 
 const TopCompanies = async () => {
@@ -54,7 +56,10 @@ const TopCompanies = async () => {
             <div className="grid grid-cols-1  grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6">
 
           {companies.map((category, index) => (
-            <CompanyCard key={index} company={category} />
+                    <Link href={`/companies/${category.name.split(/[\/ ]+/).map((value: string) => value.toLocaleLowerCase().trim()).join('-')}`} className="transition-all duration-300 hover:scale-[1.05] ">
+
+                  <CompanyCard company={category} />
+                </Link>
           ))}
         </div>
 

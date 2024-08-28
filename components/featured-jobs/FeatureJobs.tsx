@@ -45,13 +45,13 @@ const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
                 <div className="flex justify-between h-[48px] flex-col sm:flex-row gap-10">
                         <h2 className="text-4xl font-semibold text-black">{relatedJob ? "Related Jobs" : "Featured Jobs"}</h2>
                         {
-                            <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg">{relatedJob ? "View more" : "View All"} <span className="ml-2">&rarr;</span></button>
+                            <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg hover:bg-figma_red hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl">{relatedJob ? "View more" : "View All"} <span className="ml-2">&rarr;</span></button>
                         }
                             </div>
                     <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5">
         
                   {categories.map((category:Job, index) => (
-                      <Link href={`/jobs/${category.name.split(" ").map(value => value.toLocaleLowerCase()).join('-')}/${category.id}`} key={index}>
+                      <Link href={`/jobs/${category.name.split(" ").map(value => value.toLocaleLowerCase()).join('-')}/${category.slugable.key}`} key={index}>
                           {/* <FeatureJobCard  job={category} /> */}
                             <SearchJobCard job={category} />  
                       </Link>

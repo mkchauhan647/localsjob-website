@@ -5,6 +5,7 @@ interface Card {
   icon: React.ReactElement;
   number: string;
   description: string;
+  link:string;
 }
 
 interface BoxCardData {
@@ -21,15 +22,16 @@ const BoxCards = ({ bgColor, highlightColor, strokeColor,boxCardData }:{bgColor:
   
 
   return (
-    <div className=" lg:absolute lg:top-[550px] xl:top-[644px] lg:px-[300px] sm:px-[100px]  lg:-left-[204px] xl:w-[1920px] w-full p-4 ">
+    <div className=" lg:absolute lg:top-[550px] xl:top-[644px] lg:px- [300px] sm:px-[100px]  lg:- left- [204px] xl:w- [1920px] w-full p-4 ">
       {/* <div className="flex lg:justify-between justify-center items-start md:items-center flex-col lg:flex-row gap-4"> */}
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4'>
+      <div className='grid grid-cols-2 xl:grid-cols-4 gap-5'>
         {cards.map((card, index) => (
           <BoxCard
             key={index}
             icon={card.icon}
             number={card.number}
             description={card.description}
+            link={card.link}
           />
         ))}
       </div>
@@ -59,6 +61,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
       ),
       number: boxCardData.totalLiveJobs ?? '0',
       description: 'Live Job',
+      link:'/jobs'
     },
     {
       icon: (
@@ -77,6 +80,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
       ),
       number: boxCardData.totalCompanies ?? '0',
       description: 'Companies',
+      link: '/companies'
     },
     {
       icon: (
@@ -91,6 +95,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
       ),
       number: boxCardData.totalApplicants ?? '0',
       description: 'Members',
+      link: '/members'
     },
     {
       icon: (
@@ -103,6 +108,7 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
       ),
       number: boxCardData.totalResume ?? '0',
       description: 'Resumes',
+      link: '/resumes'
     },
   ];
 

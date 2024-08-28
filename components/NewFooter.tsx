@@ -23,7 +23,7 @@ const NewFooter = () => {
           <div>
             <h4 className="text-white mb-4 text-[20px]">Quick Link</h4>
             <ul className='space-y-4'>
-              <li><a href="#" className="hover:underline text-gray-400 py-[6px]">About</a></li>
+              <li><a href="/about" className="hover:underline text-gray-400 py-[6px]">About</a></li>
               <li><a href="/contact-us" className="hover:underline text-gray-400">Contact</ a></li>
               <li><a href="#" className="hover:underline text-gray-400 ">Pricing</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Blog</a></li>
@@ -32,7 +32,7 @@ const NewFooter = () => {
           <div>
             <h4 className="text-white mb-4 text-[20px]">Candidate</h4>
             <ul className='space-y-4'>
-              <li><a href="#" className="hover:underline text-gray-400">Browse Jobs</a></li>
+              <li><a href="/jobs" className="hover:underline text-gray-400">Browse Jobs</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Browse Employers</a></li>
               <li><a href="#" className="hover:underline text-gray-400" >Candidate Dashboard</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Saved Jobs</a></li>
@@ -58,7 +58,7 @@ const NewFooter = () => {
         </div>
       </div>
       <div className="bottom-0 right-0 left-0 px-4 md:px-[100px] py-10  border-t border-gray-700  flex justify-between  gap-4  items-center">
-        <p className="text-sm  text-gray-400 ">&copy; 2024 LocalsJob - Second Name. All rights Reserved</p>
+        <p className="text-sm  text-gray-400 ">&copy; 2024 LocalsJob - All rights Reserved</p>
         <div className="flex space-x-4">
           <a href="#" className="text-gray-400 text-[20px] hover:text-white"><FaFacebookF /></a>
           <a href="#" className="text-gray-400  text-[20px] hover:text-white"><FaTwitter /></a>

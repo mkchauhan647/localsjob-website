@@ -14,7 +14,7 @@ import parse from 'html-react-parser'
 const TestimonialCard = ({ testimonial }:{testimonial:Testimonial}) => {
 
     return (
-        <div className="flex flex-col gap-4 justify-between bg-white p-10  rounded-[20px] w-[95%]  lg:w-[416px] h-[400px] mb-3">
+        <div className="flex flex-col gap-4 justify-between bg-white p-10  rounded-[20px] w-[95%]  lg:w- [416px] h-[400px] mb-3 transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer">
            
             <div className="relative flex  gap-[20px] flex-col  min-h-[199px]">
                 <div className="flex gap-1 justify-start">
@@ -52,7 +52,7 @@ const TestimonialCard = ({ testimonial }:{testimonial:Testimonial}) => {
             <div className="flex items-center gap-4 ">
                 {/* <img src={`/${testimonial.avatar}`} alt="avatar" className="w-16 h-16 border rounded-full object-cover object-top" /> */}
                 <div className="w-16 h-16 border rounded-full overflow-hidden">
-                    <img src={`${testimonial.image ? `https://localsjob.com/storage/${testimonial.image}`: 'tavatar1.png'}`} alt="avatar" className={`${testimonial.image ? "w-full h-full  mt -5 scale- [1.3] mx-auto  object-top object-cover" : "w-full h-full  mt-5 scale-[1.3] mx-auto  object-top object-cover"}`} />
+                    <img src={`${testimonial.image ? `https://main.localsjob.com/storage/${testimonial.image}`: 'tavatar1.png'}`} alt="avatar" className={`${testimonial.image ? "w-full h-full  mt -5 scale- [1.3] mx-auto  object-top object-cover" : "w-full h-full  mt-5 scale-[1.3] mx-auto  object-top object-cover"}`} />
 </div>
 
                 <div>

@@ -22,8 +22,8 @@ const Testimonials = async () => {
 
             <div className="pr-4">
                 <div className="flex flex-col items-center justify-center text-center py-20">
-                    <h2 className="text-black text-[50px] leading-[60px] font-semibold text-left line-clamp-1">Testimonials from Our Customers</h2>
-                    <p className="text-black mt-4 text-center line-clamp-1 mx-auto md:w-[703px]">At eu lobortis pretium tincidunt amet lacus ut aenean aliquet. Blandit a massa elementum id scelerisque rhoncus. Lectus dolor blandit massa pretium id ultrices phasellus tortor. Risus risus lectus augue justo lacus viverra sit. Ultricies purus dolor viverra mi laoreet at cursus justo. Ultrices purus diam egestas amet faucibus tempor blandit. Elit velit mauris aliquam est diam. Leo sagittis consectetur diam morbi erat aenean. Vulputate praesent congue faucibus in euismod feugiat euismod volutpat. Adipiscing risus amet phasellus imperdiet eget vel pulvinar. Risus in felis faucibus sit. Scelerisque consequat iaculis mauris amet vel felis id tincidunt nunc.</p>
+                    <h2 className="text-black text-[50px] leading-[60px] font-semibold text-left line-clamp-1">Testimonials</h2>
+                    {/* <p className="text-black mt-4 text-center line-clamp-1 mx-auto md:w-[703px]">At eu lobortis pretium tincidunt amet lacus ut aenean aliquet. Blandit a massa elementum id scelerisque rhoncus. Lectus dolor blandit massa pretium id ultrices phasellus tortor. Risus risus lectus augue justo lacus viverra sit. Ultricies purus dolor viverra mi laoreet at cursus justo. Ultrices purus diam egestas amet faucibus tempor blandit. Elit velit mauris aliquam est diam. Leo sagittis consectetur diam morbi erat aenean. Vulputate praesent congue faucibus in euismod feugiat euismod volutpat. Adipiscing risus amet phasellus imperdiet eget vel pulvinar. Risus in felis faucibus sit. Scelerisque consequat iaculis mauris amet vel felis id tincidunt nunc.</p> */}
                 </div>
             </div>
 

@@ -16,7 +16,7 @@ interface JobSidebarProps {
 const JobSidebar = (jobSidebarData: JobSidebarProps) => {
     let salary = jobSidebarData.salary_from || jobSidebarData.salary_to ?( `Rs.${jobSidebarData.salary_from} ${jobSidebarData.salary_to ? ` - Rs.${jobSidebarData.salary_to}`:''}` ) : "Negotiable";
    
-    console
+    
    
     if (jobSidebarData.salary_from == 0) {
         salary = "Negotiable";
