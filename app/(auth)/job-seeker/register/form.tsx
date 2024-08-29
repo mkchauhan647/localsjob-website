@@ -71,7 +71,7 @@ const RegistrationForm = () => {
         // formData.append
 
         try {
-            const response = await axios.post('/account-register', {
+            const response = await axios.post('/register', {
                 first_name: values.first_name,
                 last_name: values.last_name,
                 email: values.email,

@@ -70,7 +70,7 @@ const RegistrationForm: React.FC = () => {
         // formData.append
 
         try {
-            const response = await axios.post('/account-register', {
+            const response = await axios.post('/register', {
                 first_name: values.first_name,
                 last_name: values.last_name,
                 email: values.email,
@@ -81,7 +81,7 @@ const RegistrationForm: React.FC = () => {
             }, {
                 headers: {
                     'Accept': 'Application/json',
-                    'Content-Type': 'Application/json'
+                    'Content-Type': 'Application/x-www-form-urlencoded',
             }, });
 
         if (response.status === 200) {
