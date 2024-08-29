@@ -67,41 +67,52 @@ const RegistrationForm = () => {
         formData.append('email', values.email);
         formData.append('phone', values.phone);
         formData.append('password', values.password);
-        formData.append('confirm_password', values.confirm_password);
-        // formData.append
+        formData.append('password_confirmation', values.password_confirmation);
+        formData.append("is_employer", "0");
+        formData.append("gender", values.gender);
 
         try {
-            const response = await axios.post('/register', {
-                first_name: values.first_name,
-                last_name: values.last_name,
-                email: values.email,
-                phone: values.phone,
-                password: values.password,
-                password_confirmation: values.password_confirmation,
-                is_employer: 0,
-            }, {
+            const response = await axios.post('/create-account',
+                formData
+            //     {
+            //     first_name: values.first_name,
+            //     last_name: values.last_name,
+            //     email: values.email,
+            //     phone: values.phone,
+            //     password: values.password,
+            //     password_confirmation: values.password_confirmation,
+            //     is_employer: 0,
+            //     gender: values.gender
+            // }
+                , {
               headers: {
                 'Accept': 'Application/json',
-                'Content-Type': 'Application/json',
-            }, });
+                // 'Content-Type': 'Application/json',
+                    },
+                });
+            
+            console.log('response', response);
 
         if (response.status === 200) {
             console.log('job-seeker account created successfully!');
             
             console.log("res", response.data);
-          if (response.data?.data?.token) {
+          if (response.data?.data?.access_token) {
 
-            Cookies.set('token', response.data.data.token, { expires: 7 }); // Set expiry for 7 days
-            toast.success('Job-seeker account created successfully!');
+            Cookies.set('token', response.data.data.access_token, { expires: 7 }); // Set expiry for 7 days
+              toast.success('Job-seeker account created successfully!');
+              window.location.href = '/job-seeker/candidate-dashboard';
           }
                
 
 
         } 
         }
-       catch (error) {
+       catch (error:any) {
         console.error('There was an error creating the job-seeker account!', error);
-           toast.error('There was an error creating the job-seeker account!');
+            //    toast.error( 'There was an error creating the job-seeker account!');
+        toast.error(error?.response?.data?.message || 'There was an error creating the employer account!');
+            
         }
 
 
