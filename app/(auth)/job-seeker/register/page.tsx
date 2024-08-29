@@ -16,7 +16,7 @@ const page = () => {
             <p className='text-sm'>
               Register with basic information, Complete your profile and start applying for the job for free!
             </p>
-            <RegistrationForm />
+            <RegistrationForm/>
           </div>
         </div>
 

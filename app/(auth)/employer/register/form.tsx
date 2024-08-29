@@ -9,6 +9,7 @@ import {
 // import axios from 'axios';
 import axios from '@/config/AxiosConfig';
 import toast, { Toaster } from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 const { Option } = Select;
 
@@ -53,7 +54,7 @@ const RegistrationForm: React.FC = () => {
     const [form] = Form.useForm();
 
     const onFinish = async (values: any) => {
-        // console.log('Received values of form: ', values);
+        console.log('Received values of form: ', values);
 
         // api endpoint is https://main.localsjob.com/api/v1/employers/register
 
@@ -69,26 +70,32 @@ const RegistrationForm: React.FC = () => {
         // formData.append
 
         try {
-            const response = await axios.post('/register', {
+            const response = await axios.post('/account-register', {
                 first_name: values.first_name,
                 last_name: values.last_name,
                 email: values.email,
                 phone: values.phone,
                 password: values.password,
                 password_confirmation: values.password_confirmation,
-            },{    headers: { 'Accept':'Application/json'}, });
+                is_employer: 1,
+            }, {
+                headers: {
+                    'Accept': 'Application/json',
+                    'Content-Type': 'Application/json'
+            }, });
 
         if (response.status === 200) {
             console.log('Employer account created successfully!');
-
-            // if (response.data?.data?.token) {
-
-            //     Cookies.set('token', response.data.data.token, { expires: 7 }); // Set expiry for 7 days
+            
             console.log("res", response.data);
+            if (response.data?.data?.token) {
+
+                Cookies.set('token', response.data.data.token, { expires: 7 }); // Set expiry for 7 days
                
+                toast.success('Employer account created successfully!');
+            }
 
 
-            toast.success('Employer account created successfully!');
         } 
         }
        catch (error) {
