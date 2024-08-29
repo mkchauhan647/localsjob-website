@@ -93,7 +93,7 @@ const BreadCrumbComponent = () => {
         //         </span>
         //     </div>
         // </div>
-        <div className="container mx-auto flex justify-between gap-2 pb-5 pt-8 px-4">
+        <div className="container mx-auto flex justify-between gap-2 pb-5 pt-4 px-4">
 
 
             <div className="">

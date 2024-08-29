@@ -80,7 +80,13 @@ const LoginForm: React.FC = () => {
           className="text-[#0958d9] absolute right-0 top-2"
           href="/employer/register"
         >
-          Register now!
+          Register as Employer now!
+        </a>
+        <a
+          className="text-[#0958d9] absolute right-0 top-2"
+          href="/job-seeker/register"
+        >
+          Register as Job seeker now!
         </a>
       </Form.Item>
     </Form>
