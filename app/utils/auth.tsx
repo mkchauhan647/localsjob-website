@@ -27,3 +27,13 @@ export const withAuth = <P extends object>(
 
   return Wrapper;
 };
+
+
+export const headersWithToken = () => {
+  const token = Cookies.get("token") || null;
+  return {
+    Authorization: `Bearer ${token}`,
+    "Api-Version": "v1",
+    Accept: "application/json",
+  };
+}

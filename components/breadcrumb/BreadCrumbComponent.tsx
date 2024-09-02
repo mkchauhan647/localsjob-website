@@ -96,7 +96,7 @@ const BreadCrumbComponent = () => {
         <div className="container mx-auto flex justify-between gap-2 pb-5 pt-4 px-4">
 
 
-            <div className="">
+            {/* <div className="">
                 <h2 className="text-[18px] leading-[28px]  font-mediu text-gray-500">
                     {
                         parseInt(paths[paths.length - 1]) ? "Job Details" : paths[paths.length - 1]
@@ -105,7 +105,7 @@ const BreadCrumbComponent = () => {
                     <div className="bg-green-500 h-[1px] w-full"></div>
 
                 </h2>
-            </div>
+            </div> */}
 
             <Breadcrumb className="mb-6">
                 {

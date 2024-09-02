@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
+import { DashboardLayout } from "./components/dashboardLayout";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function CandidateDashboardLayout({
@@ -10,7 +11,9 @@ export default function CandidateDashboardLayout({
     return (
         <>
             <Navbar />
-            {children}
+            {/* <DashboardLayout> */}
+                {children}
+            {/* </DashboardLayout> */}
         </>
     );
 }

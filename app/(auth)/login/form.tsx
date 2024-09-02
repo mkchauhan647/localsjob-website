@@ -15,7 +15,15 @@ const LoginForm: React.FC = () => {
       console.log("data", data);
       if (data?.data?.access_token) {
         Cookies.set("token", data.data.access_token, { expires: 7 }); // Set expiry for 7 days
-        router.push("/employer/employer-dashboard");
+        localStorage.setItem("userData",JSON.stringify(data.data.data));
+        if (data.data.data.type.value == "job-seeker")
+        {
+          router.push("/job-seeker/candidate-dashboard")
+        }
+        else {
+          router.push("/employer/employer-dashboard");
+        }
+        // router.push("/employer/employer-dashboard");
         toast.success("You have been logged in", {
           duration: 3000,
           position: "top-left",
@@ -77,17 +85,18 @@ const LoginForm: React.FC = () => {
           Log in
         </Button>
         <a
-          className="text-[#0958d9] absolute right-0 top-2"
-          href="/employer/register"
-        >
-          Register as Employer now!
-        </a>
-        <a
-          className="text-[#0958d9] absolute right-0 top-2"
+          className="text-[#0958d9] absolute right-0 -top-[18px]"
           href="/job-seeker/register"
         >
           Register as Job seeker now!
         </a>
+        <a
+          className="text-[#0958d9] absolute right-0 top-[10px]"
+          href="/employer/register"
+        >
+          Register as Employer now!
+        </a>
+      
       </Form.Item>
     </Form>
   );

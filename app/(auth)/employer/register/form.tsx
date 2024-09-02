@@ -66,41 +66,54 @@ const RegistrationForm: React.FC = () => {
         formData.append('email', values.email);
         formData.append('phone', values.phone);
         formData.append('password', values.password);
-        formData.append('confirm_password', values.confirm_password);
-        // formData.append
+        formData.append('password_confirmation', values.password_confirmation);
+        formData.append('is_employer', "1");
+        formData.append("gender",values.gender)
 
         try {
-            const response = await axios.post('/register', {
-                first_name: values.first_name,
-                last_name: values.last_name,
-                email: values.email,
-                phone: values.phone,
-                password: values.password,
-                password_confirmation: values.password_confirmation,
-                is_employer: 1,
-            }, {
+            console.log('formData', formData);
+            console.log('values', values);
+           
+            const response = await axios.post('/create-account',
+                formData
+            //     {
+            //     first_name: values.first_name,
+            //     last_name: values.last_name,
+            //     email: values.email,
+            //     phone: values.phone,
+            //     password: values.password,
+            //     password_confirmation: values.password_confirmation,
+            //     gender: values.gender,
+            //     is_employer: "1",
+            // }
+                , {
                 headers: {
                     'Accept': 'Application/json',
-                    'Content-Type': 'Application/x-www-form-urlencoded',
+                    'Content-Type': 'Application/json',
             }, });
+
+            console.log('response', response);
 
         if (response.status === 200) {
             console.log('Employer account created successfully!');
             
             console.log("res", response.data);
-            if (response.data?.data?.token) {
+            if (response.data?.data?.access_token) {
 
-                Cookies.set('token', response.data.data.token, { expires: 7 }); // Set expiry for 7 days
+                Cookies.set('token', response.data.data.access_token, { expires: 7 }); // Set expiry for 7 days
                
                 toast.success('Employer account created successfully!');
+                window.location.href = '/employer/employer-dashboard';
             }
 
 
         } 
         }
-       catch (error) {
+       catch (error:any) {
         console.error('There was an error creating the employer account!', error);
-           toast.error('There was an error creating the employer account!');
+            // toast.error((error as Error)?.message || 'There was an error creating the employer account!');
+        toast.error(error?.response?.data?.message || 'There was an error creating the employer account!');
+            
         }
 
 

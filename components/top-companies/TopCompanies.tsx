@@ -56,7 +56,7 @@ const TopCompanies = async () => {
             <div className="grid grid-cols-1  grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6">
 
           {companies.map((category, index) => (
-                    <Link href={`/companies/${category.name.split(/[\/ ]+/).map((value: string) => value.toLocaleLowerCase().trim()).join('-')}`} className="transition-all duration-300 hover:scale-[1.05] ">
+                    <Link href={`/companies/${category.name.replace(/\./g,'').split(/[\/ ]+/).map((value: string) => value.toLocaleLowerCase().trim()).join('-')}`} className="transition-all duration-300 hover:scale-[1.05] ">
 
                   <CompanyCard company={category} />
                 </Link>

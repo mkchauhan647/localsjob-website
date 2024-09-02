@@ -14,6 +14,7 @@ import axios from "@/config/AxiosConfig";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import BreadCrumbComponent from "../breadcrumb/BreadCrumbComponent";
+import DashboardDropDown from "./DashboardDropDown";
 const Navbar = ({ home=false }:{home?:boolean}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
@@ -31,6 +32,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
         headers: headers,
       });
       Cookies.remove("token");
+      localStorage.removeItem('userData')
       setIsLoggedIn(false);
       toast.success(data?.message, {
         duration: 5000,
@@ -79,13 +81,19 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
         {true ? (
           <div className="hidden md:flex gap-x-3 ">
             {isLoggedIn ? (
-              <Link
+                <div className="flex items-center justify-between gap-4">
+                <Link
                 href="/"
                 className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 ${home ? "text-[white]" : "text-black"}`}
                 onClick={handleLogout}
               >
                 Logout
-              </Link>
+                  </Link>
+                  
+                  <DashboardDropDown home={home} handleLogout={handleLogout} />
+                  
+                
+                </div>
             ) : (
               <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
@@ -144,7 +152,22 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
         {/* <NavElements link="/blogs" text="Blogs" /> */}
 
         {/* Registration and login  */}
-        {true && (
+          {isLoggedIn ? (
+              <div className="flex items-center justify-between gap-4">
+              <Link
+              href="/"
+              className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 ${home ? "text- [white]" : "text-black"}`}
+              onClick={handleLogout}
+            >
+              Logout
+                </Link>
+                
+                {/* <DashboardDropDown home={home} handleLogout={handleLogout} /> */}
+                
+              
+              </div>
+          ):
+            (
           <>
             <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[#3596dd] ">
               Login

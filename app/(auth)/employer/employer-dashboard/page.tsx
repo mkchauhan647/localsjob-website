@@ -27,6 +27,7 @@ import { FaFileInvoice, FaFileInvoiceDollar } from 'react-icons/fa';
 import { LiaFileInvoiceSolid } from 'react-icons/lia';
 import { HiOutlineUserGroup } from 'react-icons/hi';
 import {TbPackages} from 'react-icons/tb';
+import { withAuth } from '@/app/utils/auth';
 const PostJobForm = dynamic(() => import('../components/Postjob'));
 const ManageJobListings = dynamic(() => import('../components/ManageJobListing'));
 const SearchCandidates = dynamic(() => import('../components/SearchCandidates'));
@@ -51,9 +52,13 @@ const { SubMenu } = Menu;
 
 const Dashboard: React.FC = () => {
 
+
+
+
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('1');
     const [drawerVisible, setDrawerVisible] = useState<boolean>(false);
     const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
+    
 
     const handleMenuSelect = (selected: any) => {
         setSelectedMenuItem(selected.key);
@@ -293,4 +298,4 @@ const Dashboard: React.FC = () => {
     );
 };
 
-export default Dashboard;
+export default withAuth(Dashboard);
