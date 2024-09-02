@@ -4,7 +4,7 @@ interface Status {
     label: string;
   }
   
-  interface Company {
+  export interface Company {
     id: number;
     name: string;
     email: string;
@@ -110,4 +110,80 @@ export interface Testimonial {
       description: string;
       avatar: string;
       avatar_text: string;
+}
+
+
+interface AccountType {
+  value: string;
+  label: string;
+}
+
+export interface Account {
+  id: number;
+  first_name: string;
+  last_name: string;
+  description: string | null;
+  gender: 'male' | 'female' | 'other';
+  email: string;
+  avatar_id: number | null;
+  dob: string | null;
+  phone: string;
+  confirmed_at: string | null;
+  email_verify_token: string | null;
+  type: AccountType;
+  credits: number;
+  resume: string | null;
+  address: string | null;
+  bio: string | null;
+  is_public_profile: boolean;
+  hide_cv: boolean;
+  views: number;
+  is_featured: boolean;
+  created_at: string;
+  updated_at: string;
+  available_for_hiring: boolean;
+  country_id: number | null;
+  state_id: number | null;
+  city_id: number | null;
+  cover_letter: string | null;
+  
+}
+
+export interface AccountSettings {
+  account: Account;
+  jobSkills: JobSkill[];
+  jobTags: JobTag[];
+}
+
+export interface JobSkill {
+  id: number;
+  name: string;
+}
+
+export interface JobTag {
+  id: number;
+  name: string;
+}
+
+export interface JobData {
+  jobSkills: JobSkill[];
+  jobTags: JobTag[];
+}
+
+export interface JobApplication {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  jobName: string;
+  companyName: string;
+  appliedDate: string;
+  status: string;
+}
+
+export interface JobApplicationResponse {
+  currentPage: number;
+  data: JobApplication[];
+  lastPage: number;
+  total: number;
 }

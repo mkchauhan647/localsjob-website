@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { DesktopOutlined, PieChartOutlined, FileOutlined } from '@ant-design/icons';
 import NewTable from './table';
+import AppliedJobs from './AppliedJobs';
+import MatchingJobs from './MatchingJob';
+import { JobApplication } from '@/util/types';
 
-const JobMenu: React.FC = () => {
+const JobMenu = ({applications}:{applications:JobApplication[]}) => {
     const [selectedMenuItem, setSelectedMenuItem] = useState<string>('matchingjob');
 
     const handleMenuSelect = (selected: any) => {
@@ -32,10 +35,12 @@ const JobMenu: React.FC = () => {
             <div style={{ background: '#fff', padding: '24px', minHeight: '360px', }}>
                 {/* Display content based on selectedMenuItem */}
                 {selectedMenuItem === 'matchingjob' && <div>
-                    <NewTable />
+                    {/* <NewTable /> */}
+                    <MatchingJobs  />
                 </div>}
                 {selectedMenuItem === 'recentlyapplied' && <div>
-                    <NewTable />
+                    {/* <NewTable /> */}
+                    <AppliedJobs applications={applications} />
                 </div>}
                 {selectedMenuItem === 'savedjob' && <div>
                     <NewTable />

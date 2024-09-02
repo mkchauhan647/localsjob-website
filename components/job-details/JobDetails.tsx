@@ -37,7 +37,8 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
                         company: JobData.company.name,
                         apply_url: JobData.company.website,
                                     featured: JobData.company.is_featured,
-                                    logo: JobData.company.logo
+                                    logo: JobData.company.logo,
+                                    id: JobData.id
                         
                         
                         }

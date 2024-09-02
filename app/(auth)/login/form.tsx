@@ -15,11 +15,15 @@ const LoginForm: React.FC = () => {
       console.log("data", data);
       if (data?.data?.access_token) {
         Cookies.set("token", data.data.access_token, { expires: 7 }); // Set expiry for 7 days
-        if (data.data.type.value === "job-seeker") router.push("/job-seeker/candidate-dashboard")
+        localStorage.setItem("userData",JSON.stringify(data.data.data));
+        if (data.data.data.type.value == "job-seeker")
+        {
+          router.push("/job-seeker/candidate-dashboard")
+        }
         else {
           router.push("/employer/employer-dashboard");
         }
-        router.push("/employer/employer-dashboard");
+        // router.push("/employer/employer-dashboard");
         toast.success("You have been logged in", {
           duration: 3000,
           position: "top-left",

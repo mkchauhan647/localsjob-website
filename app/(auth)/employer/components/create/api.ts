@@ -58,3 +58,5 @@ export const fetchCities = async (countryId: number, stateId: number): Promise<C
   );
   return response.data.data;
 };
+
+
