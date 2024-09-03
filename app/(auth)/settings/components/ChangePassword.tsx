@@ -2,21 +2,29 @@ import React, { useState } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import { changePassword } from '@/app/utils/api';
-
+import { useRouter } from 'next/navigation';
 const ChangePassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const onFinish = async (values: any) => {
     setLoading(true);
       try {
-        const formData = {
-          current_password: values.current_password,
-          new_password: values.new_password,
-          new_password_confirmation: values.new_password_confirmation,
-        };
-      const response = await changePassword( formData);
+        const formData = new FormData();
+        formData.append('current_password', values.current_password);
+        formData.append('new_password', values.new_password);
+        formData.append('new_password_confirmation', values.new_password_confirmation);
+
+        // console.log('Form Data:', formData);
+        const response = await changePassword(formData);
         console.log('Response:', response);
-      message.success('Password changed successfully');
+        if (response.status === 200) {
+          
+          typeof response.message == 'string' ? message.success(response.message) : message.success('Password changed successfully');
+          router.refresh();
+        } else {
+          typeof response.message == 'string' ? message.error(response.message):  message.error('Error changing password');
+        }
     } catch (error) {
       message.error('Error changing password');
     } finally {
@@ -47,7 +55,19 @@ const ChangePassword: React.FC = () => {
         <Form.Item
           label="Confirm New Password"
           name="new_password_confirmation"
-          rules={[{ required: true, message: 'Please confirm your new password' }]}
+          rules={[{ required: true, message: 'Please confirm your new password' },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('new_password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          })
+          
+        ]
+          
+          }
         >
           <Input.Password placeholder="Confirm New Password" />
         </Form.Item>

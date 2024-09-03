@@ -88,7 +88,7 @@ const LoginForm: React.FC = () => {
 
         <a
           className="login-form-forgot text-[#0958d9] absolute right-0"
-          href=""
+          href="/change-password"
         >
           Forgot password ?
         </a>
@@ -106,13 +106,13 @@ const LoginForm: React.FC = () => {
           className="text-[#0958d9] absolute right-0 -top-[18px]"
           href="/job-seeker/register"
         >
-          Register as Job seeker now!
+          Register as Job seeker
         </a>
         <a
           className="text-[#0958d9] absolute right-0 top-[10px]"
           href="/employer/register"
         >
-          Register as Employer now!
+          Register as Employer
         </a>
       
       </Form.Item>
