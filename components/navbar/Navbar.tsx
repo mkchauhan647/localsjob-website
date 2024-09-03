@@ -98,7 +98,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
               <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
                   {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
-                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black !border border-black "} h-[48px] rounded-full `}>
+                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black !border border-black "} h-[48px] rounded-full  hover:text-blue-500 hover:border-blue-500 transition-all duration-300`}>
                     Log In
                   </button>
                 </Link>
