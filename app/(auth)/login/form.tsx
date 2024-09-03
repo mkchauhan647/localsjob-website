@@ -25,7 +25,7 @@ const LoginForm: React.FC = () => {
             // message.success("You have been logged in Redirecting to previous page");
             router.push(backUrl);
           } else {
-            router.push("/job-seeker/job-seeker-dashboard");
+            router.push("/job-seeker/candidate-dashboard");
           }
         }
         else {
