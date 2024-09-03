@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import axios from "@/config/AxiosConfig";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { message } from "antd";
 const LoginForm: React.FC = () => {
   const router = useRouter();
   const onFinish = async (values: any) => {
@@ -18,10 +19,25 @@ const LoginForm: React.FC = () => {
         localStorage.setItem("userData",JSON.stringify(data.data.data));
         if (data.data.data.type.value == "job-seeker")
         {
-          router.push("/job-seeker/candidate-dashboard")
+          if (localStorage.getItem("backUrl")) {
+            const backUrl = localStorage.getItem("backUrl") as string;
+            localStorage.removeItem("backUrl");
+            // message.success("You have been logged in Redirecting to previous page");
+            router.push(backUrl);
+          } else {
+            router.push("/job-seeker/candidate-dashboard");
+          }
         }
         else {
-          router.push("/employer/employer-dashboard");
+          if (localStorage.getItem("backUrl")) {
+            const backUrl = localStorage.getItem("backUrl") as string;
+            localStorage.removeItem("backUrl");
+            // message.success("You have been logged in Redirecting to previous page");
+            router.push(backUrl);
+          }
+          else {
+            router.push("/employer/employer-dashboard");
+          }
         }
         // router.push("/employer/employer-dashboard");
         toast.success("You have been logged in", {
@@ -34,6 +50,8 @@ const LoginForm: React.FC = () => {
         duration: 4000,
         position: "top-left",
       });
+    } finally {
+      localStorage.removeItem("backUrl");
     }
   };
 
