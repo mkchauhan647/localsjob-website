@@ -6,7 +6,7 @@ import { Button, message } from 'antd';
 const JobApplication: React.FC<{showModel:any,jobData:any}> = ({ showModel , jobData }) => {
   const [formData, setFormData] = useState({
     job_id: jobData.id,
-    job_type: 'internal',
+    job_type: jobData.apply_url.length > 0 ? 'external' : 'internal',
     email:  '',
     first_name:  '',
     last_name:  '',

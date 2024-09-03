@@ -31,7 +31,7 @@ const JobDetails = ({ JobData }: { JobData: Job }) => {
             <div className="flex flex-col gap-8 ">
                 {/* Header */}
                
-                <JobHeader jobHeader={
+                <JobHeader jobHeaderData={
                     {
                         name: JobData.name,
                         company: JobData.company.name,

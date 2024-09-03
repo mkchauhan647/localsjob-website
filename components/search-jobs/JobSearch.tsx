@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 
 const JobSearch = ({ searchData }: { searchData: Job[] }) => {
 
-    console.log("searchData", searchData);
+    // console.log("searchData", searchData);
 
     return (
 

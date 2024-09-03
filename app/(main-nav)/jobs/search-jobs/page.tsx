@@ -12,8 +12,8 @@ const Jobs = async ({ searchParams }:{searchParams:{search:string}}) => {
   // console.log("search", search);
   async function fetchData() {
     try {
-        const res = await axios.get(`https://localsjob.com/api/v1/jobs/search-jobs?title=${search}`);
-        // const data = await res.data
+        const res = await axios.get(`https://main.localsjob.com/api/v1/jobs/search-jobs?title=${search}`);
+      // const data = await res.data
         return res.data.data.jobs;
     } catch (error) {
         console.log(error);
