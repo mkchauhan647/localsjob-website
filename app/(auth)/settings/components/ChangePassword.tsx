@@ -1,8 +1,10 @@
+'use client'
 import React, { useState } from 'react';
 import { Form, Input, Button, message } from 'antd';
 import axios from 'axios';
 import { changePassword } from '@/app/utils/api';
 import { useRouter } from 'next/navigation';
+import { withAuth } from '@/app/utils/auth';
 const ChangePassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -82,4 +84,4 @@ const ChangePassword: React.FC = () => {
   );
 };
 
-export default ChangePassword;
+export default withAuth(ChangePassword);

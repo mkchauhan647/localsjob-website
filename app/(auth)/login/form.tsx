@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
@@ -6,9 +6,10 @@ import toast from "react-hot-toast";
 import axios from "@/config/AxiosConfig";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { message } from "antd";
+
 const LoginForm: React.FC = () => {
   const router = useRouter();
+  
   const onFinish = async (values: any) => {
     console.log("Received values of form: ", values);
     try {
@@ -16,30 +17,17 @@ const LoginForm: React.FC = () => {
       console.log("data", data);
       if (data?.data?.access_token) {
         Cookies.set("token", data.data.access_token, { expires: 7 }); // Set expiry for 7 days
-        localStorage.setItem("userData",JSON.stringify(data.data.data));
-        if (data.data.data.type.value == "job-seeker")
-        {
-          if (localStorage.getItem("backUrl")) {
-            const backUrl = localStorage.getItem("backUrl") as string;
-            localStorage.removeItem("backUrl");
-            // message.success("You have been logged in Redirecting to previous page");
-            router.push(backUrl);
-          } else {
-            router.push("/job-seeker/candidate-dashboard");
-          }
+        localStorage.setItem("userData", JSON.stringify(data.data.data));
+
+        const backUrl = localStorage.getItem("backUrl") as string;
+        localStorage.removeItem("backUrl");
+
+        if (data.data.data.type.value === "job-seeker") {
+          router.push(backUrl || "/job-seeker/candidate-dashboard");
+        } else {
+          router.push(backUrl || "/employer/employer-dashboard");
         }
-        else {
-          if (localStorage.getItem("backUrl")) {
-            const backUrl = localStorage.getItem("backUrl") as string;
-            localStorage.removeItem("backUrl");
-            // message.success("You have been logged in Redirecting to previous page");
-            router.push(backUrl);
-          }
-          else {
-            router.push("/employer/employer-dashboard");
-          }
-        }
-        // router.push("/employer/employer-dashboard");
+
         toast.success("You have been logged in", {
           duration: 3000,
           position: "top-left",
@@ -57,18 +45,21 @@ const LoginForm: React.FC = () => {
 
   return (
     <Form
-      name="normal_login"
-      className="login-form"
+      name="login_form"
+      className="max-w-sm mx-auto bg-white p-8 shadow-lg rounded-lg"
       initialValues={{ remember: true }}
       onFinish={onFinish}
     >
+      <h3 className="text-2xl font-bold mb-6 text-gray-800 text-center">
+        Login to Your Account
+      </h3>
       <Form.Item
         name="email"
         rules={[{ required: true, message: "Please input your email!" }]}
       >
         <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
+          prefix={<UserOutlined className="text-gray-400" />}
+          placeholder="Email"
         />
       </Form.Item>
       <Form.Item
@@ -76,45 +67,35 @@ const LoginForm: React.FC = () => {
         rules={[{ required: true, message: "Please input your Password!" }]}
       >
         <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
+          prefix={<LockOutlined className="text-gray-400" />}
           type="password"
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
+      <Form.Item className="flex justify-between items-center">
         <Form.Item name="remember" valuePropName="checked" noStyle>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
-
-        <a
-          className="login-form-forgot text-[#0958d9] absolute right-0"
-          href="/change-password"
-        >
-          Forgot password ?
+        <a className="text-blue-600 hover:underline" href="/forget-password">
+          Forgot password?
         </a>
       </Form.Item>
-
       <Form.Item>
         <Button
           type="primary"
           htmlType="submit"
-          className="login-form-button w-[50%]"
+          className="w-full"
         >
           Log in
         </Button>
-        <a
-          className="text-[#0958d9] absolute right-0 -top-[18px]"
-          href="/job-seeker/register"
-        >
-          Register as Job seeker
+      </Form.Item>
+      <Form.Item className="text-center">
+        <a className="text-blue-600 hover:underline block mb-2" href="/job-seeker/register">
+          Register as Job Seeker
         </a>
-        <a
-          className="text-[#0958d9] absolute right-0 top-[10px]"
-          href="/employer/register"
-        >
+        <a className="text-blue-600 hover:underline" href="/employer/register">
           Register as Employer
         </a>
-      
       </Form.Item>
     </Form>
   );
