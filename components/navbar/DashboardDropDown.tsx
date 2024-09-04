@@ -41,12 +41,12 @@ const DashboardDropDown = ({ home, handleLogout }: { home: boolean, handleLogout
         {
           key: '3',
           label: (
-            <Link href="/"  onClick={handleLogout}>
+            <div  onClick={handleLogout}>
             <div className="flex items-center px-[8px] py-[10px] hover:bg-gray-300 text-gray-600 rounded-md">
               <LogoutOutlined style={{ fontSize: '24px', color: 'rgba(0,0,0,.5)', marginRight: '8px' }} />
                 <span className="font-semibold !text-gray-600 ">Logout</span>
             </div>
-            </Link>
+            </div>
           ),
         },
       ];

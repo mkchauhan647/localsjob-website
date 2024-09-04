@@ -15,9 +15,12 @@ import toast from "react-hot-toast";
 import Cookies from "js-cookie";
 import BreadCrumbComponent from "../breadcrumb/BreadCrumbComponent";
 import DashboardDropDown from "./DashboardDropDown";
+import { useRouter } from "next/navigation";
+
 const Navbar = ({ home=false }:{home?:boolean}) => {
   const [showMenu, setShowMenu] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("token"));
+  const router = useRouter();
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const handleLogout = async () => {
     const token = Cookies.get("token") || null;
@@ -34,6 +37,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
       Cookies.remove("token");
       localStorage.removeItem('userData')
       setIsLoggedIn(false);
+      router.refresh();
       toast.success(data?.message, {
         duration: 5000,
         position: "top-left",
@@ -82,13 +86,12 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
           <div className="hidden md:flex gap-x-3 ">
             {isLoggedIn ? (
                 <div className="flex items-center justify-between gap-4">
-                <Link
-                href="/"
+                <div
                 className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 ${home ? "text-[white]" : "text-black"}`}
                 onClick={handleLogout}
               >
                 Logout
-                  </Link>
+                  </div>
                   
                   <DashboardDropDown home={home} handleLogout={handleLogout} />
                   
