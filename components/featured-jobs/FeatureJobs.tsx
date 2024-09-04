@@ -29,11 +29,13 @@ import { Job } from '@/util/types';
 // }
 
 
-const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
+const FeatureJobs = async ({ relatedJob = false,viewAll = false }:{relatedJob:boolean,viewAll:boolean}) => {
 
     const categories: Job[] = await getCategories();
 
-    // console.log("categories", categories);
+    const sliceNumber = viewAll ? categories.length : 8;
+  
+
 
     return (
         
@@ -42,15 +44,19 @@ const FeatureJobs = async ({ relatedJob = false }:{relatedJob:boolean}) => {
             {
                 categories && 
                 <div className="bg-white  flex flex-col border-b border-[#E4E5E8] shadow-custom gap-[105px] sm:gap-[50px] p-4 py-[60px] sm:px-[100px] top-[1229px]">
-                <div className="flex justify-between h-[48px] flex-col sm:flex-row gap-10">
-                        <h2 className="text-4xl font-semibold text-black">{relatedJob ? "Related Jobs" : "Featured Jobs"}</h2>
                         {
-                            <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg hover:bg-figma_red hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl">{relatedJob ? "View more" : "View All"} <span className="ml-2">&rarr;</span></button>
-                        }
-                            </div>
+                            !viewAll && (
+                                <div className="flex justify-between h-[48px] flex-col sm:flex-row gap-10">
+                                <h2 className="text-4xl font-semibold text-black">{relatedJob ? "Related Jobs" : "Featured Jobs"}</h2>
+                                 <Link href="/jobs">
+                                    <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg hover:bg-figma_red hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl">{relatedJob ? "View more" : "View All"} <span className="ml-2">&rarr;</span></button>
+                                </Link>
+                                    </div>
+                            )
+               }
                     <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5">
         
-                  {categories.map((category:Job, index) => (
+                  {categories.slice(0,sliceNumber).map((category:Job, index) => (
                       <Link href={`/jobs/${category.name.split(" ").map(value => value.toLocaleLowerCase()).join('-')}/${category.slugable.key}`} key={index}>
                           {/* <FeatureJobCard  job={category} /> */}
                             <SearchJobCard job={category} />  

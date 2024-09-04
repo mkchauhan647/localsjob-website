@@ -21,38 +21,51 @@ interface Category {
 
 
 
-const JobCategories = async () => {
+const JobCategories = async ({ viewAll }: { viewAll: boolean }) => {
 
   let JobCategoryData;
 
+ 
+
   try {
-  JobCategoryData = await axios.get('/popular-job-categories');
+    JobCategoryData = await axios.get('/popular-job-categories');
 
   } catch (error) {
-    console.log("error",error);
+    console.log("error", error);
   }
 
-  const CategoryData:JobCategoryType[] = JobCategoryData?.data.data.popularJobCategories;
+  const CategoryData: JobCategoryType[] = JobCategoryData?.data.data.popularJobCategories;
 
 
 
     
   const categories: Category[] = getCategories(CategoryData);
+
+  const sliceNumber = viewAll ? categories.length : 8;
   
-    return (
-      <div className="bg-mprimary min-h -[529px] flex flex-col gap-[105px] sm:gap-[50px] pt-[50px] pb-10 lg:pt-[110px] px-4 sm:px-[100px] top-[700px]">
+  return (
+    <div className={` min-h -[529px] flex flex-col gap-[105px] sm:gap-[50px] pt-[50px]  lg:pt-[110px] px-4 sm:px-[100px] top-[700px]   ${viewAll ? 'pb-20 lg:pt-[32px] bg-white' : 'pb-10 bg-mprimary'}`
+}>
         <div className="flex justify-between h-[48px] w-auto flex-col gap-12 sm:flex-row ">
           <h2 className="text-3xl sm:text-4xl font-semibold text-black">Popular <span className="sm:ml-3"> Job Categories</span></h2>
-          <button className="text-figma_red border border-figma_red px-6 py-3 w-auto rounded-lg">View All <span className="ml-2">&rarr;</span></button>
+
+          {
+            !viewAll && (
+              <Link href="/popular-job-categories">
+          <button className="text-figma_red border border-figma_red px-6 py-3 w-auto rounded-lg hover:bg-figma_red transition-all duration-300 hover:text-white">View All <span className="ml-2">&rarr;</span></button>
+          </Link>
+            )
+          }
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-4 lg:grid-rows-2 gap-6 mb-4">
-          {categories.map((category, index) => (
+          {categories.slice(0,sliceNumber).map((category, index) => (
            <Link href={`/jobs/job-categories/${ CategoryData ? CategoryData[index].name.split(/[\/ ]+/).map((value:string) => value.toLocaleLowerCase().trim()).join('-'):'/'}`} key={index}>
               <JobCategoryCard
               bgColor={category.bgColor}
               icon={category.icon}
               title={CategoryData && CategoryData[index].name}
-              positions={CategoryData && CategoryData[index].total_positions}
+                positions={CategoryData && CategoryData[index].total_positions}
+                viewAll={viewAll}
             />
             </Link>
           ))}

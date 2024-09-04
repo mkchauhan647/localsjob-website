@@ -35,13 +35,13 @@ const HomeBanner = () => {
       {/* <BoxCards /> */}
 
       {/* First Category */}
-      <JobCategories />
+      <JobCategories viewAll={false} />
 
       {/* Second Category */}
-      <FeatureJobs relatedJob={false} />
+      <FeatureJobs relatedJob={false} viewAll={false} />
 
       {/* Third Category Top Companies */}
-      <TopCompanies />
+      <TopCompanies viewAll={false} />
 
       {/* Web Banner */}
       <WebBanner />

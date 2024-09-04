@@ -94,8 +94,8 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
         </svg>
       ),
       number: boxCardData.totalApplicants ?? '0',
-      description: 'Members',
-      link: '/members'
+      description: 'Professionals',
+      link: '/professionals'
     },
     {
       icon: (

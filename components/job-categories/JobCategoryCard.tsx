@@ -1,8 +1,8 @@
 import React from "react";
 
-const JobCategoryCard = ({ bgColor, icon, title, positions }:{bgColor:string,icon:React.ReactElement,title:string,positions:number}) => {
+const JobCategoryCard = ({ bgColor, icon, title, positions,viewAll }:{bgColor:string,icon:React.ReactElement,title:string,positions:number,viewAll:boolean}) => {
     return (
-      <div className="bg-white text-black gap-6 p-6 min-h-[150px] w-auto xl:w- [316px] rounded-lg flex items-center justify-start transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+      <div className={` text-black gap-6 p-6 min-h-[150px] w-auto xl:w- [316px] rounded-lg flex items-center justify-start transition-all duration-300 hover:scale-105 hover:shadow-2xl ${viewAll ? "border border-gray-200  shadow-md" : "bg-white"}`}>
         {/* <div className=" p-[18px]"> */}
           {icon}
         {/* </div> */}

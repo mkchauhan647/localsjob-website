@@ -43,7 +43,7 @@ const Jobs = async ({ searchParams }:{searchParams:{search:string}}) => {
       {/* Job Details */}
       {/* <JobDetails search={search} /> */}
       <JobSearch searchData={data} />
-      <FeatureJobs relatedJob={true} />
+      <FeatureJobs relatedJob={true} viewAll={false} />
     </>
   );
 };

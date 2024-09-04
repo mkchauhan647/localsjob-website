@@ -12,7 +12,7 @@ interface Company {
     website?: string;
 }
 
-const TopCompanies = async () => {
+const TopCompanies = async ({ viewAll }:{viewAll:boolean}) => {
 
     let companies: Company[] = await getCompanies();
     
@@ -48,11 +48,16 @@ const TopCompanies = async () => {
 
     return (
         <div className="min-h- [596px] flex   gap-[50px] p-4 flex-col bg-mprimary top-[1877px] sm:px-[96px] py-[65px]">
-
-
-        <div className="flex justify-between h-[48px]">
-          <h2 className="text-4xl font-semibold text-black">Top Companies</h2>
-        </div>
+            {
+                !viewAll && (
+                    <div className="flex justify-between h-[48px] flex-col sm:flex-row gap-10">
+                                    <h2 className="text-4xl font-semibold text-black">Top Companies</h2>
+                                 <Link href="/companies">
+                                    <button className="text-figma_red border border-figma_red px-6 py-3 rounded-lg hover:bg-figma_red hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl"> View All <span className="ml-2">&rarr;</span></button>
+                                </Link>
+                                    </div>
+                            )
+               }
             <div className="grid grid-cols-1  grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6">
 
           {companies.map((category, index) => (

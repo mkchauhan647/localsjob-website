@@ -48,7 +48,7 @@ const JobDetailsPage = async ({ params }: { params: { jobname: string, id: strin
 
       {/* Job Details */}
       <JobDetails JobData={JobData} />
-      <FeatureJobs relatedJob={true} />
+      <FeatureJobs relatedJob={true} viewAll={false} />
     </>
   );
 };

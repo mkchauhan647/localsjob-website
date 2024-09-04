@@ -1,4 +1,5 @@
 'use client'
+import { notification } from 'antd';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -10,8 +11,6 @@ const JobSearch = ({ searchData }: { searchData: Job[] }) => {
 
     return (
 
-      // <div className='container mx-auto pt-[60px] grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 px-4 gap-4'>
-      // <div className='container mx-auto flex pt-[60px] flex-wrap  gap-4 flex-col lg:flex-row justify -center items -center px-4'> 
       <div className=" container mx-auto grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5 px-4">
           
             {searchData?.map((job: Job) => (
@@ -40,7 +39,20 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
   let salary = job.salary_from || job.salary_to ? (`Rs.${job.salary_from} ${job.salary_to ? ` - Rs.${job.salary_to}` : ''}`) : null;
   if (job.salary_from == 0) {
     salary = "Negotiable";
-}
+  }
+  
+
+  
+  const handleSaveButton = () => {
+
+    notification.success({
+      message: "Job Saved",
+      description: "You have successfully saved the job",
+      placement: "topRight",
+    });
+  }
+
+
     return (
         <div className="relative bg-white text-black p-5 min-h-[270px] w-auto xl:w- [424px] rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] transition-all duration-300 hover:scale-105 hover:shadow-2xl">
             {/* <div className=" p-[18px]"> */}
@@ -60,9 +72,11 @@ export const SearchJobCard = ({ job }: { job: Job }) => {
                         }
                     </div>
                 </div>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-4 right-6">
+          <div className="absolute top-4 right-6" onClick={handleSaveButton}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
 <path d="M18 21L11.9993 17.25L6 21V4.5C6 4.30109 6.07902 4.11032 6.21967 3.96967C6.36032 3.82902 6.55109 3.75 6.75 3.75H17.25C17.4489 3.75 17.6397 3.82902 17.7803 3.96967C17.921 4.11032 18 4.30109 18 4.5V21Z" stroke="#C8CCD1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 </svg>
+               </div>
                
                 <div id='company' className='flex  gap-2'>
                     

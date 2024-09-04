@@ -4,7 +4,7 @@ import { PiBookmarkSimple } from "react-icons/pi";
 import { useState } from "react";
 import JobApplication from "../job-apply/JobApply";
 import { applyJob } from "@/app/utils/api";
-import { message } from "antd";
+import { message, notification } from "antd";
 import Cookies from 'js-cookie'
 import { useRouter } from "next/navigation";
 interface JobHeaderType{
@@ -25,7 +25,7 @@ const JobHeader = ({ jobHeaderData }: { jobHeaderData: JobHeaderType }) => {
     const [loading, setLoading] = useState(false);
     const router = useRouter();
 
-
+ 
 
     const handleApplyJob = async (e: React.FormEvent) => {
       
@@ -58,13 +58,15 @@ const JobHeader = ({ jobHeaderData }: { jobHeaderData: JobHeaderType }) => {
               console.log('Application submitted:', res);
               if (res.status === 200) {
                   
-                  message.success(res.message || 'Application submitted successfully');
+                // message.success(res.message || 'Application submitted successfully');
+                notification.success({ message: 'Success', description: 'Application submitted successfully' });
             }
               else {
-                  message.error(res.message || 'Error submitting application');
+                // message.error(res.message || 'Error submitting application');
+                notification.error({ message: 'Error', description: res.message ||  'Error submitting application' });
             }
-          } catch (error) {
-              message.error('Error submitting application');
+        } catch (error) {
+          notification.error({ message: 'Error', description: 'Error submitting application' });
           console.error('Error submitting application:', error);
           } finally {
                 setLoading(false);
@@ -72,7 +74,17 @@ const JobHeader = ({ jobHeaderData }: { jobHeaderData: JobHeaderType }) => {
         }
       };
 
+  
+      const handleSaveButton = () => {
 
+        notification.success({
+          message: "Job Saved",
+          description: "You have successfully saved the job",
+          placement: "topRight",
+        });
+      }
+    
+    
 
 
     return (
@@ -108,7 +120,7 @@ const JobHeader = ({ jobHeaderData }: { jobHeaderData: JobHeaderType }) => {
 
             <div className="flex gap-3">
                
-                <div className="min-h-[56px] bg-mprimary w-[57px] flex justify-center items-center cursor-pointer">
+                <div className="min-h-[56px] bg-mprimary w-[57px] flex justify-center items-center cursor-pointer" onClick={handleSaveButton}>
                 <PiBookmarkSimple className="text-figma_red text-[32px]  "/>
                 </div>
     <button
