@@ -47,11 +47,13 @@ const JobCategories = async ({ viewAll }: { viewAll: boolean }) => {
     <div className={` min-h -[529px] flex flex-col gap-[105px] sm:gap-[50px] pt-[50px]  lg:pt-[110px] px-4 sm:px-[100px] top-[700px]   ${viewAll ? 'pb-20 lg:pt-[32px] bg-white' : 'pb-10 bg-mprimary'}`
 }>
         <div className="flex justify-between h-[48px] w-auto flex-col gap-12 sm:flex-row ">
-          <h2 className="text-3xl sm:text-4xl font-semibold text-black">Popular <span className="sm:ml-3"> Job Categories</span></h2>
-
+        {
+          !viewAll ? <h2 className="text-3xl sm:text-4xl font-semibold text-black">Popular <span className="sm:ml-3"> Job Categories</span></h2>
+          : <h2 className="text-3xl sm:text-4xl font-semibold text-black"> Job Categories</h2>
+          }
           {
             !viewAll && (
-              <Link href="/popular-job-categories">
+              <Link href="/job-categories">
           <button className="text-figma_red border border-figma_red px-6 py-3 w-auto rounded-lg hover:bg-figma_red transition-all duration-300 hover:text-white">View All <span className="ml-2">&rarr;</span></button>
           </Link>
             )

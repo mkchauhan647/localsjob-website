@@ -12,7 +12,7 @@ interface Company {
 export default function CompanyView ({ company }: { company: Company }) {
     return (
       <>
-        <div className="relative bg-white text-black p-6  w-auto  rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] transition-all duration-300  hover:shadow-xl ">
+        <div className="relative bg-white text-black p-6 min-h-[400px]  w-auto  rounded-lg border-2 shadow-[0px_2px_18px_0px_rgba(24,25,28,0.03)] border-[#E4E5E8] transition-all duration-300  hover:shadow-xl ">
           <div className="flex flex-col gap-[32px]">
             <div id="company" className="flex  gap-3">
               {company.icon}

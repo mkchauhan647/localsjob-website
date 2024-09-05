@@ -6,7 +6,7 @@ import About from './about';
 const Page = () => {
   return (
     <>
-<HomeBanner/>
+{/* <HomeBanner/> */}
 <About/>
   
     </>

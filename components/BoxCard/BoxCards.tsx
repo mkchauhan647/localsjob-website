@@ -13,6 +13,7 @@ interface BoxCardData {
   totalCompanies: string;
   totalApplicants: string;
   totalResume: string;
+  popularJobCategories: any;
 }
 
 
@@ -21,6 +22,7 @@ const BoxCards = ({ bgColor, highlightColor, strokeColor,boxCardData }:{bgColor:
   const cards: Card[] = getCards(bgColor, highlightColor, strokeColor, boxCardData);
   
 
+  console.log("cards", boxCardData);
   return (
     <div className=" lg:absolute lg:top-[550px] xl:top-[644px] lg:px- [300px] sm:px-[100px]  lg:- left- [204px] xl:w- [1920px] w-full p-4 ">
       {/* <div className="flex lg:justify-between justify-center items-start md:items-center flex-col lg:flex-row gap-4"> */}
@@ -106,9 +108,9 @@ function getCards(bgColor: string, highlightColor: string, strokeColor: string,b
           <path d="M23.625 25.25H20.25C19.42 25.25 18.625 25.5 17.952 25.96C17.279 26.42 16.754 27.072 16.445 27.827C16.136 28.582 16.058 29.406 16.221 30.2C16.384 30.994 16.78 31.718 17.36 32.288C17.94 32.858 18.68 33.248 19.485 33.407C20.291 33.566 21.123 33.484 21.875 33.171C22.627 32.858 23.257 32.33 23.689 31.662C24.121 30.993 24.33 30.214 24.293 29.429" stroke={strokeColor} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      number: boxCardData.totalResume ?? '0',
-      description: 'Resumes',
-      link: '/resumes'
+      number: boxCardData?.popularJobCategories?.length ?? '0',
+      description: 'Jobs Categories',
+      link: '/job-categories'
     },
   ];
 

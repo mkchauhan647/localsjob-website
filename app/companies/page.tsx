@@ -40,7 +40,9 @@ export default async function Page(props: any) {
             
         <div className=" flex justify- center items- center container mx-auto p-10">
                 {/* <h1>Companies Page</h1> */}
-                <div className="flex flex-col gap-5 grow">
+                {/* <div className="flex flex-col gap-5 grow"> */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5">
+
                     {
                         companies.map((company: Company, index: number) => (
                             <Link key={index} href={`/companies/${company.name.replace(/\./g,'').split(/[\/ ]+/).map((value: string) => value.toLocaleLowerCase().trim())

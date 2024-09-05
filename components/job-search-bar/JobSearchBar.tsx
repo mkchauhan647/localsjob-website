@@ -1,12 +1,15 @@
 'use client'
 import { FiSearch } from "react-icons/fi";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { Country } from "@/app/(auth)/employer/components/create/types";
+import { notification } from "antd";
 const JobSearchBar = () => {
 
     const searchInputRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
+    const [countries, setCountries] = useState<Country[]>([]);
 
     const handleJobSearch = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -18,12 +21,24 @@ const JobSearchBar = () => {
         router.push(`/jobs/search-jobs?search=${searchValue}`);
     }
 
+    const handleSelectedCountry = (e:any) => {
+        const selectedValue = e.target.value;
+        console.log("SelectedCountry",selectedValue);
+        notification.success({
+            message: `Selected country: ${selectedValue}`,
+            duration: 2
+        });
+    }
+
+
     useEffect(() => {
         async function fetchCountryData() {
             try {
                 const res = await fetch(`https://main.localsjob.com/api/v1/countries`);
                 const data = await res.json();
-                console.log("dataContry", data);
+                console.log("dataContry", res);
+                setCountries(data.data);
+
             }
             catch (error) {
                 console.log(error);
@@ -48,9 +63,24 @@ const JobSearchBar = () => {
                     </svg> */}
                         {/* <span>Nepal</span> */}
                         
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    {/* <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M13 6L8 11L3 6" stroke="#9199A3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    </svg> */}
+                        
+                        {
+                            countries && countries.length > 0 && (
+
+                                <select className="bg-white" name="country" id="country" onChange={handleSelectedCountry}>
+                                <option value={countries[0].name} selected>{countries[0].name}</option>
+                                {
+                                    countries.slice(1).map((country) => (
+                                        <option key={country.id} value={country.name}>{country.name}</option>
+                                    ))
+                                }
+    
+                            </select>
+                            )
+                       }
 
                 </div>
                 {/* <div className="bg-white">|</div> */}

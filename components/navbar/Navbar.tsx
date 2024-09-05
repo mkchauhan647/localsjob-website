@@ -37,7 +37,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
       Cookies.remove("token");
       localStorage.removeItem('userData')
       setIsLoggedIn(false);
-      router.refresh();
+      router.push("/");
       toast.success(data?.message, {
         duration: 5000,
         position: "top-left",
@@ -51,7 +51,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
   };
   return (
     <>
-    <div className={home ? " absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]":" relative sm:py-[24px] sm:px[80px]  w-full  z-50 bg-white sm:h-[96px]"}>
+    <div className={home ? " absolute sm:py-[24px] sm:px[80px]  w-full  z-50 bg-transparent sm:h-[96px]":" relative sm:py-[24px] sm:px[80px]  w-full  z-50 bg-[#18191c] sm:h-[96px]"}>
       {/* a................bigger screens.................. */}
       <div className=" flex items-center justify-between  container mx-auto navbar ">
         <div className="flex gap-6 lg:gap-10  text-3xl items-center justify-center">
@@ -75,7 +75,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
 
         {/* ...........Hamburger Menu.......... */}
         <div
-          className="text-2xl text-[white] block md:hidden"
+            className={`text-2xl text-white block md:hidden`}
           onClick={() => setShowMenu(!showMenu)}
         >
           <RxHamburgerMenu className="text-4xl"/>
@@ -87,7 +87,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
             {isLoggedIn ? (
                 <div className="flex items-center justify-between gap-4">
                 <div
-                className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 ${home ? "text-[white]" : "text-black"}`}
+                className={`bg-transparent min-w-[100px] border rounded-md text-xs py-2 text-center hover:bg-[#3596dd] border-purple-900 text-white`}
                 onClick={handleLogout}
               >
                 Logout
@@ -101,7 +101,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
               <div className="flex items-center justify-between gap-4">
                 <Link href={"/login"}>
                   {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
-                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] ${home ? "text-[white]" : "text-black !border border-black "} h-[48px] rounded-full  hover:text-blue-500 hover:border-blue-500 transition-all duration-300`}>
+                    <button className={`bg-transparent min-w-[100px] border-[3px] text-[16px] py-2 border-[white] text-white h-[48px] rounded-full  hover:text-blue-500 hover:border-blue-500 transition-all duration-300`}>
                     Log In
                   </button>
                 </Link>
@@ -140,7 +140,7 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
 
       {/* b............smaller screens............... */}
       <div
-        className={`md:hidden flex flex-col items-center justify-center gap-y-4 bg-white py-4 absolute w-full shadow-md ${
+        className={`md:hidden flex flex-col items-center justify-center gap-y-4  bg-white py-4 absolute w-full shadow-md ${
           showMenu ? "scale-y-100" : "scale-y-0"
         }`}
         style={{
@@ -165,19 +165,30 @@ const Navbar = ({ home=false }:{home?:boolean}) => {
               Logout
                 </Link>
                 
-                {/* <DashboardDropDown home={home} handleLogout={handleLogout} /> */}
+                <DashboardDropDown home={home} handleLogout={handleLogout} />
                 
               
               </div>
           ):
             (
           <>
-            <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[#3596dd] ">
+                {/* <Link href={"/login"}>
+                <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[#3596dd] ">
               Login
-            </button>
+                  </button>
+                </Link>
             <button className="bg-[#f08c38] text-white rounded-md min-w-[100px] py-2 text-xs">
               Get Started
-            </button>
+            </button> */}
+                <div className="flex items-center justify-between gap-4">
+                <Link href={"/login"}>
+                  {/* <button className="bg-transparent min-w-[100px] border rounded-md text-xs py-2 border-[#3596dd] text-[white] "> */}
+                    <button className={`bg-transparent min-w-[100px] border- [3px] text-[16px] py-2 border- [white] text-black !border border-black  h-[48px] rounded-full  hover:text-blue-500 hover:border-blue-500 transition-all duration-300`}>
+                    Log In
+                  </button>
+                </Link>
+                    <RegisterDropDown home={false} />
+              </div>
 
             {/* <button className=" text-[rgba(0,0,0,.5)] rounded-md min-w-[100px] py-2 text-xs font-semibold">
             Employer Zone
