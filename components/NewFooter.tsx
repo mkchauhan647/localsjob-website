@@ -26,7 +26,7 @@ const NewFooter = () => {
               <li><a href="/about" className="hover:underline text-gray-400 py-[6px]">About</a></li>
               <li><a href="/contact-us" className="hover:underline text-gray-400">Contact</ a></li>
               <li><a href="#" className="hover:underline text-gray-400 ">Pricing</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Blog</a></li>
+              <li><a href="/blog" className="hover:underline text-gray-400">Blog</a></li>
             </ul>
           </div>
           <div>
@@ -34,25 +34,25 @@ const NewFooter = () => {
             <ul className='space-y-4'>
               <li><a href="/jobs" className="hover:underline text-gray-400">Browse Jobs</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Browse Employers</a></li>
-              <li><a href="#" className="hover:underline text-gray-400" >Candidate Dashboard</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Saved Jobs</a></li>
+              <li><a href="/job-seeker/candidate-dashboard" className="hover:underline text-gray-400" >Candidate Dashboard</a></li>
+              <li><a href="/jobs/saved-jobs" className="hover:underline text-gray-400">Saved Jobs</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white mb-4 text-[20px]">Employers</h4>
             <ul className='space-y-4'>
-              <li><a href="#" className="hover:underline hover:underline-offset-3 text-gray-400">Post a Job</a></li>
+              <li><a href="/login" className="hover:underline hover:underline-offset-3 text-gray-400">Post a Job</a></li>
               <li><a href="#" className="hover:underline text-gray-400">Browse Candidates</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Employers Dashboard</a></li>
-              <li><a href="#" className="hover:underline text-gray-400">Applications</a></li>
+              <li><a href="/employer/employer-dashboard" className="hover:underline text-gray-400">Employers Dashboard</a></li>
+              <li><a href="" className="hover:underline text-gray-400">Applications</a></li>
             </ul>
           </div>
           <div>
             <h4 className="text-white mb-4 text-[20px]">Support</h4>
             <ul className='space-y-4'>
-              <li><a href="#" className="hover:underline text-gray-400">Faqs</a></li>
+              <li><a href="/faqs" className="hover:underline text-gray-400">Faqs</a></li>
               <li><a href="/privacy-policy" className="hover:underline text-gray-400">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:underline text-gray-400">Terms & Conditions</a></li>
+              <li><a href="/terms-and-conditions" className="hover:underline text-gray-400">Terms & Conditions</a></li>
             </ul>
           </div>
         </div>

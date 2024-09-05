@@ -27,8 +27,8 @@ const AllJobs =  ({ categories }:{categories:Job[]}) => {
                                     </div>
                             
                
-                        {/* <div className="grid grid-cols-1 grid-flow-row md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5"> */}
-                <div className="flex flex-col gap-5 grow">
+                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3  gap-6 w-full mb- 5">
+                {/* <div className="flex flex-col gap-5 grow"> */}
                         
         
                   {categories.slice(0,sliceNumber).map((category:Job, index) => (

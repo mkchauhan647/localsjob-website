@@ -14,9 +14,10 @@ interface BoxCardData {
     totalCompanies: string;
     totalApplicants: string;
     totalResume: string;
+    popularJobCategories: any;
 }
 
-const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,strokeColor }:{banner:string,text:React.ReactElement,buttons:boolean,button_bg_color:string,bgColor:string,highlightColor:string,strokeColor:string}) => {
+const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,strokeColor,boxCard }:{banner:string,text:React.ReactElement,buttons:boolean,button_bg_color:string,bgColor:string,highlightColor:string,strokeColor:string,boxCard:boolean}) => {
     
     const searchInputRef = useRef<HTMLInputElement>(null);
     const [suggestions, setSuggestions] = useState<string[]>([]);
@@ -26,7 +27,8 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
         totalLiveJobs: '',
         totalCompanies: '',
         totalApplicants: '',
-        totalResume: ''
+        totalResume: '',
+        popularJobCategories: null
     });
 
 
@@ -53,7 +55,7 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
 
     useEffect(() => {
         async function fetchBoxData() {
-            const boxCards = ['total-live-jobs', 'total-companies', 'total-applicants','total-resume'];
+            const boxCards = ['total-live-jobs', 'total-companies', 'total-applicants', 'total-resume',"popular-job-categories"];
             try {
                 boxCards.map(async (boxCard,index) => {
                     const res = await axios(`https://main.localsjob.com/api/v1/${boxCard}`);
@@ -161,7 +163,7 @@ const Banner = ({ banner,text,buttons,button_bg_color,bgColor,highlightColor,str
         </div>
             {
             
-            boxCardData && 
+            boxCard && boxCardData && 
             <BoxCards bgColor={bgColor} highlightColor={highlightColor} strokeColor={strokeColor} boxCardData={boxCardData} />
             }
         </>

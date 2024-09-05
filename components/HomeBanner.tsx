@@ -10,6 +10,7 @@ import WebBanner from '@/components/WebBanner';
 import Testimonials from '@/components/testimonials/Testimonials';
 import BoxCards from '@/components/BoxCard/BoxCards';
 import Banner from './Banner'
+import BlogsGrid from "./blog/BlogCard";
 const HomeBanner = () => {
 
   return (
@@ -28,7 +29,7 @@ const HomeBanner = () => {
       
         highlightColor="#BE123C" strokeColor="#BE123C"
         // highlightColor="#0D64CC" strokeColor="#0D64CC"
-      
+      boxCard = {true}
       />
 
       {/* Box Cards */}
@@ -48,6 +49,9 @@ const HomeBanner = () => {
 
       {/* Testimonials */}
       <Testimonials />
+
+      <BlogsGrid viewAll={false} />
+      
     </>
   );
 };

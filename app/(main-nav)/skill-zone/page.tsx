@@ -7,15 +7,16 @@ const Page = () => {
     <div className=" bg-mprimary">
       {/* <h1>Skill Zone </h1> */}
       <Banner
-        banner="/skillzonebanner.jpeg"
-        text={getTextElement() }
-        buttons={true}
-        button_bg_color="bg-blue-500" 
+          banner="/skillzonebanner.jpeg"
+          text={getTextElement()}
+          buttons={true}
+          button_bg_color="bg-blue-500"
         
-        bgColor="#B9D9FF"
+          bgColor="#B9D9FF"
       
-        // highlightColor="#BE123C" strokeColor="#BE123C"
-        highlightColor="#0D64CC" strokeColor="#0D64CC"
+          // highlightColor="#BE123C" strokeColor="#BE123C"
+          highlightColor="#0D64CC" strokeColor="#0D64CC"
+          boxCard={true}
       />
     </div>
 

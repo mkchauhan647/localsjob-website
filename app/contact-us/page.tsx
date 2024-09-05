@@ -23,8 +23,8 @@ const ContactUs = () => {
   return (
     <>
     <Navbar/>
-    <div className="bg-white p-8 flex justify-between items-center container mx-auto pb-[60px]">
-      <div className="space-y-6">
+    <div className="bg-white p-4 flex flex-col lg:flex-row justify-around items- center container mx-auto pb-[60px] min-h-[90vh] items-center">
+      <div className="space-y-3 pb-8 flex flex-col items-start">
         <h1 className="text-3xl font-semibold">Contact Us</h1>
         <div className="flex items-center space-x-4">
           <i className="fas fa-map-marker-alt text-blue-600 text-lg"></i>
@@ -35,7 +35,7 @@ const ContactUs = () => {
           <p className="text-base">contact@localsjob.com</p>
         </div>
       </div>
-      <div className="w-1/2">
+      <div className="w-auto lg:w-1/2">
         <h2 className="text-2xl font-semibold mb-4">Ready to Get Started?</h2>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input type="text" name="name" placeholder="Your name" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onChange={handleChange} required />

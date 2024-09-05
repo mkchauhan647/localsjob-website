@@ -11,7 +11,7 @@ export const saveCompany = async (companyData: CompanyData): Promise<void> => {
         throw new Error('Token not found or unauthorized');
     }
 
-  await axios.post('https://localsjob.com/api/v1/companies/save', { data: companyData }, {
+  await axios.post('https://main.localsjob.com/api/v1/companies/save', { data: companyData }, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -21,12 +21,13 @@ export const saveCompany = async (companyData: CompanyData): Promise<void> => {
 
 
 export const fetchCountries = async (): Promise<Country[]> => {
-    if (token === null) {
-        throw new Error('Token not found or unauthorized');
-    }
-  const response = await axios.get('https://localsjob.com/api/v1/countries', {
+    // if (token === null) {
+    //     throw new Error('Token not found or unauthorized');
+    // }
+  const response = await axios.get('https://main.localsjob.com/api/v1/countries', {
     headers: {
-      Authorization: `Bearer ${token}`,
+      // Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
   });
   return response.data.data;
@@ -36,7 +37,7 @@ export const fetchStates = async (countryId: number): Promise<State[]> => {
     if (token === null) {
         throw new Error('Token not found or unauthorized');
     }
-  const response = await axios.get(`https://localsjob.com/api/v1/states?country_id=${countryId}`, {
+  const response = await axios.get(`https://main.localsjob.com/api/v1/states?country_id=${countryId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -49,7 +50,7 @@ export const fetchCities = async (countryId: number, stateId: number): Promise<C
         throw new Error('Token not found or unauthorized');
     }
   const response = await axios.get(
-    `https://localsjob.com/api/v1/cities?country_id=${countryId}&state_id=${stateId}`,
+    `https://main.localsjob.com/api/v1/cities?country_id=${countryId}&state_id=${stateId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -63,16 +63,16 @@ const CompanyComponent = async (props: any) => {
         className="shadow-md"
         // cover={<img alt="cover" src={companyDetails.company?.cover_image} />}
       >
-        <div className="flex items-center">
+        <div className="flex flex-col lg:flex-row items-center">
                         {/* <Avatar  className='w-[250px] h-[100px]' /> */}
                         {
                             companyDetails.company.logo && (
-                        <img src={`https://main.localsjob.com/storage/${companyDetails.company.logo}`} alt="company logo" className="w-[150px] h-[150px] object- cover rounded-full "/>
+                        <img src={`https://main.localsjob.com/storage/${companyDetails.company.logo}`} alt="company logo" className="w-[250px] mb-4  h-[200px] lg:w-[150px] lg:h-[150px] object- cover lg:rounded-full "/>
 
                             )
                         }
-          <div className="ml-4">
-            <h1 className="text-3xl font-bold">{companyDetails.company.name}</h1>
+          <div className=" lg:ml-4">
+            <h1 className="text-3xl font-bold mb-3">{companyDetails.company.name}</h1>
             <p className="text-gray-600">{companyDetails.company.description}</p>
             {companyDetails.company.ceo && (
               <p className="text-gray-500 mt-2">
@@ -117,7 +117,7 @@ const CompanyComponent = async (props: any) => {
               <p className="text-gray-500 mb-1 ">
                 Location: {job.address}
               </p>
-              <div className="flex space-x-4 mt-2">
+              <div className="flex space-x-4 mt-2 flex-wrap gap-2">
                 {job.job_types.map((type) => (
                   <Tag color="blue" key={type.name}>{type.name}</Tag>
                 ))}
